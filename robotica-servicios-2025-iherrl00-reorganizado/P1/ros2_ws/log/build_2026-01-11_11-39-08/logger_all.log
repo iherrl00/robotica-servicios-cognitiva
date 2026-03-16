@@ -1,0 +1,262 @@
+[0.237s] DEBUG:colcon:Command line arguments: ['/usr/bin/colcon', 'build']
+[0.237s] DEBUG:colcon:Parsed command line arguments: Namespace(log_base=None, log_level=None, verb_name='build', build_base='build', install_base='install', merge_install=False, symlink_install=False, test_result_base=None, continue_on_error=False, executor='parallel', parallel_workers=12, event_handlers=None, ignore_user_meta=False, metas=['./colcon.meta'], base_paths=['.'], packages_ignore=None, packages_ignore_regex=None, paths=None, packages_up_to=None, packages_up_to_regex=None, packages_above=None, packages_above_and_dependencies=None, packages_above_depth=None, packages_select_by_dep=None, packages_skip_by_dep=None, packages_skip_up_to=None, packages_select_build_failed=False, packages_skip_build_finished=False, packages_select_test_failures=False, packages_skip_test_passed=False, packages_select=None, packages_skip=None, packages_select_regex=None, packages_skip_regex=None, packages_start=None, packages_end=None, allow_overriding=[], cmake_args=None, cmake_target=None, cmake_target_skip_unavailable=False, cmake_clean_cache=False, cmake_clean_first=False, cmake_force_configure=False, ament_cmake_args=None, catkin_cmake_args=None, catkin_skip_building_tests=False, mixin_files=None, mixin=None, verb_parser=<colcon_mixin.mixin.mixin_argument.MixinArgumentDecorator object at 0x7452dbb89400>, verb_extension=<colcon_core.verb.build.BuildVerb object at 0x7452dbcc94c0>, main=<bound method BuildVerb.main of <colcon_core.verb.build.BuildVerb object at 0x7452dbcc94c0>>, mixin_verb=('build',))
+[0.330s] Level 1:colcon.colcon_core.package_discovery:discover_packages(colcon_meta) check parameters
+[0.330s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) check parameters
+[0.330s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) check parameters
+[0.330s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) check parameters
+[0.330s] Level 1:colcon.colcon_core.package_discovery:discover_packages(colcon_meta) discover
+[0.331s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) discover
+[0.331s] INFO:colcon.colcon_core.package_discovery:Crawling recursively for packages in '/home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws'
+[0.331s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['ignore', 'ignore_ament_install']
+[0.331s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ignore'
+[0.331s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ignore_ament_install'
+[0.331s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['colcon_pkg']
+[0.331s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'colcon_pkg'
+[0.331s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['colcon_meta']
+[0.331s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'colcon_meta'
+[0.331s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['ros']
+[0.332s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ros'
+[0.379s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['cmake', 'python']
+[0.379s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'cmake'
+[0.379s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'python'
+[0.379s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['python_setup_py']
+[0.379s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'python_setup_py'
+[0.379s] Level 1:colcon.colcon_core.package_identification:_identify(build) by extensions ['ignore', 'ignore_ament_install']
+[0.379s] Level 1:colcon.colcon_core.package_identification:_identify(build) by extension 'ignore'
+[0.379s] Level 1:colcon.colcon_core.package_identification:_identify(build) ignored
+[0.380s] Level 1:colcon.colcon_core.package_identification:_identify(install) by extensions ['ignore', 'ignore_ament_install']
+[0.380s] Level 1:colcon.colcon_core.package_identification:_identify(install) by extension 'ignore'
+[0.380s] Level 1:colcon.colcon_core.package_identification:_identify(install) ignored
+[0.380s] Level 1:colcon.colcon_core.package_identification:_identify(log) by extensions ['ignore', 'ignore_ament_install']
+[0.380s] Level 1:colcon.colcon_core.package_identification:_identify(log) by extension 'ignore'
+[0.380s] Level 1:colcon.colcon_core.package_identification:_identify(log) ignored
+[0.380s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['ignore', 'ignore_ament_install']
+[0.380s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'ignore'
+[0.380s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'ignore_ament_install'
+[0.381s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['colcon_pkg']
+[0.381s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'colcon_pkg'
+[0.381s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['colcon_meta']
+[0.381s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'colcon_meta'
+[0.381s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['ros']
+[0.381s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'ros'
+[0.381s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['cmake', 'python']
+[0.381s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'cmake'
+[0.381s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'python'
+[0.381s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['python_setup_py']
+[0.381s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'python_setup_py'
+[0.382s] Level 1:colcon.colcon_core.package_identification:_identify(src/cpp_pubsub) by extensions ['ignore', 'ignore_ament_install']
+[0.382s] Level 1:colcon.colcon_core.package_identification:_identify(src/cpp_pubsub) by extension 'ignore'
+[0.382s] Level 1:colcon.colcon_core.package_identification:_identify(src/cpp_pubsub) by extension 'ignore_ament_install'
+[0.382s] Level 1:colcon.colcon_core.package_identification:_identify(src/cpp_pubsub) by extensions ['colcon_pkg']
+[0.382s] Level 1:colcon.colcon_core.package_identification:_identify(src/cpp_pubsub) by extension 'colcon_pkg'
+[0.382s] Level 1:colcon.colcon_core.package_identification:_identify(src/cpp_pubsub) by extensions ['colcon_meta']
+[0.382s] Level 1:colcon.colcon_core.package_identification:_identify(src/cpp_pubsub) by extension 'colcon_meta'
+[0.382s] Level 1:colcon.colcon_core.package_identification:_identify(src/cpp_pubsub) by extensions ['ros']
+[0.382s] Level 1:colcon.colcon_core.package_identification:_identify(src/cpp_pubsub) by extension 'ros'
+[0.386s] DEBUG:colcon.colcon_core.package_identification:Package 'src/cpp_pubsub' with type 'ros.ament_cmake' and name 'cpp_pubsub'
+[0.387s] Level 1:colcon.colcon_core.package_identification:_identify(src/py_pubsub) by extensions ['ignore', 'ignore_ament_install']
+[0.387s] Level 1:colcon.colcon_core.package_identification:_identify(src/py_pubsub) by extension 'ignore'
+[0.387s] Level 1:colcon.colcon_core.package_identification:_identify(src/py_pubsub) by extension 'ignore_ament_install'
+[0.387s] Level 1:colcon.colcon_core.package_identification:_identify(src/py_pubsub) by extensions ['colcon_pkg']
+[0.387s] Level 1:colcon.colcon_core.package_identification:_identify(src/py_pubsub) by extension 'colcon_pkg'
+[0.387s] Level 1:colcon.colcon_core.package_identification:_identify(src/py_pubsub) by extensions ['colcon_meta']
+[0.387s] Level 1:colcon.colcon_core.package_identification:_identify(src/py_pubsub) by extension 'colcon_meta'
+[0.387s] Level 1:colcon.colcon_core.package_identification:_identify(src/py_pubsub) by extensions ['ros']
+[0.388s] Level 1:colcon.colcon_core.package_identification:_identify(src/py_pubsub) by extension 'ros'
+[0.388s] DEBUG:colcon.colcon_core.package_identification:Package 'src/py_pubsub' with type 'ros.ament_python' and name 'py_pubsub'
+[0.389s] Level 1:colcon.colcon_core.package_identification:_identify(src/usb_cam) by extensions ['ignore', 'ignore_ament_install']
+[0.389s] Level 1:colcon.colcon_core.package_identification:_identify(src/usb_cam) by extension 'ignore'
+[0.389s] Level 1:colcon.colcon_core.package_identification:_identify(src/usb_cam) by extension 'ignore_ament_install'
+[0.389s] Level 1:colcon.colcon_core.package_identification:_identify(src/usb_cam) by extensions ['colcon_pkg']
+[0.389s] Level 1:colcon.colcon_core.package_identification:_identify(src/usb_cam) by extension 'colcon_pkg'
+[0.389s] Level 1:colcon.colcon_core.package_identification:_identify(src/usb_cam) by extensions ['colcon_meta']
+[0.389s] Level 1:colcon.colcon_core.package_identification:_identify(src/usb_cam) by extension 'colcon_meta'
+[0.389s] Level 1:colcon.colcon_core.package_identification:_identify(src/usb_cam) by extensions ['ros']
+[0.389s] Level 1:colcon.colcon_core.package_identification:_identify(src/usb_cam) by extension 'ros'
+[0.392s] DEBUG:colcon.colcon_core.package_identification:Package 'src/usb_cam' with type 'ros.ament_cmake' and name 'usb_cam'
+[0.393s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) using defaults
+[0.393s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) discover
+[0.393s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) using defaults
+[0.393s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) discover
+[0.393s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) using defaults
+[0.429s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) check parameters
+[0.429s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) discover
+[0.437s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 457 installed packages in /opt/ros/jazzy
+[0.440s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) using defaults
+[0.546s] Level 5:colcon.colcon_core.verb:set package 'cpp_pubsub' build argument 'cmake_args' from command line to 'None'
+[0.546s] Level 5:colcon.colcon_core.verb:set package 'cpp_pubsub' build argument 'cmake_target' from command line to 'None'
+[0.546s] Level 5:colcon.colcon_core.verb:set package 'cpp_pubsub' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.546s] Level 5:colcon.colcon_core.verb:set package 'cpp_pubsub' build argument 'cmake_clean_cache' from command line to 'False'
+[0.546s] Level 5:colcon.colcon_core.verb:set package 'cpp_pubsub' build argument 'cmake_clean_first' from command line to 'False'
+[0.546s] Level 5:colcon.colcon_core.verb:set package 'cpp_pubsub' build argument 'cmake_force_configure' from command line to 'False'
+[0.546s] Level 5:colcon.colcon_core.verb:set package 'cpp_pubsub' build argument 'ament_cmake_args' from command line to 'None'
+[0.546s] Level 5:colcon.colcon_core.verb:set package 'cpp_pubsub' build argument 'catkin_cmake_args' from command line to 'None'
+[0.546s] Level 5:colcon.colcon_core.verb:set package 'cpp_pubsub' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.546s] DEBUG:colcon.colcon_core.verb:Building package 'cpp_pubsub' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/build/cpp_pubsub', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/install/cpp_pubsub', 'merge_install': False, 'path': '/home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/src/cpp_pubsub', 'symlink_install': False, 'test_result_base': None}
+[0.547s] Level 5:colcon.colcon_core.verb:set package 'py_pubsub' build argument 'cmake_args' from command line to 'None'
+[0.547s] Level 5:colcon.colcon_core.verb:set package 'py_pubsub' build argument 'cmake_target' from command line to 'None'
+[0.547s] Level 5:colcon.colcon_core.verb:set package 'py_pubsub' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.547s] Level 5:colcon.colcon_core.verb:set package 'py_pubsub' build argument 'cmake_clean_cache' from command line to 'False'
+[0.547s] Level 5:colcon.colcon_core.verb:set package 'py_pubsub' build argument 'cmake_clean_first' from command line to 'False'
+[0.547s] Level 5:colcon.colcon_core.verb:set package 'py_pubsub' build argument 'cmake_force_configure' from command line to 'False'
+[0.547s] Level 5:colcon.colcon_core.verb:set package 'py_pubsub' build argument 'ament_cmake_args' from command line to 'None'
+[0.547s] Level 5:colcon.colcon_core.verb:set package 'py_pubsub' build argument 'catkin_cmake_args' from command line to 'None'
+[0.547s] Level 5:colcon.colcon_core.verb:set package 'py_pubsub' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.547s] DEBUG:colcon.colcon_core.verb:Building package 'py_pubsub' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/build/py_pubsub', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/install/py_pubsub', 'merge_install': False, 'path': '/home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/src/py_pubsub', 'symlink_install': False, 'test_result_base': None}
+[0.547s] Level 5:colcon.colcon_core.verb:set package 'usb_cam' build argument 'cmake_args' from command line to 'None'
+[0.547s] Level 5:colcon.colcon_core.verb:set package 'usb_cam' build argument 'cmake_target' from command line to 'None'
+[0.547s] Level 5:colcon.colcon_core.verb:set package 'usb_cam' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.547s] Level 5:colcon.colcon_core.verb:set package 'usb_cam' build argument 'cmake_clean_cache' from command line to 'False'
+[0.547s] Level 5:colcon.colcon_core.verb:set package 'usb_cam' build argument 'cmake_clean_first' from command line to 'False'
+[0.547s] Level 5:colcon.colcon_core.verb:set package 'usb_cam' build argument 'cmake_force_configure' from command line to 'False'
+[0.547s] Level 5:colcon.colcon_core.verb:set package 'usb_cam' build argument 'ament_cmake_args' from command line to 'None'
+[0.547s] Level 5:colcon.colcon_core.verb:set package 'usb_cam' build argument 'catkin_cmake_args' from command line to 'None'
+[0.547s] Level 5:colcon.colcon_core.verb:set package 'usb_cam' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.548s] DEBUG:colcon.colcon_core.verb:Building package 'usb_cam' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/build/usb_cam', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/install/usb_cam', 'merge_install': False, 'path': '/home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/src/usb_cam', 'symlink_install': False, 'test_result_base': None}
+[0.548s] INFO:colcon.colcon_core.executor:Executing jobs using 'parallel' executor
+[0.550s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:run_until_complete
+[0.550s] INFO:colcon.colcon_ros.task.ament_cmake.build:Building ROS package in '/home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/src/cpp_pubsub' with build type 'ament_cmake'
+[0.551s] INFO:colcon.colcon_cmake.task.cmake.build:Building CMake package in '/home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/src/cpp_pubsub'
+[0.563s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_core.shell.bat': Not used on non-Windows systems
+[0.563s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[0.563s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[0.571s] INFO:colcon.colcon_ros.task.ament_python.build:Building ROS package in '/home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/src/py_pubsub' with build type 'ament_python'
+[0.571s] Level 1:colcon.colcon_core.shell:create_environment_hook('py_pubsub', 'ament_prefix_path')
+[0.572s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/install/py_pubsub/share/py_pubsub/hook/ament_prefix_path.ps1'
+[0.574s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/install/py_pubsub/share/py_pubsub/hook/ament_prefix_path.dsv'
+[0.575s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/install/py_pubsub/share/py_pubsub/hook/ament_prefix_path.sh'
+[0.576s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[0.576s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[0.584s] INFO:colcon.colcon_ros.task.ament_cmake.build:Building ROS package in '/home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/src/usb_cam' with build type 'ament_cmake'
+[0.585s] INFO:colcon.colcon_cmake.task.cmake.build:Building CMake package in '/home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/src/usb_cam'
+[0.585s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[0.585s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[0.600s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/build/cpp_pubsub': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/build/cpp_pubsub -- -j12 -l12
+[1.032s] INFO:colcon.colcon_core.task.python.build:Building Python package in '/home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/src/py_pubsub'
+[1.032s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[1.033s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[1.049s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/build/usb_cam': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/build/usb_cam -- -j12 -l12
+[1.050s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/build/cpp_pubsub' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/build/cpp_pubsub -- -j12 -l12
+[1.076s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/build/cpp_pubsub': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --install /home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/build/cpp_pubsub
+[1.106s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(cpp_pubsub)
+[1.107s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/build/cpp_pubsub' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --install /home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/build/cpp_pubsub
+[1.111s] Level 1:colcon.colcon_core.environment:checking '/home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/install/cpp_pubsub' for CMake module files
+[1.112s] Level 1:colcon.colcon_core.environment:checking '/home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/install/cpp_pubsub' for CMake config files
+[1.113s] Level 1:colcon.colcon_core.shell:create_environment_hook('cpp_pubsub', 'cmake_prefix_path')
+[1.114s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/install/cpp_pubsub/share/cpp_pubsub/hook/cmake_prefix_path.ps1'
+[1.115s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/install/cpp_pubsub/share/cpp_pubsub/hook/cmake_prefix_path.dsv'
+[1.115s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/install/cpp_pubsub/share/cpp_pubsub/hook/cmake_prefix_path.sh'
+[1.116s] Level 1:colcon.colcon_core.environment:checking '/home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/install/cpp_pubsub/lib'
+[1.117s] Level 1:colcon.colcon_core.environment:checking '/home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/install/cpp_pubsub/bin'
+[1.117s] Level 1:colcon.colcon_core.environment:checking '/home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/install/cpp_pubsub/lib/pkgconfig/cpp_pubsub.pc'
+[1.117s] Level 1:colcon.colcon_core.environment:checking '/home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/install/cpp_pubsub/lib/python3.12/site-packages'
+[1.118s] Level 1:colcon.colcon_core.environment:checking '/home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/install/cpp_pubsub/bin'
+[1.118s] INFO:colcon.colcon_core.shell:Creating package script '/home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/install/cpp_pubsub/share/cpp_pubsub/package.ps1'
+[1.119s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/install/cpp_pubsub/share/cpp_pubsub/package.dsv'
+[1.120s] INFO:colcon.colcon_core.shell:Creating package script '/home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/install/cpp_pubsub/share/cpp_pubsub/package.sh'
+[1.121s] INFO:colcon.colcon_core.shell:Creating package script '/home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/install/cpp_pubsub/share/cpp_pubsub/package.bash'
+[1.122s] INFO:colcon.colcon_core.shell:Creating package script '/home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/install/cpp_pubsub/share/cpp_pubsub/package.zsh'
+[1.123s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/install/cpp_pubsub/share/colcon-core/packages/cpp_pubsub)
+[1.124s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(cpp_pubsub)
+[1.124s] Level 1:colcon.colcon_core.environment:checking '/home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/install/cpp_pubsub' for CMake module files
+[1.125s] Level 1:colcon.colcon_core.environment:checking '/home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/install/cpp_pubsub' for CMake config files
+[1.126s] Level 1:colcon.colcon_core.shell:create_environment_hook('cpp_pubsub', 'cmake_prefix_path')
+[1.127s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/install/cpp_pubsub/share/cpp_pubsub/hook/cmake_prefix_path.ps1'
+[1.128s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/install/cpp_pubsub/share/cpp_pubsub/hook/cmake_prefix_path.dsv'
+[1.129s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/install/cpp_pubsub/share/cpp_pubsub/hook/cmake_prefix_path.sh'
+[1.130s] Level 1:colcon.colcon_core.environment:checking '/home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/install/cpp_pubsub/lib'
+[1.130s] Level 1:colcon.colcon_core.environment:checking '/home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/install/cpp_pubsub/bin'
+[1.131s] Level 1:colcon.colcon_core.environment:checking '/home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/install/cpp_pubsub/lib/pkgconfig/cpp_pubsub.pc'
+[1.131s] Level 1:colcon.colcon_core.environment:checking '/home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/install/cpp_pubsub/lib/python3.12/site-packages'
+[1.131s] Level 1:colcon.colcon_core.environment:checking '/home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/install/cpp_pubsub/bin'
+[1.132s] INFO:colcon.colcon_core.shell:Creating package script '/home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/install/cpp_pubsub/share/cpp_pubsub/package.ps1'
+[1.133s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/install/cpp_pubsub/share/cpp_pubsub/package.dsv'
+[1.133s] INFO:colcon.colcon_core.shell:Creating package script '/home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/install/cpp_pubsub/share/cpp_pubsub/package.sh'
+[1.134s] INFO:colcon.colcon_core.shell:Creating package script '/home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/install/cpp_pubsub/share/cpp_pubsub/package.bash'
+[1.135s] INFO:colcon.colcon_core.shell:Creating package script '/home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/install/cpp_pubsub/share/cpp_pubsub/package.zsh'
+[1.135s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/install/cpp_pubsub/share/colcon-core/packages/cpp_pubsub)
+[1.336s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/build/usb_cam' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/build/usb_cam -- -j12 -l12
+[1.339s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/build/usb_cam': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --install /home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/build/usb_cam
+[1.376s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(usb_cam)
+[1.376s] Level 1:colcon.colcon_core.environment:checking '/home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/install/usb_cam' for CMake module files
+[1.377s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/build/usb_cam' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --install /home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/build/usb_cam
+[1.378s] Level 1:colcon.colcon_core.environment:checking '/home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/install/usb_cam' for CMake config files
+[1.379s] Level 1:colcon.colcon_core.shell:create_environment_hook('usb_cam', 'cmake_prefix_path')
+[1.379s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/install/usb_cam/share/usb_cam/hook/cmake_prefix_path.ps1'
+[1.380s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/install/usb_cam/share/usb_cam/hook/cmake_prefix_path.dsv'
+[1.380s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/install/usb_cam/share/usb_cam/hook/cmake_prefix_path.sh'
+[1.381s] Level 1:colcon.colcon_core.environment:checking '/home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/install/usb_cam/lib'
+[1.382s] Level 1:colcon.colcon_core.shell:create_environment_hook('usb_cam', 'ld_library_path_lib')
+[1.382s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/install/usb_cam/share/usb_cam/hook/ld_library_path_lib.ps1'
+[1.383s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/install/usb_cam/share/usb_cam/hook/ld_library_path_lib.dsv'
+[1.384s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/install/usb_cam/share/usb_cam/hook/ld_library_path_lib.sh'
+[1.385s] Level 1:colcon.colcon_core.environment:checking '/home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/install/usb_cam/bin'
+[1.385s] Level 1:colcon.colcon_core.environment:checking '/home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/install/usb_cam/lib/pkgconfig/usb_cam.pc'
+[1.386s] Level 1:colcon.colcon_core.environment:checking '/home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/install/usb_cam/lib/python3.12/site-packages'
+[1.386s] Level 1:colcon.colcon_core.environment:checking '/home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/install/usb_cam/bin'
+[1.387s] INFO:colcon.colcon_core.shell:Creating package script '/home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/install/usb_cam/share/usb_cam/package.ps1'
+[1.388s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/install/usb_cam/share/usb_cam/package.dsv'
+[1.388s] INFO:colcon.colcon_core.shell:Creating package script '/home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/install/usb_cam/share/usb_cam/package.sh'
+[1.389s] INFO:colcon.colcon_core.shell:Creating package script '/home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/install/usb_cam/share/usb_cam/package.bash'
+[1.389s] INFO:colcon.colcon_core.shell:Creating package script '/home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/install/usb_cam/share/usb_cam/package.zsh'
+[1.390s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/install/usb_cam/share/colcon-core/packages/usb_cam)
+[1.391s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(usb_cam)
+[1.391s] Level 1:colcon.colcon_core.environment:checking '/home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/install/usb_cam' for CMake module files
+[1.392s] Level 1:colcon.colcon_core.environment:checking '/home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/install/usb_cam' for CMake config files
+[1.393s] Level 1:colcon.colcon_core.shell:create_environment_hook('usb_cam', 'cmake_prefix_path')
+[1.393s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/install/usb_cam/share/usb_cam/hook/cmake_prefix_path.ps1'
+[1.394s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/install/usb_cam/share/usb_cam/hook/cmake_prefix_path.dsv'
+[1.394s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/install/usb_cam/share/usb_cam/hook/cmake_prefix_path.sh'
+[1.395s] Level 1:colcon.colcon_core.environment:checking '/home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/install/usb_cam/lib'
+[1.395s] Level 1:colcon.colcon_core.shell:create_environment_hook('usb_cam', 'ld_library_path_lib')
+[1.395s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/install/usb_cam/share/usb_cam/hook/ld_library_path_lib.ps1'
+[1.396s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/install/usb_cam/share/usb_cam/hook/ld_library_path_lib.dsv'
+[1.396s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/install/usb_cam/share/usb_cam/hook/ld_library_path_lib.sh'
+[1.397s] Level 1:colcon.colcon_core.environment:checking '/home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/install/usb_cam/bin'
+[1.397s] Level 1:colcon.colcon_core.environment:checking '/home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/install/usb_cam/lib/pkgconfig/usb_cam.pc'
+[1.397s] Level 1:colcon.colcon_core.environment:checking '/home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/install/usb_cam/lib/python3.12/site-packages'
+[1.398s] Level 1:colcon.colcon_core.environment:checking '/home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/install/usb_cam/bin'
+[1.398s] INFO:colcon.colcon_core.shell:Creating package script '/home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/install/usb_cam/share/usb_cam/package.ps1'
+[1.399s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/install/usb_cam/share/usb_cam/package.dsv'
+[1.400s] INFO:colcon.colcon_core.shell:Creating package script '/home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/install/usb_cam/share/usb_cam/package.sh'
+[1.400s] INFO:colcon.colcon_core.shell:Creating package script '/home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/install/usb_cam/share/usb_cam/package.bash'
+[1.401s] INFO:colcon.colcon_core.shell:Creating package script '/home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/install/usb_cam/share/usb_cam/package.zsh'
+[1.402s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/install/usb_cam/share/colcon-core/packages/usb_cam)
+[2.346s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/src/py_pubsub': DEBUGINFOD_URLS=https://debuginfod.ubuntu.com PYTHONPATH=/home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/build/py_pubsub/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/install/py_pubsub/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/py_pubsub build --build-base /home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/build/py_pubsub/build install --record /home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/build/py_pubsub/install.log --single-version-externally-managed install_data
+[3.425s] Level 1:colcon.colcon_core.environment:checking '/home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/install/py_pubsub' for CMake module files
+[3.426s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/src/py_pubsub' returned '0': DEBUGINFOD_URLS=https://debuginfod.ubuntu.com PYTHONPATH=/home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/build/py_pubsub/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/install/py_pubsub/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/py_pubsub build --build-base /home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/build/py_pubsub/build install --record /home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/build/py_pubsub/install.log --single-version-externally-managed install_data
+[3.426s] Level 1:colcon.colcon_core.environment:checking '/home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/install/py_pubsub' for CMake config files
+[3.428s] Level 1:colcon.colcon_core.environment:checking '/home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/install/py_pubsub/lib'
+[3.428s] Level 1:colcon.colcon_core.environment:checking '/home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/install/py_pubsub/bin'
+[3.428s] Level 1:colcon.colcon_core.environment:checking '/home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/install/py_pubsub/lib/pkgconfig/py_pubsub.pc'
+[3.428s] Level 1:colcon.colcon_core.environment:checking '/home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/install/py_pubsub/lib/python3.12/site-packages'
+[3.428s] Level 1:colcon.colcon_core.shell:create_environment_hook('py_pubsub', 'pythonpath')
+[3.429s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/install/py_pubsub/share/py_pubsub/hook/pythonpath.ps1'
+[3.429s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/install/py_pubsub/share/py_pubsub/hook/pythonpath.dsv'
+[3.430s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/install/py_pubsub/share/py_pubsub/hook/pythonpath.sh'
+[3.431s] Level 1:colcon.colcon_core.environment:checking '/home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/install/py_pubsub/bin'
+[3.431s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(py_pubsub)
+[3.432s] INFO:colcon.colcon_core.shell:Creating package script '/home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/install/py_pubsub/share/py_pubsub/package.ps1'
+[3.433s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/install/py_pubsub/share/py_pubsub/package.dsv'
+[3.433s] INFO:colcon.colcon_core.shell:Creating package script '/home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/install/py_pubsub/share/py_pubsub/package.sh'
+[3.434s] INFO:colcon.colcon_core.shell:Creating package script '/home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/install/py_pubsub/share/py_pubsub/package.bash'
+[3.434s] INFO:colcon.colcon_core.shell:Creating package script '/home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/install/py_pubsub/share/py_pubsub/package.zsh'
+[3.435s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/install/py_pubsub/share/colcon-core/packages/py_pubsub)
+[3.435s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:closing loop
+[3.436s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:loop closed
+[3.436s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:run_until_complete finished with '0'
+[3.436s] DEBUG:colcon.colcon_core.event_reactor:joining thread
+[3.466s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_notification.desktop_notification.terminal_notifier': Not used on non-Darwin systems
+[3.466s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_notification.desktop_notification.win32': Not used on non-Windows systems
+[3.466s] INFO:colcon.colcon_notification.desktop_notification:Sending desktop notification using 'notify2'
+[3.490s] DEBUG:colcon.colcon_core.event_reactor:joined thread
+[3.490s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/install/local_setup.ps1'
+[3.492s] INFO:colcon.colcon_core.shell:Creating prefix util module '/home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/install/_local_setup_util_ps1.py'
+[3.493s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/install/setup.ps1'
+[3.495s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/install/local_setup.sh'
+[3.496s] INFO:colcon.colcon_core.shell:Creating prefix util module '/home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/install/_local_setup_util_sh.py'
+[3.497s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/install/setup.sh'
+[3.499s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/install/local_setup.bash'
+[3.500s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/install/setup.bash'
+[3.501s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/install/local_setup.zsh'
+[3.502s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/install/setup.zsh'

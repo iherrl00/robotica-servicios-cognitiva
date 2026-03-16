@@ -1,0 +1,4 @@
+[console_scripts]
+human_position_estimator.py = human_tf_camera_example.human_position_estimator:main
+human_position_to_baselink.py = human_tf_camera_example.human_position_to_baselink:main
+static_broadcaster.py = human_tf_camera_example.static_broadcaster:main

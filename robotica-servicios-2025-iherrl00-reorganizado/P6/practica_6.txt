@@ -1,0 +1,41 @@
+cd robotica-servicios-2025-iherrl00-reorganizado/ros2_ws/src/ROS2andGazebo/Docker
+docker compose up
+
+# Desde otra terminal, acceder al contenedor
+docker exec -it ros2_p6_container bash
+
+cd src
+git clone https://github.com/mgonzs13/chatbot_ros
+
+sudo apt install python3-vcstool
+vcs import < chatbot_ros/dependencies.repos
+
+sudo apt update
+sudo apt install python3-pip -y
+pip3 install -r requirements.txt # Solo en llama_ros
+
+sudo rosdep init
+rosdep update
+rosdep install --from-paths src --ignore-src -r -y
+
+colcon build --symlink-install --cmake-args -DGGML_CUDA=OFF
+source install/setup.bash
+source ~/ros2_ws/install/setup.bash
+ros2 launch chatbot_bringup chatbot.launch.py
+
+# En tu host
+docker exec -it ros2_p6_container bash
+
+# Dentro del contenedor
+source ~/ros2_ws/install/setup.bash
+
+# Publicar un mensaje al chatbot
+ros2 action send_goal /llama/generate_response llama_msgs/action/GenerateResponse "{prompt: 'Hola, ¿cómo estás?'}" --feedback
+ros2 action send_goal /llama/generate_chat_completions llama_msgs/action/GenerateChatCompletions "{messages: [{role: 'user', content: 'Hola, cuéntame un chiste'}]}" --feedback
+
+ros2 node list
+ros2 topic list
+
+ros2 topic echo /audio/in 
+sudo apt update
+sudo apt install alsa-utils

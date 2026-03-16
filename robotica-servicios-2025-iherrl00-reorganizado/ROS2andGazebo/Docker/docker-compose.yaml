@@ -1,0 +1,169 @@
+
+services:
+   p2:
+      tty: true
+      image: ros2_humble_practicas
+      container_name: ros2_p2_container
+      network_mode: host
+      privileged: true
+      volumes: 
+        - /tmp/.X11-unix:/tmp/.X11-unix:rw
+        - ~/.xauth_docker/share/:/tmp/xauth/
+        - /dev/input:/dev/input
+        - /dev/bus/usb:/dev/bus/usb
+        - ../P2:/home/user/ros2_ws:rw 
+        - ./scripts:/scripts
+      environment:
+        - DISPLAY=$DISPLAY
+        - QT_X11_NO_MITSHM=1
+        - XAUTHORITY=/tmp/xauth/.docker.xauth   
+        - LIBGL_ALWAYS_SOFTWARE=1    
+        - SVGA_VGPU10=0
+        - GALLIUM_DRIVER=llvmpipe
+      working_dir: /home/user/ros2_ws
+      devices:
+        - /dev/dri:/dev/dri
+        - /dev/snd:/dev/snd
+        - /dev/bus/usb:/dev/bus/usb:rw
+      user: "user:user"
+      command: ["/bin/bash", "-c", "chmod +x /scripts/setup_bashrc.sh && /scripts/setup_bashrc.sh && bash"]
+      
+   p3:
+      tty: true
+      image: ros2_humble_practicas
+      container_name: ros2_p3_container
+      network_mode: host
+      privileged: true
+      volumes: 
+        - /tmp/.X11-unix:/tmp/.X11-unix:rw
+        - ~/.xauth_docker/share/:/tmp/xauth/
+        - /dev/input:/dev/input
+        - /dev/bus/usb:/dev/bus/usb
+        - ../P3:/home/user/ros2_ws:rw 
+        - /home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/ROS2andGazebo/src:/home/user/ros2_ws/src/ROS2andGazebo:rw
+        - ./scripts:/scripts
+      environment:
+        - DISPLAY=$DISPLAY
+        - QT_X11_NO_MITSHM=1
+        - XAUTHORITY=/tmp/xauth/.docker.xauth     
+      working_dir: /home/user/ros2_ws
+      devices:
+        - /dev/dri:/dev/dri
+        - /dev/snd:/dev/snd
+        - /dev/bus/usb:/dev/bus/usb:rw
+      user: "user:user"
+      command: ["/bin/bash", "-c", "chmod +x /scripts/setup_bashrc.sh && /scripts/setup_bashrc.sh && bash"]
+      
+   p4:
+      tty: true
+      image: ros2_humble_practicas
+      container_name: ros2_p4_container
+      network_mode: host
+      privileged: true
+      volumes: 
+        - /tmp/.X11-unix:/tmp/.X11-unix:rw
+        - ~/.xauth_docker/share/:/tmp/xauth/
+        - /dev/input:/dev/input
+        - /dev/bus/usb:/dev/bus/usb
+        - ../P4:/home/user/ros2_ws:rw 
+        - /home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/ROS2andGazebo/src:/home/user/ros2_ws/src/ROS2andGazebo:rw
+        - ./scripts:/scripts
+      environment:
+        - DISPLAY=$DISPLAY
+        - QT_X11_NO_MITSHM=1
+        - XAUTHORITY=/tmp/xauth/.docker.xauth     
+      working_dir: /home/user/ros2_ws
+      devices:
+        - /dev/dri:/dev/dri
+        - /dev/snd:/dev/snd
+        - /dev/bus/usb:/dev/bus/usb:rw
+      user: "user:user"
+      command: ["/bin/bash", "-c", "chmod +x /scripts/setup_bashrc.sh && /scripts/setup_bashrc.sh && bash"]
+
+   p5:
+      tty: true
+      image: ros2_humble_practicas
+      container_name: ros2_p5_container
+      network_mode: host
+      privileged: true
+      volumes: 
+        - /tmp/.X11-unix:/tmp/.X11-unix:rw
+        - ~/.xauth_docker/share/:/tmp/xauth/
+        - /dev/input:/dev/input
+        - /dev/bus/usb:/dev/bus/usb
+        - ../P5:/home/user/ros2_ws:rw 
+        - /home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/ROS2andGazebo/src:/home/user/ros2_ws/src/ROS2andGazebo:rw
+        - ./scripts:/scripts
+      environment:
+        - DISPLAY=$DISPLAY
+        - QT_X11_NO_MITSHM=1
+        - XAUTHORITY=/tmp/xauth/.docker.xauth     
+      working_dir: /home/user/ros2_ws
+      devices:
+        - /dev/dri:/dev/dri
+        - /dev/snd:/dev/snd
+        - /dev/bus/usb:/dev/bus/usb:rw
+      user: "user:user"
+      command: ["/bin/bash", "-c", "chmod +x /scripts/setup_bashrc.sh && /scripts/setup_bashrc.sh && bash"]
+      
+   p6:
+      tty: true
+      image: ros2_humble_practicas
+      container_name: ros2_p6_container
+      network_mode: host
+      privileged: true
+      group_add:
+        - audio
+      volumes: 
+        - /tmp/.X11-unix:/tmp/.X11-unix:rw
+        - ~/.xauth_docker/share/:/tmp/xauth/
+        - /dev/input:/dev/input
+        - /dev/bus/usb:/dev/bus/usb
+        - ../P6:/home/user/ros2_ws:rw 
+        - /home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/ROS2andGazebo/src:/home/user/ros2_ws/src/ROS2andGazebo:rw
+        - ./scripts:/scripts
+        - /run/user/1000:/run/user/1000:rw
+      environment:
+        - DISPLAY=$DISPLAY
+        - QT_X11_NO_MITSHM=1
+        - XAUTHORITY=/tmp/xauth/.docker.xauth
+        - PIPEWIRE_RUNTIME_DIR=/run/user/1000
+      working_dir: /home/user/ros2_ws
+      devices:
+        - /dev/dri:/dev/dri
+        - /dev/snd:/dev/snd
+        - /dev/bus/usb:/dev/bus/usb:rw
+      user: "user:user"
+      command: ["/bin/bash", "-c", "chmod +x /scripts/setup_bashrc.sh && /scripts/setup_bashrc.sh && bash"]
+
+   proyectofinal:
+      tty: true
+      image: ros2_humble_practicas
+      container_name: ros2_pf_container
+      network_mode: host
+      privileged: true
+      group_add:
+        - audio
+      volumes: 
+        - /tmp/.X11-unix:/tmp/.X11-unix:rw
+        - ~/.xauth_docker/share/:/tmp/xauth/
+        - /dev/input:/dev/input
+        - /dev/bus/usb:/dev/bus/usb
+        - ../PF:/home/user/ros2_ws:rw 
+        - /home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/ROS2andGazebo/src:/home/user/ros2_ws/src/ROS2andGazebo:rw
+        - ./scripts:/scripts
+        - /run/user/1000:/run/user/1000:rw
+      environment:
+        - DISPLAY=$DISPLAY
+        - QT_X11_NO_MITSHM=1
+        - XAUTHORITY=/tmp/xauth/.docker.xauth
+        - PIPEWIRE_RUNTIME_DIR=/run/user/1000
+        - PULSE_SERVER=unix:/run/user/1000/pulse/native
+      working_dir: /home/user/ros2_ws
+      devices:
+        - /dev/dri:/dev/dri
+        - /dev/snd:/dev/snd
+        - /dev/bus/usb:/dev/bus/usb:rw
+      user: "user:user"
+      command: ["/bin/bash", "-c", "chmod +x /scripts/setup_bashrc.sh && /scripts/setup_bashrc.sh && bash"]
+      

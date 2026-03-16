@@ -1,0 +1,26 @@
+[35m[1mConsolidate compiler generated dependencies of target bt_robot_node[0m
+[ 50%] [32mBuilding CXX object CMakeFiles/bt_robot_node.dir/src/bt_robot_node.cpp.o[0m
+[100%] [32m[1mLinking CXX executable bt_robot_node[0m
+[100%] Built target bt_robot_node
+-- Install configuration: ""
+-- Installing: /home/user/ros2_ws/install/bt_robot/lib/bt_robot/bt_robot_node
+-- Set runtime path of "/home/user/ros2_ws/install/bt_robot/lib/bt_robot/bt_robot_node" to ""
+-- Up-to-date: /home/user/ros2_ws/install/bt_robot/share/bt_robot/trees
+-- Up-to-date: /home/user/ros2_ws/install/bt_robot/share/bt_robot/trees/obstacle_tree.xml
+-- Installing: /home/user/ros2_ws/install/bt_robot/share/bt_robot/trees/service_robot_tree.xml
+-- Installing: /home/user/ros2_ws/install/bt_robot/share/bt_robot/trees/obstacle_tree_groot.xml
+-- Up-to-date: /home/user/ros2_ws/install/bt_robot/share/ament_index/resource_index/package_run_dependencies/bt_robot
+-- Up-to-date: /home/user/ros2_ws/install/bt_robot/share/ament_index/resource_index/parent_prefix_path/bt_robot
+-- Up-to-date: /home/user/ros2_ws/install/bt_robot/share/bt_robot/environment/ament_prefix_path.sh
+-- Up-to-date: /home/user/ros2_ws/install/bt_robot/share/bt_robot/environment/ament_prefix_path.dsv
+-- Up-to-date: /home/user/ros2_ws/install/bt_robot/share/bt_robot/environment/path.sh
+-- Up-to-date: /home/user/ros2_ws/install/bt_robot/share/bt_robot/environment/path.dsv
+-- Up-to-date: /home/user/ros2_ws/install/bt_robot/share/bt_robot/local_setup.bash
+-- Up-to-date: /home/user/ros2_ws/install/bt_robot/share/bt_robot/local_setup.sh
+-- Up-to-date: /home/user/ros2_ws/install/bt_robot/share/bt_robot/local_setup.zsh
+-- Up-to-date: /home/user/ros2_ws/install/bt_robot/share/bt_robot/local_setup.dsv
+-- Installing: /home/user/ros2_ws/install/bt_robot/share/bt_robot/package.dsv
+-- Up-to-date: /home/user/ros2_ws/install/bt_robot/share/ament_index/resource_index/packages/bt_robot
+-- Up-to-date: /home/user/ros2_ws/install/bt_robot/share/bt_robot/cmake/bt_robotConfig.cmake
+-- Up-to-date: /home/user/ros2_ws/install/bt_robot/share/bt_robot/cmake/bt_robotConfig-version.cmake
+-- Up-to-date: /home/user/ros2_ws/install/bt_robot/share/bt_robot/package.xml

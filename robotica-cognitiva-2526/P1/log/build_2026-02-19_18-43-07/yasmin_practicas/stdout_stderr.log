@@ -1,0 +1,23 @@
+running egg_info
+writing ../../build/yasmin_practicas/yasmin_practicas.egg-info/PKG-INFO
+writing dependency_links to ../../build/yasmin_practicas/yasmin_practicas.egg-info/dependency_links.txt
+writing entry points to ../../build/yasmin_practicas/yasmin_practicas.egg-info/entry_points.txt
+writing requirements to ../../build/yasmin_practicas/yasmin_practicas.egg-info/requires.txt
+writing top-level names to ../../build/yasmin_practicas/yasmin_practicas.egg-info/top_level.txt
+reading manifest file '../../build/yasmin_practicas/yasmin_practicas.egg-info/SOURCES.txt'
+writing manifest file '../../build/yasmin_practicas/yasmin_practicas.egg-info/SOURCES.txt'
+running build
+running build_py
+copying yasmin_practicas/yasmin_demo_ejercicio2.py -> /home/user/ros2_ws/build/yasmin_practicas/build/lib/yasmin_practicas
+running install
+running install_lib
+copying /home/user/ros2_ws/build/yasmin_practicas/build/lib/yasmin_practicas/yasmin_demo_ejercicio2.py -> /home/user/ros2_ws/install/yasmin_practicas/lib/python3.10/site-packages/yasmin_practicas
+byte-compiling /home/user/ros2_ws/install/yasmin_practicas/lib/python3.10/site-packages/yasmin_practicas/yasmin_demo_ejercicio2.py to yasmin_demo_ejercicio2.cpython-310.pyc
+running install_data
+running install_egg_info
+removing '/home/user/ros2_ws/install/yasmin_practicas/lib/python3.10/site-packages/yasmin_practicas-0.0.0-py3.10.egg-info' (and everything under it)
+Copying ../../build/yasmin_practicas/yasmin_practicas.egg-info to /home/user/ros2_ws/install/yasmin_practicas/lib/python3.10/site-packages/yasmin_practicas-0.0.0-py3.10.egg-info
+running install_scripts
+Installing yasmin_demo_ejercicio1 script to /home/user/ros2_ws/install/yasmin_practicas/lib/yasmin_practicas
+Installing yasmin_demo_ejercicio2 script to /home/user/ros2_ws/install/yasmin_practicas/lib/yasmin_practicas
+writing list of installed files to '/home/user/ros2_ws/build/yasmin_practicas/install.log'

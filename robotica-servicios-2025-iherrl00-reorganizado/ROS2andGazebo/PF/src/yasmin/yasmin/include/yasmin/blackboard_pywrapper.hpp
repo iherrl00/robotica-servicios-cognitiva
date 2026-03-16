@@ -1,0 +1,184 @@
+// Copyright (C) 2025 Miguel Ángel González Santamarta
+//
+// This program is free software: you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
+//
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+//
+// You should have received a copy of the GNU General Public License
+// along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+#ifndef YASMIN__BLACKBOARD_PYWRAPPER_HPP_
+#define YASMIN__BLACKBOARD_PYWRAPPER_HPP_
+
+#include <pybind11/cast.h>
+#include <pybind11/pybind11.h>
+#include <pybind11/stl.h>
+#include <string>
+#include <type_traits>
+#include <typeinfo>
+
+#include "yasmin/blackboard.hpp"
+#include "yasmin/types.hpp"
+
+namespace py = pybind11;
+
+namespace yasmin {
+
+// Forward declaration
+class BlackboardPyWrapper;
+
+/**
+ * @class BlackboardPyWrapper
+ * @brief A wrapper around the C++ Blackboard that stores Python objects and
+ * native types.
+ *
+ * This wrapper provides a Python-friendly interface to the C++ Blackboard,
+ * automatically converting between C++ types (like std::string) and Python
+ * objects when accessing blackboard values.
+ */
+class BlackboardPyWrapper {
+private:
+  /// @brief Underlying C++ Blackboard instance
+  Blackboard ::SharedPtr blackboard;
+
+public:
+  BlackboardPyWrapper() : blackboard(Blackboard::make_shared()) {}
+
+  /**
+   * @brief Construct from an existing C++ Blackboard (move constructor)
+   */
+  BlackboardPyWrapper(Blackboard &&other)
+      : blackboard(Blackboard::make_shared(std::move(other))) {}
+
+  /**
+   * @brief Construct by wrapping a shared_ptr to a C++ Blackboard
+   */
+  explicit BlackboardPyWrapper(Blackboard::SharedPtr bb_ptr)
+      : blackboard(bb_ptr) {}
+
+  /**
+   * @brief Set a Python object in the blackboard.
+   * @param key The key to associate with the value.
+   * @param value The Python object to store.
+   */
+  void set(const std::string &key, py::object value) {
+    if (py::isinstance<py::bool_>(value)) {
+      this->blackboard->set<bool>(key, value.cast<bool>());
+    } else if (py::isinstance<py::int_>(value)) {
+      try {
+        this->blackboard->set<int>(key, value.cast<int>());
+      } catch (...) {
+        this->blackboard->set<long>(key, value.cast<long>());
+      }
+    } else if (py::isinstance<py::float_>(value)) {
+      this->blackboard->set<double>(key, value.cast<double>());
+    } else if (py::isinstance<py::str>(value)) {
+      this->blackboard->set<std::string>(key, value.cast<std::string>());
+    } else {
+      this->blackboard->set<py::object>(key, value);
+    }
+  }
+
+  /**
+   * @brief Get a Python object from the blackboard.
+   * @param key The key associated with the value.
+   * @return The Python object.
+   * @throws std::runtime_error if the key does not exist.
+   */
+  py::object get(const std::string &key) const {
+    // Get the type of the stored value
+    std::string type = this->blackboard->get_type(key);
+
+    // Check if it's a std::string (C++ string) - convert to Python str
+    if (type.find("std::string") != std::string::npos ||
+        type.find("std::__cxx11::basic_string") != std::string::npos) {
+      std::string cpp_value = this->blackboard->get<std::string>(key);
+      return py::cast(cpp_value);
+    }
+    // Check if it's an int (C++ int) - convert to Python int
+    else if (type.find("int") != std::string::npos) {
+      int cpp_value = this->blackboard->get<int>(key);
+      return py::cast(cpp_value);
+    }
+    // Check if it's a long (C++ long) - convert to Python int
+    else if (type.find("long") != std::string::npos) {
+      long cpp_value = this->blackboard->get<long>(key);
+      return py::cast(cpp_value);
+    }
+    // Check if it's a float or double (C++ float/double) - convert to Python
+    // float
+    else if (type.find("float") != std::string::npos ||
+             type.find("double") != std::string::npos) {
+      double cpp_value = this->blackboard->get<double>(key);
+      return py::cast(cpp_value);
+    }
+    // Check if it's a bool (C++ bool) - convert to Python bool
+    else if (type.find("bool") != std::string::npos) {
+      bool cpp_value = this->blackboard->get<bool>(key);
+      return py::cast(cpp_value);
+    }
+    // Default: try to get as py::object
+    else {
+      return this->blackboard->get<py::object>(key);
+    }
+  }
+
+  /**
+   * @brief Remove a value from the blackboard.
+   * @param key The key associated with the value to remove.
+   */
+  void remove(const std::string &key) { this->blackboard->remove(key); }
+
+  /**
+   * @brief Check if a key exists in the blackboard.
+   * @param key The key to check.
+   * @return True if the key exists, false otherwise.
+   */
+  bool contains(const std::string &key) const {
+    return this->blackboard->contains(key);
+  }
+
+  /**
+   * @brief Get the number of key-value pairs in the blackboard.
+   * @return The size of the blackboard.
+   */
+  int size() const { return this->blackboard->size(); }
+
+  /**
+   * @brief Convert the contents of the blackboard to a string.
+   * @return A string representation of the blackboard.
+   */
+  std::string to_string() const { return this->blackboard->to_string(); }
+
+  /**
+   * @brief Set the remappings of the blackboard.
+   * @param remappings The remappings to set.
+   */
+  void set_remappings(const Remappings &remappings) {
+    this->blackboard->set_remappings(remappings);
+  }
+
+  /**
+   * @brief Get the remappings of the blackboard.
+   * @return The remappings of the blackboard.
+   */
+  const Remappings &get_remappings() const {
+    return this->blackboard->get_remappings();
+  }
+
+  /**
+   * @brief Get a shared pointer to the underlying C++ Blackboard
+   * @return Shared pointer to the C++ Blackboard
+   */
+  Blackboard::SharedPtr get_cpp_blackboard() const { return this->blackboard; }
+};
+
+} // namespace yasmin
+
+#endif // YASMIN__BLACKBOARD_PYWRAPPER_HPP_

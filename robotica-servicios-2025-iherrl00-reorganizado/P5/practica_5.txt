@@ -1,0 +1,86 @@
+cd robotica-servicios-2025-iherrl00-reorganizado/ros2_ws/src/ROS2andGazebo/Docker
+docker compose up
+
+# Desde otra terminal, acceder al contenedor
+docker exec -it ros2_p5_container bash
+
+sudo apt update
+sudo apt install ros-humble-navigation2 ros-humble-nav2-simple-commander ros-humble-nav2-bringup
+
+cd src
+git clone https://github.com/fjrodl/navigation2_ignition_gazebo_turtlebot3.git
+
+sudo apt install ros-humble-turtlebot3* ros-humble-gazebo-ros-pkgs
+
+echo "export TURTLEBOT3_MODEL=waffle" >> ~/.bashrc
+echo "export GAZEBO_MODEL_PATH=$GAZEBO_MODEL_PATH:~/ros2_ws/src/navigation2_ignition_gazebo_turtlebot3/models" >> ~/.bashrc
+source ~/.bashrc
+
+cd ~/ros2_ws
+colcon build --symlink-install
+source /opt/ros/humble/setup.bash
+source install/setup.bash
+
+cd src
+mkdir -p nav2_scripts
+cd nav2_scripts
+sudo apt update
+sudo apt install nano -y
+nano simple_commander_example.py
+chmod +x simple_commander_example.py
+
+cd ros2_ws
+source /usr/share/gazebo/setup.sh
+export TURTLEBOT3_MODEL=waffle
+
+# Terminal 1
+ros2 launch turtlebot3_gazebo turtlebot3_world.launch.py
+
+# Terminal 2
+export TURTLEBOT3_MODEL=waffle
+ros2 launch turtlebot3_navigation2 navigation2.launch.py use_sim_time:=True map:=/home/user/ros2_ws/my_map.yaml
+
+# Terminal 3
+python3 simple_commander_example.py
+
+# Terminal 4
+ros2 launch nav2_bringup rviz_launch.py
+
+TEORÍA
+1 ¿Cuál es la función de Nav2 Simple Commander y cómo ayuda en la automatización de tareas de navegación?
+Nav2 Simple Commander es una API de Python de alto nivel que simplifica el control programático del sistema de navegación Nav2. Su función principal es permitir a los desarrolladores automatizar tareas de navegación sin necesidad de trabajar directamente con los topics y servicios de bajo nivel de ROS 2.
+Ayuda en la automatización mediante:
+- Interfaz simplificada: Proporciona métodos intuitivos como goToPose(), followWaypoints(), y followPath() que encapsulan la complejidad de los servicios de Nav2.
+Gestión automática del ciclo de vida: Maneja automáticamente la inicialización y el estado de los nodos de navegación.
+- Monitoreo de tareas: Permite obtener feedback en tiempo real sobre el progreso de la navegación (distancia restante, tiempo estimado).
+- Control de flujo: Facilita la creación de secuencias de navegación complejas mediante scripts Python, permitiendo tomar decisiones basadas en el resultado de cada tarea.
+- Casos de uso: Ideal para patrullas autónomas, recorridos guiados, pruebas automatizadas, y aplicaciones robóticas que requieren navegación sin intervención humana.
+
+2. ¿Qué efecto tiene el parámetro inflation_radius en el archivo costmap_parameters.yaml "waffle.yaml" y cómo afecta la navegación del robot?
+El parámetro inflation_radius define el radio (en metros) alrededor de los obstáculos donde el costo del costmap se incrementa gradualmente desde el valor máximo (en el obstáculo) hasta el valor neutral (espacio libre).
+Efectos en la navegación:
+- Zona de seguridad: Crea un área de "amortiguamiento" alrededor de los obstáculos que el robot intentará evitar, incluso si técnicamente cabría más cerca.
+
+Valor bajo (ej. 0.2m):
+- El robot puede planificar rutas muy cerca de los obstáculos
+- Mayor riesgo de colisiones si el robot no sigue perfectamente la trayectoria
+- Útil en espacios muy estrechos donde el robot debe aprovechar todo el espacio disponible
+
+Valor alto (ej. 1.0m):
+- El robot mantiene mayor distancia de seguridad con los obstáculos
+- Rutas más conservadoras y seguras
+- Puede causar que el robot considere pasillos estrechos como bloqueados
+- Mayor consumo de espacio, pero navegación más robusta ante imprecisiones
+
+- Interacción con cost_scaling_factor: Este factor determina qué tan rápido decrece el costo dentro del inflation_radius. Un valor alto hace que el robot sea aún más conservador al acercarse a obstáculos.
+- Ajuste recomendado: Debe ser ligeramente mayor que el radio del robot para garantizar seguridad, pero no tan grande que impida navegar por espacios utilizables.
+
+3. ¿Cómo podrías utilizar un script en Nav2 Simple Commander para automatizar una prueba de navegación en un entorno simulado? (FALTA)
+Modificando el archivo simple_commander_example.py para automatizar pruebas de navegación, se puede crear un script que realice múltiples escenarios de forma sistemática.
+
+4. Describe un caso en el que modificar el archivo planner_server.yaml "waffle.yaml" podría mejorar el rendimiento de navegación.
+Caso práctico: Robot de entrega en un almacén con pasillos largos y estrechos
+Problema: Con la configuración por defecto genera rutas que funcionan, pero:
+- Tarda demasiado en calcular rutas en mapas grandes
+- Las rutas tienen muchos giros innecesarios
+- No aprovecha bien los pasillos rectos largos

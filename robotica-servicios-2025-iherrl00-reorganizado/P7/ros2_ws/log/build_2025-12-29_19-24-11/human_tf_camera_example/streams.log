@@ -1,0 +1,47 @@
+[1.752s] Invoking command in '/home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P7/ros2_ws/src/human_tf_camera_example': DEBUGINFOD_URLS=https://debuginfod.ubuntu.com PYTHONPATH=/home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P7/ros2_ws/build/human_tf_camera_example/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P7/ros2_ws/install/human_tf_camera_example/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/human_tf_camera_example build --build-base /home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P7/ros2_ws/build/human_tf_camera_example/build install --record /home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P7/ros2_ws/build/human_tf_camera_example/install.log --single-version-externally-managed install_data
+[2.251s] running egg_info
+[2.251s] creating ../../build/human_tf_camera_example/human_tf_camera_example.egg-info
+[2.289s] writing ../../build/human_tf_camera_example/human_tf_camera_example.egg-info/PKG-INFO
+[2.290s] writing dependency_links to ../../build/human_tf_camera_example/human_tf_camera_example.egg-info/dependency_links.txt
+[2.290s] writing entry points to ../../build/human_tf_camera_example/human_tf_camera_example.egg-info/entry_points.txt
+[2.290s] writing requirements to ../../build/human_tf_camera_example/human_tf_camera_example.egg-info/requires.txt
+[2.290s] writing top-level names to ../../build/human_tf_camera_example/human_tf_camera_example.egg-info/top_level.txt
+[2.291s] writing manifest file '../../build/human_tf_camera_example/human_tf_camera_example.egg-info/SOURCES.txt'
+[2.370s] reading manifest file '../../build/human_tf_camera_example/human_tf_camera_example.egg-info/SOURCES.txt'
+[2.371s] writing manifest file '../../build/human_tf_camera_example/human_tf_camera_example.egg-info/SOURCES.txt'
+[2.371s] running build
+[2.371s] running build_py
+[2.371s] creating /home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P7/ros2_ws/build/human_tf_camera_example/build
+[2.371s] creating /home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P7/ros2_ws/build/human_tf_camera_example/build/lib
+[2.372s] creating /home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P7/ros2_ws/build/human_tf_camera_example/build/lib/human_tf_camera_example
+[2.372s] copying human_tf_camera_example/human_position_estimator.py -> /home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P7/ros2_ws/build/human_tf_camera_example/build/lib/human_tf_camera_example
+[2.372s] copying human_tf_camera_example/__init__.py -> /home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P7/ros2_ws/build/human_tf_camera_example/build/lib/human_tf_camera_example
+[2.372s] copying human_tf_camera_example/static_broadcaster.py -> /home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P7/ros2_ws/build/human_tf_camera_example/build/lib/human_tf_camera_example
+[2.372s] copying human_tf_camera_example/human_position_to_baselink.py -> /home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P7/ros2_ws/build/human_tf_camera_example/build/lib/human_tf_camera_example
+[2.372s] running install
+[2.383s] running install_lib
+[2.423s] creating /home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P7/ros2_ws/install/human_tf_camera_example/lib/python3.12/site-packages/human_tf_camera_example
+[2.424s] copying /home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P7/ros2_ws/build/human_tf_camera_example/build/lib/human_tf_camera_example/human_position_estimator.py -> /home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P7/ros2_ws/install/human_tf_camera_example/lib/python3.12/site-packages/human_tf_camera_example
+[2.424s] copying /home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P7/ros2_ws/build/human_tf_camera_example/build/lib/human_tf_camera_example/__init__.py -> /home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P7/ros2_ws/install/human_tf_camera_example/lib/python3.12/site-packages/human_tf_camera_example
+[2.424s] copying /home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P7/ros2_ws/build/human_tf_camera_example/build/lib/human_tf_camera_example/static_broadcaster.py -> /home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P7/ros2_ws/install/human_tf_camera_example/lib/python3.12/site-packages/human_tf_camera_example
+[2.424s] copying /home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P7/ros2_ws/build/human_tf_camera_example/build/lib/human_tf_camera_example/human_position_to_baselink.py -> /home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P7/ros2_ws/install/human_tf_camera_example/lib/python3.12/site-packages/human_tf_camera_example
+[2.425s] byte-compiling /home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P7/ros2_ws/install/human_tf_camera_example/lib/python3.12/site-packages/human_tf_camera_example/human_position_estimator.py to human_position_estimator.cpython-312.pyc
+[2.427s] byte-compiling /home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P7/ros2_ws/install/human_tf_camera_example/lib/python3.12/site-packages/human_tf_camera_example/__init__.py to __init__.cpython-312.pyc
+[2.427s] byte-compiling /home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P7/ros2_ws/install/human_tf_camera_example/lib/python3.12/site-packages/human_tf_camera_example/static_broadcaster.py to static_broadcaster.cpython-312.pyc
+[2.428s] byte-compiling /home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P7/ros2_ws/install/human_tf_camera_example/lib/python3.12/site-packages/human_tf_camera_example/human_position_to_baselink.py to human_position_to_baselink.cpython-312.pyc
+[2.429s] running install_data
+[2.429s] creating /home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P7/ros2_ws/install/human_tf_camera_example/share/ament_index
+[2.429s] creating /home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P7/ros2_ws/install/human_tf_camera_example/share/ament_index/resource_index
+[2.430s] creating /home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P7/ros2_ws/install/human_tf_camera_example/share/ament_index/resource_index/packages
+[2.430s] copying resource/human_tf_camera_example -> /home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P7/ros2_ws/install/human_tf_camera_example/share/ament_index/resource_index/packages
+[2.430s] copying package.xml -> /home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P7/ros2_ws/install/human_tf_camera_example/share/human_tf_camera_example
+[2.430s] creating /home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P7/ros2_ws/install/human_tf_camera_example/share/human_tf_camera_example/launch
+[2.430s] copying launch/human_tf.launch.py -> /home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P7/ros2_ws/install/human_tf_camera_example/share/human_tf_camera_example/launch
+[2.430s] running install_egg_info
+[2.471s] Copying ../../build/human_tf_camera_example/human_tf_camera_example.egg-info to /home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P7/ros2_ws/install/human_tf_camera_example/lib/python3.12/site-packages/human_tf_camera_example-0.0.0-py3.12.egg-info
+[2.473s] running install_scripts
+[2.744s] Installing human_position_estimator.py script to /home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P7/ros2_ws/install/human_tf_camera_example/lib/human_tf_camera_example
+[2.745s] Installing human_position_to_baselink.py script to /home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P7/ros2_ws/install/human_tf_camera_example/lib/human_tf_camera_example
+[2.745s] Installing static_broadcaster.py script to /home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P7/ros2_ws/install/human_tf_camera_example/lib/human_tf_camera_example
+[2.746s] writing list of installed files to '/home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P7/ros2_ws/build/human_tf_camera_example/install.log'
+[2.802s] Invoked command in '/home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P7/ros2_ws/src/human_tf_camera_example' returned '0': DEBUGINFOD_URLS=https://debuginfod.ubuntu.com PYTHONPATH=/home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P7/ros2_ws/build/human_tf_camera_example/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P7/ros2_ws/install/human_tf_camera_example/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/human_tf_camera_example build --build-base /home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P7/ros2_ws/build/human_tf_camera_example/build install --record /home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P7/ros2_ws/build/human_tf_camera_example/install.log --single-version-externally-managed install_data

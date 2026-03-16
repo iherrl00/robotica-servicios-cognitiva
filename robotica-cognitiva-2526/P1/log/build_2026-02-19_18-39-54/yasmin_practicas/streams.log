@@ -1,0 +1,37 @@
+[1.387s] Invoking command in '/home/user/ros2_ws/src/yasmin_practicas': PYTHONPATH=/home/user/ros2_ws/build/yasmin_practicas/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/user/ros2_ws/install/yasmin_practicas/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/yasmin_practicas build --build-base /home/user/ros2_ws/build/yasmin_practicas/build install --record /home/user/ros2_ws/build/yasmin_practicas/install.log --single-version-externally-managed install_data
+[1.854s] running egg_info
+[1.855s] creating ../../build/yasmin_practicas/yasmin_practicas.egg-info
+[1.855s] writing ../../build/yasmin_practicas/yasmin_practicas.egg-info/PKG-INFO
+[1.856s] writing dependency_links to ../../build/yasmin_practicas/yasmin_practicas.egg-info/dependency_links.txt
+[1.856s] writing entry points to ../../build/yasmin_practicas/yasmin_practicas.egg-info/entry_points.txt
+[1.856s] writing requirements to ../../build/yasmin_practicas/yasmin_practicas.egg-info/requires.txt
+[1.856s] writing top-level names to ../../build/yasmin_practicas/yasmin_practicas.egg-info/top_level.txt
+[1.857s] writing manifest file '../../build/yasmin_practicas/yasmin_practicas.egg-info/SOURCES.txt'
+[1.860s] reading manifest file '../../build/yasmin_practicas/yasmin_practicas.egg-info/SOURCES.txt'
+[1.861s] writing manifest file '../../build/yasmin_practicas/yasmin_practicas.egg-info/SOURCES.txt'
+[1.861s] running build
+[1.861s] running build_py
+[1.861s] creating /home/user/ros2_ws/build/yasmin_practicas/build
+[1.861s] creating /home/user/ros2_ws/build/yasmin_practicas/build/lib
+[1.862s] creating /home/user/ros2_ws/build/yasmin_practicas/build/lib/yasmin_practicas
+[1.862s] copying yasmin_practicas/__init__.py -> /home/user/ros2_ws/build/yasmin_practicas/build/lib/yasmin_practicas
+[1.862s] copying yasmin_practicas/yasmin_demo_ejercicio1.py -> /home/user/ros2_ws/build/yasmin_practicas/build/lib/yasmin_practicas
+[1.862s] running install
+[1.863s] running install_lib
+[1.866s] creating /home/user/ros2_ws/install/yasmin_practicas/lib/python3.10/site-packages/yasmin_practicas
+[1.866s] copying /home/user/ros2_ws/build/yasmin_practicas/build/lib/yasmin_practicas/__init__.py -> /home/user/ros2_ws/install/yasmin_practicas/lib/python3.10/site-packages/yasmin_practicas
+[1.866s] copying /home/user/ros2_ws/build/yasmin_practicas/build/lib/yasmin_practicas/yasmin_demo_ejercicio1.py -> /home/user/ros2_ws/install/yasmin_practicas/lib/python3.10/site-packages/yasmin_practicas
+[1.867s] byte-compiling /home/user/ros2_ws/install/yasmin_practicas/lib/python3.10/site-packages/yasmin_practicas/__init__.py to __init__.cpython-310.pyc
+[1.867s] byte-compiling /home/user/ros2_ws/install/yasmin_practicas/lib/python3.10/site-packages/yasmin_practicas/yasmin_demo_ejercicio1.py to yasmin_demo_ejercicio1.cpython-310.pyc
+[1.868s] running install_data
+[1.868s] creating /home/user/ros2_ws/install/yasmin_practicas/share/ament_index
+[1.869s] creating /home/user/ros2_ws/install/yasmin_practicas/share/ament_index/resource_index
+[1.869s] creating /home/user/ros2_ws/install/yasmin_practicas/share/ament_index/resource_index/packages
+[1.869s] copying resource/yasmin_practicas -> /home/user/ros2_ws/install/yasmin_practicas/share/ament_index/resource_index/packages
+[1.869s] copying package.xml -> /home/user/ros2_ws/install/yasmin_practicas/share/yasmin_practicas
+[1.869s] running install_egg_info
+[1.872s] Copying ../../build/yasmin_practicas/yasmin_practicas.egg-info to /home/user/ros2_ws/install/yasmin_practicas/lib/python3.10/site-packages/yasmin_practicas-0.0.0-py3.10.egg-info
+[1.874s] running install_scripts
+[1.910s] Installing yasmin_demo_ejercicio1 script to /home/user/ros2_ws/install/yasmin_practicas/lib/yasmin_practicas
+[1.910s] writing list of installed files to '/home/user/ros2_ws/build/yasmin_practicas/install.log'
+[1.958s] Invoked command in '/home/user/ros2_ws/src/yasmin_practicas' returned '0': PYTHONPATH=/home/user/ros2_ws/build/yasmin_practicas/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/user/ros2_ws/install/yasmin_practicas/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/yasmin_practicas build --build-base /home/user/ros2_ws/build/yasmin_practicas/build install --record /home/user/ros2_ws/build/yasmin_practicas/install.log --single-version-externally-managed install_data

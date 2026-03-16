@@ -1,0 +1,11 @@
+digraph pastafarianism {
+ordering=out;
+graph [fontname="times-roman"];
+node [fontname="times-roman"];
+edge [fontname="times-roman"];
+Selector [fillcolor=cyan, fontcolor=black, fontsize=9, label=Selector, shape=octagon, style=filled];
+FFS [fillcolor=gray, fontcolor=black, fontsize=9, label=FFS, shape=ellipse, style=filled];
+Selector -> FFS;
+Running [fillcolor=gray, fontcolor=black, fontsize=9, label=Running, shape=ellipse, style=filled];
+Selector -> Running;
+}

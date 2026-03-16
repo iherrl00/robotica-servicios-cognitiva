@@ -1,0 +1,502 @@
+PRÁCTICA 1 - ROBÓTICA DE SERVICIOS
+Introducción a ROS 2
+
+Estudiante: Isabella Herrarte López
+Fecha: Octubre 2025
+Repositorio: robotica-servicios-2025-iherrl00
+
+EJERCICIO 1: CREAR UN ENTORNO DE TRABAJO
+Un entorno de trabajo (workspace) en ROS 2 es la estructura de directorios 
+donde organizamos nuestros paquetes y código.
+
+PASOS REALIZADOS:
+1. Crear la estructura del workspace:
+   mkdir -p ~/ros2_ws/src
+   cd ~/ros2_ws
+   
+   Esto crea un directorio llamado 'ros2_ws' con una carpeta 'src' dentro.
+   La carpeta 'src' es donde pondremos todos nuestros paquetes.
+
+2. Compilar el workspace:
+   cd ~/ros2_ws
+   colcon build
+   
+   Esto genera las carpetas: build, install y log
+
+3. Configurar el entorno para usar el workspace:
+   source ~/ros2_ws/install/setup.bash
+   
+   Este comando debemos ejecutarlo cada vez que abramos una nueva terminal,
+   o podemos añadirlo al ~/.bashrc para que se ejecute automáticamente.
+
+ESTRUCTURA RESULTANTE:
+ros2_ws/
+├── build/      (archivos temporales de compilación)
+├── install/    (archivos ejecutables)
+├── log/        (registros de compilación)
+└── src/        (nuestros código/proyectos)
+
+EJERCICIO 2: CREAR EJEMPLO BÁSICO DE PUBLISH/SUBSCRIBE
+El patrón Publisher/Subscriber es fundamental en ROS 2. Permite que un nodo
+(publisher) envíe mensajes a un topic, y otros nodos (subscribers) reciban
+esos mensajes sin necesidad de conocerse directamente.
+
+2.1 IMPLEMENTACIÓN EN C++
+PASO 1: Crear el paquete
+cd ~/ros2_ws/src
+ros2 pkg create --build-type ament_cmake --license Apache-2.0 cpp_pubsub
+cd cpp_pubsub
+
+PASO 2: Descargar los archivos de ejemplo
+cd src
+wget -O publisher_lambda_function.cpp https://raw.githubusercontent.com/ros2/examples/jazzy/rclcpp/topics/minimal_publisher/lambda.cpp
+wget -O subscriber_lambda_function.cpp https://raw.githubusercontent.com/ros2/examples/jazzy/rclcpp/topics/minimal_subscriber/lambda.cpp
+
+PASO 3: Modificar CMakeLists.txt
+Añadir las siguientes líneas después de find_package:
+find_package(rclcpp REQUIRED)
+find_package(std_msgs REQUIRED)
+
+add_executable(talker src/publisher_lambda_function.cpp)
+ament_target_dependencies(talker rclcpp std_msgs)
+
+add_executable(listener src/subscriber_lambda_function.cpp)
+ament_target_dependencies(listener rclcpp std_msgs)
+
+install(TARGETS
+  talker
+  listener
+  DESTINATION lib/${PROJECT_NAME})
+
+PASO 4: Modificar package.xml
+Añadir las dependencias:
+<depend>rclcpp</depend>
+<depend>std_msgs</depend>
+
+PASO 5: Compilar
+cd ~/ros2_ws
+colcon build --packages-select cpp_pubsub
+source install/setup.bash
+
+PASO 6: Ejecutar
+Terminal 1 (Publisher):
+ros2 run cpp_pubsub talker
+
+Terminal 2 (Subscriber):
+ros2 run cpp_pubsub listener
+
+RESULTADO ESPERADO:
+- El talker publica mensajes: "Publishing: 'Hello, world! 0'"
+- El listener recibe mensajes: "I heard: 'Hello, world! 0'"
+
+2.2 IMPLEMENTACIÓN EN PYTHON
+PASO 1: Crear el paquete
+cd ~/ros2_ws/src
+ros2 pkg create --build-type ament_python --license Apache-2.0 py_pubsub
+cd py_pubsub
+
+PASO 2: Descargar los archivos de ejemplo
+cd py_pubsub
+wget https://raw.githubusercontent.com/ros2/examples/jazzy/rclpy/topics/minimal_publisher/examples_rclpy_minimal_publisher/publisher_member_function.py
+wget https://raw.githubusercontent.com/ros2/examples/jazzy/rclpy/topics/minimal_subscriber/examples_rclpy_minimal_subscriber/subscriber_member_function.py
+
+PASO 3: Modificar setup.py
+Actualizar la sección entry_points:
+entry_points={
+    'console_scripts': [
+        'talker = py_pubsub.publisher_member_function:main',
+        'listener = py_pubsub.subscriber_member_function:main',
+    ],
+},
+
+PASO 4: Compilar
+cd ~/ros2_ws
+colcon build --packages-select py_pubsub
+source install/setup.bash
+
+PASO 5: Ejecutar
+Terminal 1 (Publisher):
+ros2 run py_pubsub talker
+
+Terminal 2 (Subscriber):
+ros2 run py_pubsub listener
+
+EJERCICIO 3: DIFERENCIAS ENTRE APROXIMACIONES PUBLISH/SUBSCRIBE
+En ROS 2 hay varias formas de implementar publishers y subscribers. Las 
+principales diferencias están en cómo se gestionan los callbacks "función 
+que se pasa como argumento a otra función" (funciones que se ejecutan cuando ocurre algo).
+
+APROXIMACIONES EN C++:
+1. LAMBDA FUNCTIONS (lambda.cpp)
+   - Usa funciones lambda (funciones anónimas) para los callbacks
+   - Más compacto, claro y rápido
+   - Ideal para callbacks simples
+   - Flexible: Puedes capturar variables del entorno si lo necesitas.
+   
+   Ejemplo:
+   [](int x, int y) {
+    return x + y; // suma de dos números
+  }
+
+2. MEMBER FUNCTIONS (member_function.cpp)
+   - Usa métodos de la clase para los callbacks
+   - Más legible para callbacks complejos
+   - Mejor organización del código
+   
+   Ejemplo:
+   void timer_callback() {
+       // código del callback en un método separado
+   }
+   timer_ = this->create_wall_timer(500ms, 
+            std::bind(&MinimalPublisher::timer_callback, this));
+
+3. NOT COMPOSABLE (not_composable.cpp)
+   - No usa herencia de rclcpp::Node
+   - Más simple pero menos flexible (No se pueden intercambiar fácilmente diferentes tipos de nodos)
+   - No se puede usar con composición de nodos
+
+DIFERENCIAS CLAVE A NIVEL DE CÓDIGO:
+- Lambda: Callback definido inline, usa [this] para capturar el contexto
+- Member function: Callback es un método separado, usa std::bind
+- Not composable: main() crea el nodo directamente sin herencia
+
+
+APROXIMACIONES EN PYTHON:
+1. MEMBER FUNCTION (member_function.py)
+   - Usa métodos de la clase para callbacks
+   - Sintaxis limpia y Pythonic
+   
+   Ejemplo:
+   def timer_callback(self):
+       # código del callback
+   
+   self.timer = self.create_timer(0.5, self.timer_callback)
+
+2. LAMBDA (lambda.py)
+   - Usa funciones lambda para callbacks simples
+   
+   Ejemplo:
+   self.timer = self.create_timer(0.5, 
+                lambda: self.publisher_.publish(msg))
+
+VENTAJAS Y DESVENTAJAS:
+- Lambda: Más compacto pero difícil de debugear
+- Member function: Más lineas de código "verbose" pero más claro y mantenible
+
+
+EJERCICIO 4: PARÁMETROS DE COLCON PARA COMPILAR UN SOLO PAQUETE
+Para compilar únicamente un paquete específico en lugar de todo el workspace:
+
+COMANDO BÁSICO:
+colcon build --packages-select <nombre_del_paquete>
+
+EJEMPLO:
+colcon build --packages-select cpp_pubsub
+
+PARÁMETROS ADICIONALES ÚTILES:
+# Compilar un paquete y sus dependencias
+colcon build --packages-up-to <nombre_del_paquete>
+
+# Compilar solo si hay cambios
+colcon build --packages-select <nombre> --cmake-args -DCMAKE_BUILD_TYPE=Release
+
+# Mostrar más información durante la compilación
+colcon build --packages-select <nombre> --event-handlers console_direct+
+
+¿POR QUÉ ES ÚTIL?
+- Ahorra tiempo cuando tenemos muchos paquetes
+- Útil durante el desarrollo y debugging
+- Evita recompilar paquetes que no han cambiado
+
+EJERCICIO 5: PARÁMETRO --symlink-install
+El parámetro --symlink-install crea enlaces simbólicos en lugar de copiar
+archivos durante la instalación.
+
+USO:
+colcon build --symlink-install
+
+¿PARA QUÉ SIRVE?
+- Cuando modificas archivos Python, launch files, o archivos de configuración,
+  NO necesitas recompilar
+- Los cambios se reflejan inmediatamente
+- Ahorra espacio en disco (no duplica archivos)
+- Acelera el proceso de desarrollo
+
+¿CON QUÉ LO USAS?
+Principalmente con paquetes Python (ament_python), ya que Python es un
+lenguaje interpretado y no necesita compilación.
+
+EJEMPLO PRÁCTICO:
+cd ~/ros2_ws
+colcon build --symlink-install --packages-select py_pubsub
+source install/setup.bash
+
+Ahora si modificas el archivo publisher_member_function.py, los cambios
+se verán inmediatamente sin necesidad de hacer 'colcon build' de nuevo.
+
+LIMITACIÓN:
+No funciona para código C++, ya que C++ debe compilarse siempre.
+
+EJERCICIO 6: COMANDO rosdep install
+COMANDO COMPLETO:
+rosdep install --from-paths src -y --ignore-src
+
+¿PARA QUÉ SE UTILIZA?
+Este comando instala automáticamente todas las dependencias necesarias para
+compilar los paquetes que están en tu workspace.
+
+DESGLOSE DE LOS PARÁMETROS:
+- rosdep install: comando principal para instalar dependencias
+- --from-paths src: busca en la carpeta 'src' todos los package.xml
+- -y: responde "yes" automáticamente a todas las preguntas
+- --ignore-src: ignora paquetes que ya están en el workspace
+
+¿CÓMO FUNCIONA?
+1. Lee los archivos package.xml de todos los paquetes en src/
+2. Identifica las dependencias listadas (<depend>, <build_depend>, etc.)
+3. Las traduce a paquetes del sistema (apt en Ubuntu)
+4. Instala los paquetes que faltan
+
+EJEMPLO PRÁCTICO:
+Si tu package.xml tiene:
+<depend>rclcpp</depend>
+<depend>std_msgs</depend>
+
+rosdep instalará ros-jazzy-rclcpp y ros-jazzy-std-msgs si no están ya
+instalados.
+
+CUÁNDO USARLO:
+- Después de clonar un repositorio nuevo
+- Antes de compilar por primera vez
+- Cuando añades nuevas dependencias a package.xml
+
+EJERCICIO 7: DIFERENCIAS ENTRE CARPETAS DEL WORKSPACE
+7.1 CARPETA src/
+FUNCIÓN: Contiene el código fuente de todos tus paquetes
+CONTENIDO: 
+- Archivos .cpp, .py (código)
+- CMakeLists.txt, package.xml (configuración)
+- Archivos launch, configuración, etc.
+IMPORTANTE: Esta deberia sera la ÚNICA carpeta que debes versionar en git
+
+7.2 CARPETA build/
+FUNCIÓN: Archivos temporales de compilación
+CONTENIDO:
+- Archivos objeto (.o)
+- Archivos intermedios de CMake
+- Logs de compilación
+IMPORTANTE: Se puede borrar sin problema, se regenera con 'colcon build'
+NO versionar en git (añadir a .gitignore)
+
+7.3 CARPETA install/
+FUNCIÓN: Archivos finales listos para ejecutar
+CONTENIDO:
+- Ejecutables compilados
+- Scripts Python procesados
+- Archivos de configuración del entorno (setup.bash)
+- Archivos launch instalados
+IMPORTANTE: 
+- Necesitas hacer 'source install/setup.bash' para usar tus paquetes
+- Se puede borrar, se regenera con 'colcon build'
+- NO versionar en git
+
+7.4 CARPETA log/
+FUNCIÓN: Registros de las compilaciones
+CONTENIDO:
+- Logs detallados de cada build
+- Errores y warnings
+- Timestamps de compilación
+IMPORTANTE: 
+- Útil para debugear problemas de compilación
+- Se puede borrar sin problema
+- NO versionar en git
+
+7.5 CARPETA devel/ (SOLO EN ROS 1)
+FUNCIÓN: Similar a install/ pero en ROS 1 (catkin)
+IMPORTANTE: En ROS 2 (colcon) NO existe esta carpeta, se usa install/
+
+7.6 CARPETA srv/ (PENDIENTE POR VALIDAR - PF)
+FUNCIÓN: Define servicios personalizados (request/response)
+UBICACIÓN: Dentro de un paquete específico (src/mi_paquete/srv/)
+CONTENIDO: Archivos .srv que definen la interfaz del servicio
+EJEMPLO:
+# AddTwoInts.srv
+int64 a
+int64 b
+
+int64 sum
+
+IMPORTANTE: Necesita configuración especial en CMakeLists.txt
+
+7.7 CARPETA ros_idl/ (o msg/, action/) (PENDIENTE POR VALIDAR - P9)
+FUNCIÓN: Define mensajes y acciones personalizadas
+UBICACIÓN: Dentro de un paquete (src/mi_paquete/msg/ o action/)
+CONTENIDO:
+- msg/: Archivos .msg (definición de mensajes)
+- action/: Archivos .action (definición de acciones)
+
+EJEMPLO mensaje (msg/MyMessage.msg):
+string name
+int32 value
+float64 timestamp
+
+EJEMPLO acción (action/MyAction.action):
+# Goal
+int32 order
+# Result
+int32[] sequence
+# Feedback
+int32[] partial_sequence
+
+RESUMEN VISUAL:
+workspace/
+├── src/           ✓ VERSIONAR - Tu código
+├── build/         ✗ NO versionar - Temporales
+├── install/       ✗ NO versionar - Ejecutables
+└── log/           ✗ NO versionar - Registros
+
+EJERCICIO 8: USAR LA CÁMARA DEL PC CON ROS 2
+Para usar la cámara web con ROS 2, utilizamos el paquete usb_cam que
+proporciona un nodo para capturar video de dispositivos USB.
+
+PASO 1: INSTALAR EL PAQUETE USB_CAM
+OPCIÓN A: Instalación desde binarios (más simple):
+sudo apt update
+sudo apt install ros-jazzy-usb-cam
+
+OPCIÓN B: Compilar desde el código fuente:
+cd ~/ros2_ws/src
+git clone https://github.com/ros-drivers/usb_cam.git
+cd ~/ros2_ws
+rosdep install --from-paths src --ignore-src -y
+colcon build --packages-select usb_cam
+source install/setup.bash
+
+PASO 2: VERIFICAR EL DISPOSITIVO DE CÁMARA
+Comprobar que la cámara está conectada:
+ls /dev/video*
+
+Normalmente verás /dev/video0 (primera cámara)
+
+Para ver información detallada:
+v4l2-ctl --list-devices
+
+Si no tienes v4l2-ctl, instálalo:
+sudo apt install v4l-utils
+
+PASO 3: EJECUTAR EL NODO DE CÁMARA
+MÉTODO 1: Ejecución simple con parámetros por defecto
+ros2 run usb_cam usb_cam_node_exe
+
+MÉTODO 2: Con archivo de parámetros personalizado
+ros2 run usb_cam usb_cam_node_exe --ros-args \
+  --params-file ~/ros2_ws/src/usb_cam/config/params.yaml
+
+MÉTODO 3: Usando un archivo launch
+ros2 launch usb_cam camera.launch.py
+
+PASO 4: VISUALIZAR LA IMAGEN
+En otra terminal, puedes visualizar la imagen usando rqt_image_view:
+# Instalar si no lo tienes
+sudo apt install ros-jazzy-rqt-image-view
+
+# Ejecutar
+ros2 run rqt_image_view rqt_image_view
+
+
+PASO 5: VERIFICAR TOPICS PUBLICADOS
+Ver qué topics está publicando la cámara:
+ros2 topic list
+
+Deberías ver topics como:
+- /image_raw
+- /camera_info
+
+Ver la información del topic:
+ros2 topic info /image_raw
+ros2 topic hz /image_raw      # Ver frecuencia de publicación
+
+CONFIGURACIÓN AVANZADA: MÚLTIPLES CÁMARAS
+
+Si tienes dos cámaras y quieres usarlas simultáneamente:
+CÁMARA 1:
+ros2 run usb_cam usb_cam_node_exe --ros-args \
+  --remap __ns:=/usb_cam_0 \
+  --params-file ~/ros2_ws/src/usb_cam/config/params_1.yaml
+
+CÁMARA 2:
+ros2 run usb_cam usb_cam_node_exe --ros-args \
+  --remap __ns:=/usb_cam_1 \
+  --params-file ~/ros2_ws/src/usb_cam/config/params_2.yaml
+
+Donde params_1.yaml tendría:
+video_device: "/dev/video0"
+
+Y params_2.yaml:
+video_device: "/dev/video2"
+
+ARCHIVO DE CONFIGURACIÓN params.yaml
+
+Ejemplo de archivo de configuración:
+/**:
+  ros__parameters:
+    video_device: "/dev/video0"
+    framerate: 30.0
+    io_method: "mmap"
+    frame_id: "camera"
+    pixel_format: "yuyv"
+    image_width: 640
+    image_height: 480
+    camera_name: "usb_cam"
+    camera_info_url: ""
+
+PARÁMETROS COMUNES:
+- video_device: ruta al dispositivo (/dev/video0)
+- framerate: FPS deseados
+- image_width/height: resolución
+- pixel_format: formato de pixel (yuyv, mjpeg, etc.)
+
+CONCLUSIONES DE LA PRÁCTICA
+En esta práctica he aprendido:
+1. ✓ Crear y configurar un workspace de ROS 2
+2. ✓ Implementar patrones Publisher/Subscriber en C++ y Python
+3. ✓ Entender las diferentes aproximaciones de callbacks
+4. ✓ Usar colcon para compilar paquetes específicos
+5. ✓ Optimizar el desarrollo con --symlink-install
+6. ✓ Gestionar dependencias con rosdep
+7. ✓ Comprender la estructura de carpetas del workspace
+8. ✓ Integrar hardware real (cámara) con ROS 2
+
+COMANDOS ESENCIALES A RECORDAR:
+# Compilar workspace
+colcon build
+
+# Compilar un paquete
+colcon build --packages-select mi_paquete
+
+# Compilar con symlink (Python)
+colcon build --symlink-install
+
+# Instalar dependencias
+rosdep install --from-paths src -y --ignore-src
+
+# Activar workspace
+source install/setup.bash
+
+# Listar nodos/topics
+ros2 node list
+ros2 topic list
+
+# Ver información
+ros2 topic info /nombre_topic
+ros2 topic echo /nombre_topic
+
+REFERENCIAS
+[1] ROS 2 Jazzy Documentation
+    https://docs.ros.org/en/jazzy/
+
+[2] USB Camera Driver for ROS 2
+    https://github.com/ros-drivers/usb_cam
+
+[3] ROS 2 Examples Repository
+    https://github.com/ros2/examples

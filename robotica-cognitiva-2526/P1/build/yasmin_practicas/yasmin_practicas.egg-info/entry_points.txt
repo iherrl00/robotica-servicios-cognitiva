@@ -1,0 +1,7 @@
+[console_scripts]
+action_client_monitor = yasmin_practicas.action_client_monitor:main
+control_node_yasmin = yasmin_practicas.control_node_yasmin:main
+service_client_multi = yasmin_practicas.service_client_multi:main
+yasmin_demo_ejercicio1 = yasmin_practicas.yasmin_demo_ejercicio1:main
+yasmin_demo_ejercicio2 = yasmin_practicas.yasmin_demo_ejercicio2:main
+

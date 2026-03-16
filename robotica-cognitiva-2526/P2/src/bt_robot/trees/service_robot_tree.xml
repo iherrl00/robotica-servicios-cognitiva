@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<root main_tree_to_execute="MainTree">
+  <BehaviorTree ID="MainTree">
+    <Fallback name="RobotBehavior">
+
+      <!-- Si batería baja → volver a base -->
+      <Sequence name="LowBatteryRecovery">
+        <Condition ID="IsBatteryLow" name="¿Batería baja?"/>
+        <Action ID="ReturnToBase" name="Volver a base"/>
+      </Sequence>
+
+      <!-- Comportamiento normal -->
+      <Sequence name="NormalBehavior">
+        <Condition ID="IsBatteryOK" name="¿Batería OK?"/>
+        <Fallback name="NavigationWithObstacleAvoidance">
+          <Sequence name="ObstacleAvoidance">
+            <Condition ID="IsObstacleDetected" name="¿Hay obstáculo?"/>
+            <Action ID="Stop" name="Detenerse"/>
+            <Action ID="Turn" name="Girar"/>
+          </Sequence>
+          <Action ID="NavigateToWaypoint" name="Navegar a waypoint"/>
+        </Fallback>
+      </Sequence>
+
+    </Fallback>
+  </BehaviorTree>
+</root>

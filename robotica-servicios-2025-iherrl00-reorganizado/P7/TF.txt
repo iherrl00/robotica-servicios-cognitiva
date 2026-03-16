@@ -1,0 +1,226 @@
+# Práctica: Transformaciones (TF) con Detección de Humanos en ROS 2
+
+Este documento contiene todos los comandos necesarios para configurar, compilar y ejecutar la práctica de transformaciones de coordenadas (TF) con detección facial en ROS 2 Jazzy.
+
+## Descripción del Proyecto
+Este proyecto implementa un sistema de transformaciones de coordenadas en ROS 2 que:
+- Publica una transformación estática entre el portátil (`base_link`) y la cámara (`camera_frame`)
+- Detecta caras humanas usando OpenCV
+- Calcula y publica la posición del humano detectado respecto al portátil
+- Visualiza todo el árbol de transformaciones en RViz2
+
+Frames utilizados:
+- base_link → origen del sistema (portátil)
+- camera_frame → posición de la cámara
+- human_in_camera → posición del humano detectado
+
+## Instalación y Configuración
+### 1. Clonar el repositorio
+
+```bash
+cd ~/robotica-servicios-2025-iherrl00/ros2_ws/src/
+git clone https://github.com/fjrodl/ROSER-tldr.git
+```
+
+### 2. Copiar el paquete al workspace
+
+```bash
+cd ~/robotica-servicios-2025-iherrl00/ros2_ws/src/
+cp -r ROSER-tldr/tf/ros2_ws/src/human_tf_camera_example .
+```
+
+### 3. Eliminar el repositorio clonado (evitar duplicados)
+
+```bash
+cd ~/robotica-servicios-2025-iherrl00/ros2_ws/src/
+rm -rf ROSER-tldr
+```
+
+### 4. Verificar la estructura del paquete
+
+```bash
+ls -la human_tf_camera_example
+```
+
+Deberías ver:
+- `human_tf_camera_example/` (directorio con nodos Python)
+- `launch/` (archivos de lanzamiento)
+- `package.xml` (dependencias)
+- `setup.py` (configuración del paquete)
+
+## Instalar Dependencias
+### Dependencias del sistema
+
+```bash
+cd ~/robotica-servicios-2025-iherrl00/ros2_ws/
+rosdep install --from-paths src --ignore-src -r -y
+```
+
+### Paquetes adicionales necesarios
+
+```bash
+# Instalar el driver de cámara V4L2
+sudo apt update
+sudo apt install ros-jazzy-v4l2-camera -y
+
+# Instalar OpenCV para Python
+sudo apt install python3-opencv -y
+```
+---
+
+## Compilar el Paquete
+
+### Compilar solo el paquete de la práctica
+
+```bash
+cd ~/robotica-servicios-2025-iherrl00/ros2_ws/
+colcon build --packages-select human_tf_camera_example --symlink-install
+```
+
+### Compilar todo el workspace (alternativa)
+
+```bash
+cd ~/robotica-servicios-2025-iherrl00/ros2_ws/
+colcon build --packages-select human_tf_camera_example
+```
+
+### Source del workspace (importante después de compilar)
+
+```bash
+source install/setup.bash
+```
+
+Nota: Debes ejecutar `source install/setup.bash` en cada nueva terminal antes de usar los nodos.
+
+## Ejecutar la Práctica
+
+### Opción 1: Launch file (Recomendado)
+
+Ejecuta todos los nodos a la vez:
+
+```bash
+cd ~/robotica-servicios-2025-iherrl00/ros2_ws/
+source install/setup.bash
+ros2 launch human_tf_camera_example human_tf.launch.py
+```
+
+### Opción 2: Nodos individuales (3 terminales)
+
+Terminal 1 - Static Broadcaster:
+```bash
+cd ~/robotica-servicios-2025-iherrl00/ros2_ws/
+source install/setup.bash
+ros2 run human_tf_camera_example static_broadcaster
+```
+
+Terminal 2 - Human Position Estimator:
+```bash
+cd ~/robotica-servicios-2025-iherrl00/ros2_ws/
+source install/setup.bash
+ros2 run human_tf_camera_example human_position_estimator
+```
+
+Terminal 3 - Position Calculator:
+```bash
+cd ~/robotica-servicios-2025-iherrl00/ros2_ws/
+source install/setup.bash
+ros2 run human_tf_camera_example human_position_to_baselink
+```
+---
+## Visualización con RViz2
+
+### Abrir RViz2
+
+En una nueva terminal:
+
+```bash
+cd ~/robotica-servicios-2025-iherrl00/ros2_ws/
+source install/setup.bash
+rviz2
+```
+
+### Configuración de RViz2
+
+1. Cambiar Fixed Frame:
+   - Panel izquierdo → Global Options
+   - Fixed Frame: cambiar a `base_link`
+
+2. Añadir display TF:
+   - Click en botón "Add" (abajo izquierda)
+   - Seleccionar pestaña "By display type"
+   - Buscar y seleccionar "TF"
+   - Click "OK"
+
+3. Configurar visualización del TF:
+   - Expandir sección "TF" en el panel izquierdo
+   - Marcar ✓ "Show Names"
+   - Marcar ✓ "Show Axes"
+   - Ajustar "Marker Scale" a 0.5 o 1.0
+
+4. Añadir imagen de cámara (opcional):
+   - Click en "Add"
+   - Seleccionar "Image"
+   - En "Topic" → seleccionar `/camera/image_raw` o `/image_raw`
+
+---
+
+## Comandos de Verificación
+
+### Listar todos los topics activos
+
+```bash
+ros2 topic list
+```
+
+### Ver las transformaciones publicadas
+
+```bash
+ros2 topic echo /tf
+```
+
+### Ver las transformaciones estáticas
+
+```bash
+ros2 topic echo /tf_static
+```
+
+### Información de un nodo específico
+
+```bash
+ros2 node info /static_broadcaster
+ros2 node info /human_position_estimator
+ros2 node info /human_position_to_baselink
+```
+
+### Verificar dispositivos de cámara disponibles
+
+```bash
+ls -l /dev/video*
+```
+
+```bash
+ros2 node list | grep human
+```
+
+### Frame 'human_in_camera' no aparece
+
+El frame solo aparece cuando se detecta una cara. Verifica los logs:
+
+```bash
+ros2 topic hz /tf
+```
+
+## Conceptos Clave
+
+### REPs (ROS Enhancement Proposals)
+
+Este proyecto sigue las convenciones definidas en:
+- REP 103: Unidades SI y sistema de coordenadas (X→adelante, Y→izquierda, Z→arriba)
+- REP 105: Nombres estándar de frames (base_link, camera_frame)
+- REP 120: Sistema TF2 y representación temporal
+- REP 2011: Convenciones de TF2 en ROS 2
+
+### Transformaciones Estáticas vs Dinámicas
+
+- Estáticas: Relación fija entre frames (ej: base_link → camera_frame)
+- Dinámicas: Relación que cambia en el tiempo (ej: camera_frame → human_in_camera)

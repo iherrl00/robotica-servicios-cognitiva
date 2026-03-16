@@ -1,0 +1,71 @@
+[0.000000] (-) TimerEvent: {}
+[0.000266] (bt_robot) JobQueued: {'identifier': 'bt_robot', 'dependencies': OrderedDict()}
+[0.000777] (bt_robot) JobStarted: {'identifier': 'bt_robot'}
+[0.010616] (bt_robot) JobProgress: {'identifier': 'bt_robot', 'progress': 'cmake'}
+[0.011198] (bt_robot) JobProgress: {'identifier': 'bt_robot', 'progress': 'build'}
+[0.011810] (bt_robot) Command: {'cmd': ['/usr/bin/cmake', '--build', '/home/user/ros2_ws/build/bt_robot', '--', '-j12', '-l12'], 'cwd': '/home/user/ros2_ws/build/bt_robot', 'env': OrderedDict([('LESSOPEN', '| /usr/bin/lesspipe %s'), ('SVGA_VGPU10', '0'), ('HOSTNAME', 'isabella-herrarte-HP-Laptop-15-ef2xxx'), ('SHLVL', '1'), ('LIBGL_ALWAYS_SOFTWARE', '1'), ('LD_LIBRARY_PATH', '/home/user/yasmin_ws/install/yasmin_demos/lib:/home/user/yasmin_ws/install/yasmin_factory/lib:/home/user/yasmin_ws/install/yasmin_viewer/lib:/home/user/yasmin_ws/install/yasmin_ros/lib:/home/user/yasmin_ws/install/yasmin_msgs/lib:/home/user/yasmin_ws/install/yasmin/lib:/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib'), ('HOME', '/home/user'), ('OLDPWD', '/home/user'), ('ROS_PYTHON_VERSION', '3'), ('_colcon_cd_root', '/home/user/ros2_ws'), ('COLCON_PREFIX_PATH', '/home/user/ros2_ws/install:/home/user/yasmin_ws/install'), ('ROS_DISTRO', 'humble'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('TERM', 'xterm'), ('ROS_LOCALHOST_ONLY', '0'), ('QT_X11_NO_MITSHM', '1'), ('PATH', '/opt/ros/humble/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'), ('DISPLAY', ':1'), ('LANG', 'en_US.UTF-8'), ('XAUTHORITY', '/tmp/xauth/.docker.xauth'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('AMENT_PREFIX_PATH', '/home/user/ros2_ws/install/bt_robot:/home/user/yasmin_ws/install/yasmin_editor:/home/user/yasmin_ws/install/yasmin_demos:/home/user/yasmin_ws/install/yasmin_factory:/home/user/yasmin_ws/install/yasmin_viewer:/home/user/yasmin_ws/install/yasmin_ros:/home/user/yasmin_ws/install/yasmin_msgs:/home/user/yasmin_ws/install/yasmin:/opt/ros/humble'), ('DEBIAN_FRONTEND', 'noninteractive'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('GALLIUM_DRIVER', 'llvmpipe'), ('PWD', '/home/user/ros2_ws/build/bt_robot'), ('LC_ALL', 'en_US.UTF-8'), ('PYTHONPATH', '/home/user/yasmin_ws/install/yasmin_editor/local/lib/python3.10/dist-packages:/home/user/yasmin_ws/install/yasmin_demos/local/lib/python3.10/dist-packages:/home/user/yasmin_ws/install/yasmin_factory/local/lib/python3.10/dist-packages:/home/user/yasmin_ws/install/yasmin_viewer/local/lib/python3.10/dist-packages:/home/user/yasmin_ws/install/yasmin_ros/local/lib/python3.10/dist-packages:/home/user/yasmin_ws/install/yasmin_msgs/local/lib/python3.10/dist-packages:/home/user/yasmin_ws/install/yasmin/lib/python3.10/site-packages:/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages:/home/user/yasmin_ws/install/yasmin_factory/lib/yasmin_factory:/home/user/yasmin_ws/install/yasmin_factory/lib/yasmin_factory'), ('COLCON', '1'), ('CMAKE_PREFIX_PATH', '/home/user/ros2_ws/install/bt_robot:/home/user/yasmin_ws/install/yasmin_editor:/home/user/yasmin_ws/install/yasmin_demos:/home/user/yasmin_ws/install/yasmin_factory:/home/user/yasmin_ws/install/yasmin_viewer:/home/user/yasmin_ws/install/yasmin_ros:/home/user/yasmin_ws/install/yasmin_msgs:/home/user/yasmin_ws/install/yasmin:/opt/ros/humble')]), 'shell': False}
+[0.066359] (bt_robot) StdoutLine: {'line': b'\x1b[35m\x1b[1mConsolidate compiler generated dependencies of target bt_robot_node\x1b[0m\n'}
+[0.087236] (bt_robot) StdoutLine: {'line': b'[ 50%] \x1b[32mBuilding CXX object CMakeFiles/bt_robot_node.dir/src/bt_robot_node.cpp.o\x1b[0m\n'}
+[0.099286] (-) TimerEvent: {}
+[0.199637] (-) TimerEvent: {}
+[0.299934] (-) TimerEvent: {}
+[0.400286] (-) TimerEvent: {}
+[0.500639] (-) TimerEvent: {}
+[0.600966] (-) TimerEvent: {}
+[0.701327] (-) TimerEvent: {}
+[0.801672] (-) TimerEvent: {}
+[0.902072] (-) TimerEvent: {}
+[1.002429] (-) TimerEvent: {}
+[1.102795] (-) TimerEvent: {}
+[1.203184] (-) TimerEvent: {}
+[1.303546] (-) TimerEvent: {}
+[1.403936] (-) TimerEvent: {}
+[1.504294] (-) TimerEvent: {}
+[1.604664] (-) TimerEvent: {}
+[1.705040] (-) TimerEvent: {}
+[1.805441] (-) TimerEvent: {}
+[1.905816] (-) TimerEvent: {}
+[2.006196] (-) TimerEvent: {}
+[2.106559] (-) TimerEvent: {}
+[2.206950] (-) TimerEvent: {}
+[2.307290] (-) TimerEvent: {}
+[2.407593] (-) TimerEvent: {}
+[2.507950] (-) TimerEvent: {}
+[2.608553] (-) TimerEvent: {}
+[2.708931] (-) TimerEvent: {}
+[2.809280] (-) TimerEvent: {}
+[2.909630] (-) TimerEvent: {}
+[3.009975] (-) TimerEvent: {}
+[3.110327] (-) TimerEvent: {}
+[3.187359] (bt_robot) StdoutLine: {'line': b'[100%] \x1b[32m\x1b[1mLinking CXX executable bt_robot_node\x1b[0m\n'}
+[3.210465] (-) TimerEvent: {}
+[3.310831] (-) TimerEvent: {}
+[3.352651] (bt_robot) StdoutLine: {'line': b'[100%] Built target bt_robot_node\n'}
+[3.368126] (bt_robot) CommandEnded: {'returncode': 0}
+[3.368779] (bt_robot) JobProgress: {'identifier': 'bt_robot', 'progress': 'install'}
+[3.381204] (bt_robot) Command: {'cmd': ['/usr/bin/cmake', '--install', '/home/user/ros2_ws/build/bt_robot'], 'cwd': '/home/user/ros2_ws/build/bt_robot', 'env': OrderedDict([('LESSOPEN', '| /usr/bin/lesspipe %s'), ('SVGA_VGPU10', '0'), ('HOSTNAME', 'isabella-herrarte-HP-Laptop-15-ef2xxx'), ('SHLVL', '1'), ('LIBGL_ALWAYS_SOFTWARE', '1'), ('LD_LIBRARY_PATH', '/home/user/yasmin_ws/install/yasmin_demos/lib:/home/user/yasmin_ws/install/yasmin_factory/lib:/home/user/yasmin_ws/install/yasmin_viewer/lib:/home/user/yasmin_ws/install/yasmin_ros/lib:/home/user/yasmin_ws/install/yasmin_msgs/lib:/home/user/yasmin_ws/install/yasmin/lib:/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib'), ('HOME', '/home/user'), ('OLDPWD', '/home/user'), ('ROS_PYTHON_VERSION', '3'), ('_colcon_cd_root', '/home/user/ros2_ws'), ('COLCON_PREFIX_PATH', '/home/user/ros2_ws/install:/home/user/yasmin_ws/install'), ('ROS_DISTRO', 'humble'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('TERM', 'xterm'), ('ROS_LOCALHOST_ONLY', '0'), ('QT_X11_NO_MITSHM', '1'), ('PATH', '/opt/ros/humble/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'), ('DISPLAY', ':1'), ('LANG', 'en_US.UTF-8'), ('XAUTHORITY', '/tmp/xauth/.docker.xauth'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('AMENT_PREFIX_PATH', '/home/user/ros2_ws/install/bt_robot:/home/user/yasmin_ws/install/yasmin_editor:/home/user/yasmin_ws/install/yasmin_demos:/home/user/yasmin_ws/install/yasmin_factory:/home/user/yasmin_ws/install/yasmin_viewer:/home/user/yasmin_ws/install/yasmin_ros:/home/user/yasmin_ws/install/yasmin_msgs:/home/user/yasmin_ws/install/yasmin:/opt/ros/humble'), ('DEBIAN_FRONTEND', 'noninteractive'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('GALLIUM_DRIVER', 'llvmpipe'), ('PWD', '/home/user/ros2_ws/build/bt_robot'), ('LC_ALL', 'en_US.UTF-8'), ('PYTHONPATH', '/home/user/yasmin_ws/install/yasmin_editor/local/lib/python3.10/dist-packages:/home/user/yasmin_ws/install/yasmin_demos/local/lib/python3.10/dist-packages:/home/user/yasmin_ws/install/yasmin_factory/local/lib/python3.10/dist-packages:/home/user/yasmin_ws/install/yasmin_viewer/local/lib/python3.10/dist-packages:/home/user/yasmin_ws/install/yasmin_ros/local/lib/python3.10/dist-packages:/home/user/yasmin_ws/install/yasmin_msgs/local/lib/python3.10/dist-packages:/home/user/yasmin_ws/install/yasmin/lib/python3.10/site-packages:/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages:/home/user/yasmin_ws/install/yasmin_factory/lib/yasmin_factory:/home/user/yasmin_ws/install/yasmin_factory/lib/yasmin_factory'), ('COLCON', '1'), ('CMAKE_PREFIX_PATH', '/home/user/ros2_ws/install/bt_robot:/home/user/yasmin_ws/install/yasmin_editor:/home/user/yasmin_ws/install/yasmin_demos:/home/user/yasmin_ws/install/yasmin_factory:/home/user/yasmin_ws/install/yasmin_viewer:/home/user/yasmin_ws/install/yasmin_ros:/home/user/yasmin_ws/install/yasmin_msgs:/home/user/yasmin_ws/install/yasmin:/opt/ros/humble')]), 'shell': False}
+[3.389528] (bt_robot) StdoutLine: {'line': b'-- Install configuration: ""\n'}
+[3.389836] (bt_robot) StdoutLine: {'line': b'-- Installing: /home/user/ros2_ws/install/bt_robot/lib/bt_robot/bt_robot_node\n'}
+[3.390469] (bt_robot) StdoutLine: {'line': b'-- Set runtime path of "/home/user/ros2_ws/install/bt_robot/lib/bt_robot/bt_robot_node" to ""\n'}
+[3.390548] (bt_robot) StdoutLine: {'line': b'-- Up-to-date: /home/user/ros2_ws/install/bt_robot/share/bt_robot/trees\n'}
+[3.390669] (bt_robot) StdoutLine: {'line': b'-- Up-to-date: /home/user/ros2_ws/install/bt_robot/share/bt_robot/trees/obstacle_tree.xml\n'}
+[3.390749] (bt_robot) StdoutLine: {'line': b'-- Installing: /home/user/ros2_ws/install/bt_robot/share/bt_robot/trees/service_robot_tree.xml\n'}
+[3.390838] (bt_robot) StdoutLine: {'line': b'-- Installing: /home/user/ros2_ws/install/bt_robot/share/bt_robot/trees/obstacle_tree_groot.xml\n'}
+[3.390933] (bt_robot) StdoutLine: {'line': b'-- Up-to-date: /home/user/ros2_ws/install/bt_robot/share/ament_index/resource_index/package_run_dependencies/bt_robot\n'}
+[3.390985] (bt_robot) StdoutLine: {'line': b'-- Up-to-date: /home/user/ros2_ws/install/bt_robot/share/ament_index/resource_index/parent_prefix_path/bt_robot\n'}
+[3.391060] (bt_robot) StdoutLine: {'line': b'-- Up-to-date: /home/user/ros2_ws/install/bt_robot/share/bt_robot/environment/ament_prefix_path.sh\n'}
+[3.391130] (bt_robot) StdoutLine: {'line': b'-- Up-to-date: /home/user/ros2_ws/install/bt_robot/share/bt_robot/environment/ament_prefix_path.dsv\n'}
+[3.391178] (bt_robot) StdoutLine: {'line': b'-- Up-to-date: /home/user/ros2_ws/install/bt_robot/share/bt_robot/environment/path.sh\n'}
+[3.391260] (bt_robot) StdoutLine: {'line': b'-- Up-to-date: /home/user/ros2_ws/install/bt_robot/share/bt_robot/environment/path.dsv\n'}
+[3.391312] (bt_robot) StdoutLine: {'line': b'-- Up-to-date: /home/user/ros2_ws/install/bt_robot/share/bt_robot/local_setup.bash\n'}
+[3.391359] (bt_robot) StdoutLine: {'line': b'-- Up-to-date: /home/user/ros2_ws/install/bt_robot/share/bt_robot/local_setup.sh\n'}
+[3.391406] (bt_robot) StdoutLine: {'line': b'-- Up-to-date: /home/user/ros2_ws/install/bt_robot/share/bt_robot/local_setup.zsh\n'}
+[3.391476] (bt_robot) StdoutLine: {'line': b'-- Up-to-date: /home/user/ros2_ws/install/bt_robot/share/bt_robot/local_setup.dsv\n'}
+[3.391524] (bt_robot) StdoutLine: {'line': b'-- Installing: /home/user/ros2_ws/install/bt_robot/share/bt_robot/package.dsv\n'}
+[3.391603] (bt_robot) StdoutLine: {'line': b'-- Up-to-date: /home/user/ros2_ws/install/bt_robot/share/ament_index/resource_index/packages/bt_robot\n'}
+[3.391652] (bt_robot) StdoutLine: {'line': b'-- Up-to-date: /home/user/ros2_ws/install/bt_robot/share/bt_robot/cmake/bt_robotConfig.cmake\n'}
+[3.391699] (bt_robot) StdoutLine: {'line': b'-- Up-to-date: /home/user/ros2_ws/install/bt_robot/share/bt_robot/cmake/bt_robotConfig-version.cmake\n'}
+[3.391767] (bt_robot) StdoutLine: {'line': b'-- Up-to-date: /home/user/ros2_ws/install/bt_robot/share/bt_robot/package.xml\n'}
+[3.393988] (bt_robot) CommandEnded: {'returncode': 0}
+[3.408106] (bt_robot) JobEnded: {'identifier': 'bt_robot', 'rc': 0}
+[3.409355] (-) EventReactorShutdown: {}

@@ -1,0 +1,6 @@
+source;share/yasmin_practicas/hook/pythonpath.ps1
+source;share/yasmin_practicas/hook/pythonpath.dsv
+source;share/yasmin_practicas/hook/pythonpath.sh
+source;share/yasmin_practicas/hook/ament_prefix_path.ps1
+source;share/yasmin_practicas/hook/ament_prefix_path.dsv
+source;share/yasmin_practicas/hook/ament_prefix_path.sh

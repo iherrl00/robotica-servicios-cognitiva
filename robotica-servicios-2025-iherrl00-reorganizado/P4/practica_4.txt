@@ -1,0 +1,635 @@
+PRÁCTICA 4 - ROBÓTICA DE SERVICIOS
+Creación de Mapas con SLAM
+
+Estudiante: Isabella Herrarte López
+Fecha: Octubre 2025
+Repositorio: robotica-servicios-2025-iherrl00
+
+INTRODUCCIÓN
+Esta práctica está enfocada en la instalación y configuración de herramientas
+de navegación en ROS 2, específicamente Navigation 2 y slam_toolbox para la
+creación de mapas mediante SLAM (Simultaneous Localization and Mapping).
+
+OBJETIVOS:
+✓ Familiarizarse con los paquetes de navegación en ROS 2
+✓ Configurar un entorno de simulación con Turtlebot3 en Gazebo
+✓ Explorar el entorno y generar un mapa usando slam_toolbox
+✓ Guardar el mapa generado en formato adecuado
+
+ENTORNO DE TRABAJO:
+- Ubuntu 22.04
+- ROS 2 Humble
+- Gazebo
+- Docker container: ros2_p4_container
+
+EJERCICIO 1: INSTALACIÓN DE PAQUETES
+
+PASO 1: Acceder al contenedor Docker
+cd robotica-servicios-2025-iherrl00/ros2_ws/src/ROS2andGazebo/Docker
+docker compose up
+
+# Desde otra terminal, acceder al contenedor
+docker exec -it ros2_p4_container bash
+
+PASO 2: Actualizar el sistema e instalar Navigation 2
+# Actualizar repositorios
+sudo apt update
+
+# Instalar Navigation 2 y su paquete de arranque
+sudo apt install ros-humble-navigation2 ros-humble-nav2-bringup -y
+
+¿QUÉ ES NAVIGATION 2?
+Navigation 2 (Nav2) es el stack de navegación autónoma para ROS 2. Proporciona
+herramientas para planificación de trayectorias, control del robot, localización
+y evitación de obstáculos.
+
+PASO 3: Instalar paquetes de Turtlebot3
+# Instalar todos los paquetes relacionados con Turtlebot3
+sudo apt install ros-humble-turtlebot3* -y
+
+PAQUETES INSTALADOS:
+- turtlebot3_gazebo: Simulación en Gazebo
+- turtlebot3_description: Modelos URDF del robot
+- turtlebot3_teleop: Control manual del robot
+- turtlebot3_navigation2: Configuraciones para navegación
+- Y muchos más...
+
+PASO 4: Instalar SLAM Toolbox
+# Instalar el paquete slam_toolbox
+sudo apt install ros-humble-slam-toolbox -y
+
+¿QUÉ ES SLAM TOOLBOX?
+slam_toolbox es un paquete que implementa algoritmos SLAM para ROS 2.
+Permite al robot crear un mapa del entorno mientras se localiza en él
+simultáneamente.
+
+VERIFICACIÓN DE INSTALACIÓN:
+# Verificar que los paquetes estén disponibles
+ros2 pkg list | grep turtlebot3
+ros2 pkg list | grep slam_toolbox
+ros2 pkg list | grep nav2
+
+EJERCICIO 2: CONFIGURACIÓN DEL MODELO TURTLEBOT3
+
+PASO 1: Exportar la variable de entorno
+# Especificar el modelo del robot (waffle es el modelo más completo)
+source install/setup.bash
+export TURTLEBOT3_MODEL=waffle
+
+MODELOS DISPONIBLES:
+- burger: Modelo más pequeño y simple
+- waffle: Modelo más completo con cámara y LiDAR
+- waffle_pi: Similar a waffle pero optimizado para Raspberry Pi
+
+PASO 2: Hacer permanente la configuración
+# Añadir al archivo .bashrc para que se cargue automáticamente
+echo "export TURTLEBOT3_MODEL=waffle" >> ~/.bashrc
+
+# Recargar el archivo
+source ~/.bashrc
+
+# Verificar que se guardó correctamente
+echo $TURTLEBOT3_MODEL
+# Debería mostrar: waffle
+
+¿POR QUÉ ES IMPORTANTE?
+Esta variable le indica a ROS 2 qué modelo de robot usar en la simulación
+y qué archivos de configuración cargar. Sin ella, los launch files no
+sabrían qué robot instanciar.
+
+EJERCICIO 3: VERIFICACIÓN DEL TÓPICO /scan
+
+PASO 1: Iniciar la simulación de Gazebo
+# En una terminal, lanzar el mundo de Turtlebot3 en Gazebo
+export TURTLEBOT3_MODEL=waffle
+ros2 launch turtlebot3_gazebo turtlebot3_world.launch.py
+
+PASO 2: Listar los tópicos activos
+# En OTRA terminal (nueva conexión al contenedor)
+docker exec -it ros2_p4_container bash
+ros2 topic list
+
+TÓPICOS ESPERADOS:
+/clock              - Tiempo de simulación
+/scan               - Datos del sensor LiDAR
+/odom               - Odometría del robot
+/tf                 - Transformaciones entre frames
+/tf_static          - Transformaciones estáticas
+/cmd_vel            - Comandos de velocidad
+/joint_states       - Estado de las articulaciones
+/imu                - Datos del sensor IMU
+/camera/...         - Datos de la cámara
+
+PASO 3: Verificar el tipo del tópico /scan
+# Obtener información detallada del tópico /scan
+ros2 topic info /scan
+
+SALIDA ESPERADA:
+Type: sensor_msgs/msg/LaserScan
+Publisher count: 1
+Subscription count: 0
+
+# Ver el contenido en tiempo real
+ros2 topic echo /scan
+
+ESTRUCTURA DEL MENSAJE LaserScan:
+- header: timestamp y frame_id
+- angle_min/angle_max: rango angular del láser
+- angle_increment: incremento entre mediciones
+- time_increment: tiempo entre mediciones
+- scan_time: tiempo para un escaneo completo
+- range_min/range_max: rango de distancias válidas
+- ranges[]: array con las distancias medidas
+- intensities[]: intensidad de cada lectura
+
+EJERCICIO 4: INICIO DE SLAM TOOLBOX Y NAVIGATION 2
+
+Para crear un mapa, necesitamos ejecutar 4 nodos diferentes en paralelo.
+Cada uno tiene una función específica en el proceso de SLAM y navegación.
+
+ARQUITECTURA DEL SISTEMA:
+┌─────────────┐
+│   GAZEBO    │ → Simulador del mundo y robot
+└──────┬──────┘
+       │ /scan, /odom, /tf
+              ↓
+┌─────────────┐
+│ SLAM        │ → Crea el mapa usando los datos del láser
+│ TOOLBOX     │
+└──────┬──────┘
+       │ /map
+              ↓
+┌─────────────┐
+│ NAVIGATION2 │ → Proporciona herramientas de navegación
+└──────┬──────┘
+       │
+              ↓
+┌─────────────┐
+│   RVIZ2     │ → Visualización del mapa y robot
+└─────────────┘
+
+TERMINAL 1: INICIAR GAZEBO
+# Conectarse al contenedor
+docker exec -it ros2_p4_container bash
+
+# Exportar modelo (si no está en .bashrc)
+source /usr/share/gazebo/setup.sh
+export TURTLEBOT3_MODEL=waffle
+
+# Lanzar el mundo de Turtlebot3 en Gazebo
+ros2 launch turtlebot3_gazebo turtlebot3_world.launch.py
+
+DESCRIPCIÓN:
+Este comando inicia el simulador Gazebo con un mundo predefinido que incluye
+paredes, obstáculos y espacios. También genera (spawn) el robot Turtlebot3
+con todos sus sensores activos.
+
+TERMINAL 2: INICIAR NAVIGATION 2
+# Nueva terminal - conectarse al contenedor
+docker exec -it ros2_p4_container bash
+
+# Lanzar el stack de Navigation 2
+ros2 launch nav2_bringup navigation_launch.py use_sim_time:=True
+
+PARÁMETRO use_sim_time:
+- use_sim_time:=True → Usar el reloj de la simulación (/clock)
+- Si se omite, usará el tiempo real del sistema
+- IMPORTANTE: Debe ser True cuando se usa con Gazebo
+
+¿QUÉ HACE NAVIGATION 2?
+- Proporciona servicios de planificación de rutas
+- Gestiona el mapa global y local
+- Coordina los diferentes componentes de navegación
+- Publica transformadas (TF) necesarias
+
+TERMINAL 3: INICIAR SLAM TOOLBOX
+# Nueva terminal - conectarse al contenedor
+docker exec -it ros2_p4_container bash
+
+# Lanzar SLAM Toolbox en modo asíncrono online
+ros2 launch slam_toolbox online_async_launch.py use_sim_time:=True
+
+MODOS DE SLAM TOOLBOX:
+1. online_async: Crea mapas en tiempo real (el que usamos)
+2. online_sync: Versión sincronizada, más precisa pero más lenta
+3. localization: Solo localización, no crea mapas nuevos
+4. lifelong: Mapeo continuo que actualiza mapas existentes
+
+¿QUÉ HACE SLAM TOOLBOX?
+- Lee los datos del tópico /scan
+- Correlaciona las lecturas para crear un mapa de ocupación
+- Publica el mapa en el tópico /map
+- Actualiza la posición del robot en el mapa
+
+TERMINAL 4: INICIAR RVIZ2
+# Nueva terminal - conectarse al contenedor
+docker exec -it ros2_p4_container bash
+
+# Lanzar RViz2 con la configuración de Nav2
+ros2 run rviz2 rviz2 -d /opt/ros/humble/share/nav2_bringup/rviz/nav2_default_view.rviz
+
+¿QUÉ ES RVIZ2?
+RViz2 es la herramienta de visualización 3D de ROS 2. Permite ver:
+- El robot en 3D
+- El mapa que se está generando
+- Las lecturas del láser
+- Las transformadas (TF)
+- Trayectorias planificadas
+
+VERIFICACIÓN:
+# En otra terminal, verificar que todos los nodos están corriendo
+docker exec -it ros2roscon_container bash
+ros2 node list
+
+NODOS ESPERADOS:
+/turtlebot3_node
+/slam_toolbox
+/controller_server
+/planner_server
+/map_server
+/lifecycle_manager
+...y otros más
+
+EJERCICIO 5: GENERACIÓN DEL MAPA CON SLAM TOOLBOX
+Una vez que todos los nodos están corriendo, es momento de explorar el
+entorno y generar el mapa.
+
+TERMINAL 5: CONTROL MANUAL DEL ROBOT
+# Nueva terminal - conectarse al contenedor
+docker exec -it ros2roscon_container bash
+
+# Lanzar el nodo de teleoperación por teclado
+ros2 run teleop_twist_keyboard teleop_twist_keyboard
+
+CONTROLES DEL TECLADO:
+┌─────────────────────────────────────┐
+│   u    i    o                       │
+│   j    k    l                       │
+│   m    ,    .                       │
+│                                     │
+│ i = avanzar          u = adelante + izquierda
+│ k = parar            o = adelante + derecha
+│ , = retroceder       m = atrás + izquierda
+│ j = girar izquierda  . = atrás + derecha
+│ l = girar derecha                   │
+│                                     │
+│ q/z = aumentar/disminuir velocidad  │
+│ w/x = aumentar/disminuir giro       │
+└─────────────────────────────────────┘
+
+¿QUÉ ESTÁ PASANDO?
+Mientras mueves el robot:
+- El LiDAR lee distancias a obstáculos (tópico /scan)
+- SLAM Toolbox correlaciona las lecturas con el mapa actual
+- El mapa se actualiza en tiempo real (tópico /map)
+- La posición del robot se estima continuamente
+
+MONITOREAR EL PROGRESO:
+# En otra terminal, ver el mapa publicado
+docker exec -it ros2roscon_container bash
+ros2 topic echo /map --once
+
+# Ver la frecuencia de actualización del mapa
+ros2 topic hz /map
+
+EJERCICIO 6: GUARDAR EL MAPA GENERADO
+
+Una vez que has explorado suficientemente el entorno, es momento de guardar
+el mapa para usarlo posteriormente.
+
+TERMINAL 6: GUARDAR EL MAPA
+# Nueva terminal - conectarse al contenedor
+docker exec -it ros2roscon_container bash
+
+# Navegar al workspace
+cd ~/ros2_ws
+
+# Guardar el mapa con el nombre "my_map"
+ros2 run nav2_map_server map_saver_cli -f my_map
+
+SALIDA ESPERADA:
+[INFO] [map_saver]: Saving map to my_map.pgm and my_map.yaml
+[INFO] [map_saver]: Map saved
+
+ARCHIVOS GENERADOS:
+1. my_map.pgm  - Imagen del mapa en formato PGM
+2. my_map.yaml - Archivo de metadatos del mapa
+
+VERIFICACIÓN:
+# Listar los archivos generados
+ls -lh my_map.*
+
+# Salida esperada:
+# -rw-rw-r-- 1 user user  11K Oct 29 10:30 my_map.pgm
+# -rw-rw-r-- 1 user user  201 Oct 29 10:30 my_map.yaml
+
+# Ver el tipo de archivo de la imagen
+file my_map.pgm
+
+# Salida esperada:
+# my_map.pgm: Netpbm image data, size = 112 x 103, rawbits, greymap
+
+# Ver el contenido del archivo YAML
+cat my_map.yaml
+
+RESULTADO EN MI CASO:
+user@isabella-herrarte-HP-Laptop-15-ef2xxx:~/ros2_ws$ file my_map.pgm
+my_map.pgm: Netpbm image data, size = 112 x 103, rawbits, greymap
+
+user@isabella-herrarte-HP-Laptop-15-ef2xxx:~/ros2_ws$ cat my_map.yaml
+image: my_map.pgm
+mode: trinary
+resolution: 0.05
+origin: [-2.95, -2.6, 0]
+negate: 0
+occupied_thresh: 0.65
+free_thresh: 0.25
+
+ANÁLISIS DEL MAPA:
+- Tamaño: 112 x 103 píxeles
+- Resolución: 0.05 m/píxel = 5 cm por píxel
+- Dimensiones reales: 112*0.05 = 5.6m x 103*0.05 = 5.15m
+- Origen: El punto (-2.95, -2.6) en coordenadas del mundo corresponde
+  al píxel (0,0) de la imagen
+
+PARÁMETROS DEL ARCHIVO map_saver_cli:
+-f <nombre>     : Especifica el nombre base de los archivos
+-t <topic>      : Topic del mapa (por defecto /map)
+--occ <valor>   : Umbral de ocupación (por defecto 65)
+--free <valor>  : Umbral de espacio libre (por defecto 25)
+--fmt <formato> : Formato de imagen (pgm, png)
+
+EJEMPLO CON MÁS PARÁMETROS:
+ros2 run nav2_map_server map_saver_cli -f my_map \
+  --occ 70 --free 20 --fmt png
+
+EJERCICIO 7: EXPLICACIÓN DE LOS ARCHIVOS GENERADOS
+
+7.1 ARCHIVO my_map.pgm
+FORMATO: PGM (Portable Gray Map)
+TIPO: Imagen en escala de grises
+
+¿QUÉ ES UN ARCHIVO PGM?
+Es un formato de imagen simple sin compresión que representa imágenes en
+escala de grises. Cada píxel tiene un valor entre 0 y 255.
+
+INTERPRETACIÓN DE LOS VALORES:
+- Valor 255 (blanco): Espacio libre/navegable
+- Valor 0 (negro): Espacio ocupado/obstáculo
+- Valor 205 (gris): Espacio desconocido/no explorado
+
+¿CÓMO VERLO?
+# Convertir a PNG para visualizar fácilmente
+convert my_map.pgm my_map.png
+
+# Ver con un visualizador de imágenes
+eog my_map.pgm    # En Ubuntu con interfaz gráfica
+
+ESTRUCTURA INTERNA DEL ARCHIVO PGM:
+P5                    # Tipo de archivo (P5 = PGM binario)
+112 103              # Ancho x Alto en píxeles
+255                  # Valor máximo (escala de grises)
+[datos binarios]     # Datos de la imagen
+
+7.2 ARCHIVO my_map.yaml
+FORMATO: YAML (Yet Another Markup Language)
+TIPO: Archivo de configuración con metadatos
+
+CONTENIDO DETALLADO:
+┌────────────────────────────────────────────────────────────────┐
+│ image: my_map.pgm                                              │
+│ └─> Nombre del archivo de imagen asociado                     │
+│                                                                │
+│ mode: trinary                                                  │
+│ └─> Modo de interpretación del mapa:                          │
+│     - trinary: 3 estados (libre/ocupado/desconocido)          │
+│     - scale: escala continua de probabilidades                │
+│     - raw: valores sin procesar                               │
+│                                                                │
+│ resolution: 0.05                                               │
+│ └─> Metros por píxel                                          │
+│     0.05 m/píxel = 5 cm por cada píxel                        │
+│     Un mapa de 112 píxeles = 112 * 0.05 = 5.6 metros         │
+│                                                                │
+│ origin: [-2.95, -2.6, 0]                                      │
+│ └─> Coordenadas [x, y, yaw] del origen del mapa              │
+│     - El píxel (0,0) de la imagen corresponde a               │
+│       la posición (-2.95, -2.6) en el mundo                   │
+│     - Usado para alinear el mapa con el mundo de Gazebo       │
+│                                                                │
+│ negate: 0                                                      │
+│ └─> Si invertir los colores blanco/negro                      │
+│     0 = no invertir, 1 = invertir                             │
+│                                                                │
+│ occupied_thresh: 0.65                                          │
+│ └─> Umbral para considerar un píxel como ocupado             │
+│     Valores > 0.65 se consideran obstáculos                   │
+│     Rango: 0.0 a 1.0                                          │
+│                                                                │
+│ free_thresh: 0.25                                              │
+│ └─> Umbral para considerar un píxel como libre               │
+│     Valores < 0.25 se consideran espacio navegable            │
+│     Rango: 0.0 a 1.0                                          │
+│                                                                │
+│ Valores entre 0.25 y 0.65 = desconocidos/inciertos           │
+└────────────────────────────────────────────────────────────────┘
+
+CONVERSIÓN DE VALORES:
+Probabilidad → Valor en imagen:
+- p < 0.25     → 254 (blanco, libre)
+- p > 0.65     → 0   (negro, ocupado)
+- 0.25 ≤ p ≤ 0.65 → 205 (gris, desconocido)
+
+¿POR QUÉ ES IMPORTANTE EL YAML?
+Sin el archivo YAML, la imagen sola no sirve para navegación. El YAML
+proporciona el contexto espacial necesario para usar el mapa en ROS 2.
+
+7.3 USO POSTERIOR DEL MAPA
+Una vez guardado el mapa, se puede usar para:
+
+LOCALIZACIÓN (AMCL):
+# Usar el mapa para localización con AMCL
+ros2 launch nav2_bringup localization_launch.py \
+  map:=/path/to/my_map.yaml
+
+NAVEGACIÓN AUTÓNOMA:
+# Navegación usando un mapa pre-existente
+ros2 launch nav2_bringup navigation_launch.py \
+  map:=/path/to/my_map.yaml
+
+PREGUNTAS DE LA PRÁCTICA
+
+PREGUNTA A)
+¿Cuál es la función del paquete slam_toolbox en ROS 2 y cómo contribuye
+a la generación de mapas en un entorno simulado?
+
+RESPUESTA:
+El paquete slam_toolbox implementa algoritmos de SLAM (Simultaneous 
+Localization and Mapping) para ROS 2. Su función principal es permitir que 
+el robot construya un mapa del entorno mientras simultáneamente determina 
+su propia posición dentro de ese mapa.
+
+FUNCIONAMIENTO TÉCNICO:
+1. CAPTURA DE DATOS:
+   - Lee las mediciones del sensor LiDAR desde el tópico /scan
+   - Obtiene la odometría del robot desde /odom
+   - Recibe las transformadas (TF) entre los diferentes frames del robot
+
+2. CORRELACIÓN Y MATCHING:
+   - Compara las nuevas lecturas del láser con el mapa existente
+   - Usa técnicas de scan matching para alinear las lecturas
+   - Identifica características comunes (esquinas, paredes)
+
+3. OPTIMIZACIÓN DEL GRAFO:
+   - Construye un grafo de poses del robot a lo largo del tiempo
+   - Detecta "loop closures" (cuando el robot vuelve a un lugar visitado)
+   - Optimiza globalmente las poses para minimizar el error acumulado
+
+4. GENERACIÓN DEL MAPA:
+   - Crea un mapa de ocupación 2D (occupancy grid)
+   - Actualiza las probabilidades de ocupación de cada celda
+   - Publica el mapa en el tópico /map
+
+CONTRIBUCIÓN EN ENTORNO SIMULADO:
+En Gazebo, slam_toolbox toma las lecturas del LiDAR virtual del Turtlebot3
+y las procesa de la misma manera que lo haría con un robot real. Las ventajas
+en simulación son:
+- Datos de sensores perfectos (sin ruido, aunque se puede añadir)
+- Entorno controlado para pruebas
+- Odometría precisa
+- Posibilidad de repetir experimentos exactamente
+
+El resultado es un mapa 2D que representa la geometría del entorno simulado,
+esencial para posteriores tareas de navegación autónoma, como planificación
+de rutas y localización.
+
+VENTAJAS DE SLAM TOOLBOX:
+✓ Funciona en tiempo real (online)
+✓ Maneja mapas grandes eficientemente
+✓ Soporta mapeo continuo (lifelong mapping)
+✓ Puede guardar y cargar mapas
+✓ Integración nativa con Navigation 2
+
+PREGUNTA B)
+Describe el propósito del comando ros2 launch y explica cómo se utiliza
+para iniciar la simulación de Turtlebot3 en Gazebo.
+
+RESPUESTA:
+El comando ros2 launch es una herramienta fundamental en ROS 2 que permite
+iniciar y configurar múltiples nodos de forma coordinada desde un único
+archivo de lanzamiento (launch file).
+
+PROPÓSITO GENERAL:
+ros2 launch permite:
+1. Iniciar múltiples nodos simultáneamente con una sola instrucción
+2. Configurar parámetros de forma centralizada
+3. Establecer dependencias y orden de inicio entre nodos
+4. Pasar argumentos dinámicamente
+5. Configurar remapeos de tópicos
+6. Definir espacios de nombres (namespaces)
+
+SINTAXIS BÁSICA:
+ros2 launch <paquete> <archivo_launch.py> [argumentos]
+
+CASO ESPECÍFICO: TURTLEBOT3 EN GAZEBO
+Comando usado:
+ros2 launch turtlebot3_gazebo turtlebot3_world.launch.py
+
+DESGLOSE:
+┌───────────────┬──────────────────────┬───────────────────────────┐
+│ ros2 launch   │ turtlebot3_gazebo    │ turtlebot3_world.launch.py│
+│ (comando)     │ (paquete)            │ (archivo launch)          │
+└───────────────┴──────────────────────┴───────────────────────────┘
+
+¿QUÉ HACE ESTE LAUNCH FILE?
+El archivo turtlebot3_world.launch.py ejecuta las siguientes tareas:
+
+1. INICIO DEL SIMULADOR GAZEBO:
+   - Lanza el proceso gzserver (servidor de física)
+   - Lanza el proceso gzclient (interfaz gráfica, si disponible)
+   - Carga el mundo predefinido "turtlebot3_world"
+
+2. CARGA DEL MODELO DEL ROBOT:
+   - Lee el archivo URDF del Turtlebot3 (modelo waffle)
+   - Define las propiedades físicas: masa, inercia, colisiones
+   - Configura los sensores: LiDAR, IMU, cámara, encoders
+
+3. SPAWN DEL ROBOT EN GAZEBO:
+   - Instancia el robot en una posición inicial
+   - Activa los plugins de Gazebo para los sensores
+   - Establece las propiedades de simulación
+
+4. INICIO DE NODOS ROS 2:
+   - robot_state_publisher: publica el estado del robot (/tf, /tf_static)
+   - Publica la descripción del robot en /robot_description
+   - Inicia los drivers de los sensores virtuales
+
+5. CONFIGURACIÓN DE PARÁMETROS:
+   - use_sim_time: configura el uso del tiempo de simulación
+   - frame_id: define los frames de referencia (base_link, odom, etc.)
+   - Parámetros específicos de cada sensor
+
+ARGUMENTOS COMUNES:
+# Especificar un mundo diferente
+ros2 launch turtlebot3_gazebo turtlebot3_world.launch.py \
+  world:=/path/to/my_world.world
+
+# Cambiar la posición inicial del robot
+ros2 launch turtlebot3_gazebo turtlebot3_world.launch.py \
+  x_pose:=1.0 y_pose:=2.0
+
+VARIABLES DE ENTORNO NECESARIAS:
+export TURTLEBOT3_MODEL=waffle
+
+Esta variable es crítica porque el launch file la usa para determinar
+qué modelo cargar. Sin ella, el launch falla o carga un modelo por defecto.
+
+VENTAJAS DE USAR LAUNCH FILES:
+✓ Reproducibilidad: mismo entorno cada vez
+✓ Simplicidad: un comando en lugar de muchos
+✓ Mantenibilidad: cambios centralizados
+✓ Flexibilidad: argumentos parametrizables
+✓ Automatización: fácil de integrar en scripts
+
+ALTERNATIVA (sin launch):
+Sin ros2 launch, tendríamos que ejecutar manualmente:
+1. gazebo --verbose /path/to/world.sdf
+2. ros2 run robot_state_publisher robot_state_publisher
+3. ros2 run gazebo_ros spawn_entity.py -entity turtlebot3 -file ...
+4. [múltiples comandos más...]
+
+Como se puede ver, el launch file simplifica enormemente el proceso.
+
+PREGUNTA C)
+¿Qué tipo de información proporciona el tópico /scan y por qué es importante
+para el proceso de SLAM?
+
+RESPUESTA:
+El tópico /scan publica mensajes de tipo sensor_msgs/msg/LaserScan que
+contienen las mediciones del sensor LiDAR (Light Detection and Ranging)
+del robot.
+
+INFORMACIÓN CONTENIDA EN /scan:
+El mensaje LaserScan incluye los siguientes campos:
+
+1. HEADER (std_msgs/Header):
+   - stamp: timestamp de cuando se tomó la medición
+   - frame_id: frame de referencia del sensor (ej: "base_scan")
+
+2. PARÁMETROS ANGULARES:
+   - angle_min: ángulo de inicio del escaneo (radianes)
+   - angle_max: ángulo final del escaneo (radianes)
+   - angle_increment: incremento angular entre mediciones (radianes)
+   
+   Ejemplo típico:
+   angle_min = -π (180°)
+   angle_max = π (180°)
+   angle_increment = π/180 (1° por medición)
+   → Resultado: 360 mediciones que cubren 360°
+
+3. PARÁMETROS TEMPORALES:
+   - time_increment: tiempo entre mediciones consecutivas (segundos)
+   - scan_time: tiempo para completar un escaneo completo
+
+4. RANGOS DE MEDICIÓN:
+   - range_min: distancia mínima detectable (ej: 0.12 m)

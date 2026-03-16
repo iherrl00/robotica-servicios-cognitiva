@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<root main_tree_to_execute="MainTree">
+    <!-- ////////// -->
+    <BehaviorTree ID="MainTree">
+        <Fallback name="root">
+            <Sequence name="obstacle_detected">
+                <Condition ID="IsObstacleDetected" name="¿Hay obstáculo?"/>
+                <Action ID="Stop" name="Detenerse"/>
+                <Action ID="Turn" name="Girar"/>
+            </Sequence>
+            <Action ID="MoveForward" name="Avanzar"/>
+        </Fallback>
+    </BehaviorTree>
+    <!-- ////////// -->
+    <TreeNodesModel>
+        <Condition ID="IsObstacleDetected"/>
+        <Action ID="MoveForward"/>
+        <Action ID="Stop"/>
+        <Action ID="Turn"/>
+    </TreeNodesModel>
+    <!-- ////////// -->
+</root>

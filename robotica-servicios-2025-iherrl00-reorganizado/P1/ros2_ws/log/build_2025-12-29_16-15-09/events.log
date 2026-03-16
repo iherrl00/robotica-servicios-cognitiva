@@ -1,0 +1,437 @@
+[0.000000] (-) TimerEvent: {}
+[0.000415] (cpp_pubsub) JobQueued: {'identifier': 'cpp_pubsub', 'dependencies': OrderedDict()}
+[0.000496] (py_pubsub) JobQueued: {'identifier': 'py_pubsub', 'dependencies': OrderedDict()}
+[0.000536] (usb_cam) JobQueued: {'identifier': 'usb_cam', 'dependencies': OrderedDict()}
+[0.000569] (cpp_pubsub) JobStarted: {'identifier': 'cpp_pubsub'}
+[0.011181] (py_pubsub) JobStarted: {'identifier': 'py_pubsub'}
+[0.029344] (usb_cam) JobStarted: {'identifier': 'usb_cam'}
+[0.038034] (cpp_pubsub) JobProgress: {'identifier': 'cpp_pubsub', 'progress': 'cmake'}
+[0.039240] (cpp_pubsub) Command: {'cmd': ['/usr/bin/cmake', '/home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/src/cpp_pubsub', '-DCMAKE_INSTALL_PREFIX=/home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/install/cpp_pubsub'], 'cwd': '/home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/build/cpp_pubsub', 'env': OrderedDict({'GZ_SIM_RESOURCE_PATH': '/opt/ros/jazzy/share', 'USER': 'isabella-herrarte', 'GZ_CONFIG_PATH': '/opt/ros/jazzy/opt/gz_sim_vendor/share/gz:/opt/ros/jazzy/opt/sdformat_vendor/share/gz:/opt/ros/jazzy/opt/gz_gui_vendor/share/gz:/opt/ros/jazzy/opt/gz_transport_vendor/share/gz:/opt/ros/jazzy/opt/gz_rendering_vendor/share/gz:/opt/ros/jazzy/opt/gz_plugin_vendor/share/gz:/opt/ros/jazzy/opt/gz_fuel_tools_vendor/share/gz:/opt/ros/jazzy/opt/gz_msgs_vendor/share/gz:/opt/ros/jazzy/opt/gz_common_vendor/share/gz', 'XDG_SESSION_TYPE': 'x11', 'CLUTTER_DISABLE_MIPMAPPED_TEXT': '1', 'SHLVL': '1', 'LD_LIBRARY_PATH': '/opt/ros/jazzy/opt/zenoh_cpp_vendor/lib:/opt/ros/jazzy/opt/gz_sim_vendor/lib:/opt/ros/jazzy/opt/gz_sensors_vendor/lib:/opt/ros/jazzy/opt/gz_physics_vendor/lib:/opt/ros/jazzy/opt/sdformat_vendor/lib:/opt/ros/jazzy/opt/rviz_ogre_vendor/lib:/opt/ros/jazzy/lib/x86_64-linux-gnu:/opt/ros/jazzy/opt/gz_gui_vendor/lib:/opt/ros/jazzy/opt/gz_transport_vendor/lib:/opt/ros/jazzy/opt/gz_rendering_vendor/lib:/opt/ros/jazzy/opt/gz_plugin_vendor/lib:/opt/ros/jazzy/opt/gz_fuel_tools_vendor/lib:/opt/ros/jazzy/opt/gz_msgs_vendor/lib:/opt/ros/jazzy/opt/gz_common_vendor/lib:/opt/ros/jazzy/opt/gz_math_vendor/lib:/opt/ros/jazzy/opt/gz_utils_vendor/lib:/opt/ros/jazzy/opt/gz_tools_vendor/lib:/opt/ros/jazzy/opt/gz_ogre_next_vendor/lib:/opt/ros/jazzy/opt/gz_dartsim_vendor/lib:/opt/ros/jazzy/opt/gz_cmake_vendor/lib:/opt/ros/jazzy/lib', 'HOME': '/home/isabella-herrarte', 'OLDPWD': '/home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/src', 'DESKTOP_SESSION': 'ubuntu', 'ROS_PYTHON_VERSION': '3', 'GNOME_SHELL_SESSION_MODE': 'ubuntu', 'GTK_MODULES': 'gail:atk-bridge', 'SYSTEMD_EXEC_PID': '2860', 'GSM_SKIP_SSH_AGENT_WORKAROUND': 'true', 'DBUS_SESSION_BUS_ADDRESS': 'unix:path=/run/user/1000/bus', 'COLORTERM': 'truecolor', 'DEBUGINFOD_URLS': 'https://debuginfod.ubuntu.com', 'ROS_DISTRO': 'jazzy', 'LOGNAME': 'isabella-herrarte', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'MEMORY_PRESSURE_WATCH': '/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/session.slice/org.gnome.Shell@x11.service/memory.pressure', 'XDG_SESSION_CLASS': 'user', 'USERNAME': 'isabella-herrarte', 'TERM': 'xterm-256color', 'GNOME_DESKTOP_SESSION_ID': 'this-is-deprecated', 'WINDOWPATH': '2', 'PATH': '/opt/ros/jazzy/opt/gz_msgs_vendor/bin:/opt/ros/jazzy/opt/gz_tools_vendor/bin:/opt/ros/jazzy/opt/gz_ogre_next_vendor/bin:/opt/ros/jazzy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin', 'SESSION_MANAGER': 'local/isabella-herrarte-HP-Laptop-15-ef2xxx:@/tmp/.ICE-unix/2817,unix/isabella-herrarte-HP-Laptop-15-ef2xxx:/tmp/.ICE-unix/2817', 'XDG_MENU_PREFIX': 'gnome-', 'GNOME_TERMINAL_SCREEN': '/org/gnome/Terminal/screen/55030a0a_c5f8_41e3_b032_1d0c1ee1f36f', 'XDG_RUNTIME_DIR': '/run/user/1000', 'DISPLAY': ':1', 'LANG': 'en_US.UTF-8', 'XDG_CURRENT_DESKTOP': 'ubuntu:GNOME', 'XMODIFIERS': '@im=ibus', 'XDG_SESSION_DESKTOP': 'ubuntu', 'XAUTHORITY': '/run/user/1000/gdm/Xauthority', 'GNOME_TERMINAL_SERVICE': ':1.125', 'SSH_AUTH_SOCK': '/run/user/1000/keyring/ssh', 'AMENT_PREFIX_PATH': '/opt/ros/jazzy', 'SHELL': '/bin/bash', 'QT_ACCESSIBILITY': '1', 'GDMSESSION': 'ubuntu', 'GPG_AGENT_INFO': '/run/user/1000/gnupg/S.gpg-agent:0:1', 'ROS_AUTOMATIC_DISCOVERY_RANGE': 'SUBNET', 'QT_IM_MODULE': 'ibus', 'PWD': '/home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/build/cpp_pubsub', 'TURTLEBOT3_MODEL': 'waffle', 'LC_ALL': 'en_US.UTF-8', 'XDG_CONFIG_DIRS': '/etc/xdg/xdg-ubuntu:/etc/xdg', 'XDG_DATA_DIRS': '/usr/share/ubuntu:/usr/share/gnome:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop', 'PYTHONPATH': '/opt/ros/jazzy/lib/python3.12/site-packages', 'COLCON': '1', 'MEMORY_PRESSURE_WRITE': 'c29tZSAyMDAwMDAgMjAwMDAwMAA=', 'VTE_VERSION': '7600', 'CMAKE_PREFIX_PATH': '/opt/ros/jazzy/opt/gz_sim_vendor:/opt/ros/jazzy/opt/gz_sensors_vendor:/opt/ros/jazzy/opt/gz_physics_vendor:/opt/ros/jazzy/opt/sdformat_vendor:/opt/ros/jazzy/opt/gz_gui_vendor:/opt/ros/jazzy/opt/gz_transport_vendor:/opt/ros/jazzy/opt/gz_rendering_vendor:/opt/ros/jazzy/opt/gz_plugin_vendor:/opt/ros/jazzy/opt/gz_fuel_tools_vendor:/opt/ros/jazzy/opt/gz_msgs_vendor:/opt/ros/jazzy/opt/gz_common_vendor:/opt/ros/jazzy/opt/gz_math_vendor:/opt/ros/jazzy/opt/gz_utils_vendor:/opt/ros/jazzy/opt/gz_tools_vendor:/opt/ros/jazzy/opt/gz_ogre_next_vendor:/opt/ros/jazzy/opt/gz_dartsim_vendor:/opt/ros/jazzy/opt/gz_cmake_vendor:/opt/ros/jazzy'}), 'shell': False}
+[0.098712] (-) TimerEvent: {}
+[0.199194] (-) TimerEvent: {}
+[0.299701] (-) TimerEvent: {}
+[0.400159] (-) TimerEvent: {}
+[0.466679] (cpp_pubsub) StdoutLine: {'line': b'-- The C compiler identification is GNU 13.3.0\n'}
+[0.467944] (cpp_pubsub) StdoutLine: {'line': b'-- The CXX compiler identification is GNU 13.3.0\n'}
+[0.468158] (cpp_pubsub) StdoutLine: {'line': b'-- Detecting C compiler ABI info\n'}
+[0.468917] (usb_cam) JobProgress: {'identifier': 'usb_cam', 'progress': 'cmake'}
+[0.470176] (usb_cam) Command: {'cmd': ['/usr/bin/cmake', '/home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/src/usb_cam', '-DCMAKE_INSTALL_PREFIX=/home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/install/usb_cam'], 'cwd': '/home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/build/usb_cam', 'env': OrderedDict({'GZ_SIM_RESOURCE_PATH': '/opt/ros/jazzy/share', 'USER': 'isabella-herrarte', 'GZ_CONFIG_PATH': '/opt/ros/jazzy/opt/gz_sim_vendor/share/gz:/opt/ros/jazzy/opt/sdformat_vendor/share/gz:/opt/ros/jazzy/opt/gz_gui_vendor/share/gz:/opt/ros/jazzy/opt/gz_transport_vendor/share/gz:/opt/ros/jazzy/opt/gz_rendering_vendor/share/gz:/opt/ros/jazzy/opt/gz_plugin_vendor/share/gz:/opt/ros/jazzy/opt/gz_fuel_tools_vendor/share/gz:/opt/ros/jazzy/opt/gz_msgs_vendor/share/gz:/opt/ros/jazzy/opt/gz_common_vendor/share/gz', 'XDG_SESSION_TYPE': 'x11', 'CLUTTER_DISABLE_MIPMAPPED_TEXT': '1', 'SHLVL': '1', 'LD_LIBRARY_PATH': '/opt/ros/jazzy/opt/zenoh_cpp_vendor/lib:/opt/ros/jazzy/opt/gz_sim_vendor/lib:/opt/ros/jazzy/opt/gz_sensors_vendor/lib:/opt/ros/jazzy/opt/gz_physics_vendor/lib:/opt/ros/jazzy/opt/sdformat_vendor/lib:/opt/ros/jazzy/opt/rviz_ogre_vendor/lib:/opt/ros/jazzy/lib/x86_64-linux-gnu:/opt/ros/jazzy/opt/gz_gui_vendor/lib:/opt/ros/jazzy/opt/gz_transport_vendor/lib:/opt/ros/jazzy/opt/gz_rendering_vendor/lib:/opt/ros/jazzy/opt/gz_plugin_vendor/lib:/opt/ros/jazzy/opt/gz_fuel_tools_vendor/lib:/opt/ros/jazzy/opt/gz_msgs_vendor/lib:/opt/ros/jazzy/opt/gz_common_vendor/lib:/opt/ros/jazzy/opt/gz_math_vendor/lib:/opt/ros/jazzy/opt/gz_utils_vendor/lib:/opt/ros/jazzy/opt/gz_tools_vendor/lib:/opt/ros/jazzy/opt/gz_ogre_next_vendor/lib:/opt/ros/jazzy/opt/gz_dartsim_vendor/lib:/opt/ros/jazzy/opt/gz_cmake_vendor/lib:/opt/ros/jazzy/lib', 'HOME': '/home/isabella-herrarte', 'OLDPWD': '/home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/src', 'DESKTOP_SESSION': 'ubuntu', 'ROS_PYTHON_VERSION': '3', 'GNOME_SHELL_SESSION_MODE': 'ubuntu', 'GTK_MODULES': 'gail:atk-bridge', 'SYSTEMD_EXEC_PID': '2860', 'GSM_SKIP_SSH_AGENT_WORKAROUND': 'true', 'DBUS_SESSION_BUS_ADDRESS': 'unix:path=/run/user/1000/bus', 'COLORTERM': 'truecolor', 'DEBUGINFOD_URLS': 'https://debuginfod.ubuntu.com', 'ROS_DISTRO': 'jazzy', 'LOGNAME': 'isabella-herrarte', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'MEMORY_PRESSURE_WATCH': '/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/session.slice/org.gnome.Shell@x11.service/memory.pressure', 'XDG_SESSION_CLASS': 'user', 'USERNAME': 'isabella-herrarte', 'TERM': 'xterm-256color', 'GNOME_DESKTOP_SESSION_ID': 'this-is-deprecated', 'WINDOWPATH': '2', 'PATH': '/opt/ros/jazzy/opt/gz_msgs_vendor/bin:/opt/ros/jazzy/opt/gz_tools_vendor/bin:/opt/ros/jazzy/opt/gz_ogre_next_vendor/bin:/opt/ros/jazzy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin', 'SESSION_MANAGER': 'local/isabella-herrarte-HP-Laptop-15-ef2xxx:@/tmp/.ICE-unix/2817,unix/isabella-herrarte-HP-Laptop-15-ef2xxx:/tmp/.ICE-unix/2817', 'XDG_MENU_PREFIX': 'gnome-', 'GNOME_TERMINAL_SCREEN': '/org/gnome/Terminal/screen/55030a0a_c5f8_41e3_b032_1d0c1ee1f36f', 'XDG_RUNTIME_DIR': '/run/user/1000', 'DISPLAY': ':1', 'LANG': 'en_US.UTF-8', 'XDG_CURRENT_DESKTOP': 'ubuntu:GNOME', 'XMODIFIERS': '@im=ibus', 'XDG_SESSION_DESKTOP': 'ubuntu', 'XAUTHORITY': '/run/user/1000/gdm/Xauthority', 'GNOME_TERMINAL_SERVICE': ':1.125', 'SSH_AUTH_SOCK': '/run/user/1000/keyring/ssh', 'AMENT_PREFIX_PATH': '/opt/ros/jazzy', 'SHELL': '/bin/bash', 'QT_ACCESSIBILITY': '1', 'GDMSESSION': 'ubuntu', 'GPG_AGENT_INFO': '/run/user/1000/gnupg/S.gpg-agent:0:1', 'ROS_AUTOMATIC_DISCOVERY_RANGE': 'SUBNET', 'QT_IM_MODULE': 'ibus', 'PWD': '/home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/build/usb_cam', 'TURTLEBOT3_MODEL': 'waffle', 'LC_ALL': 'en_US.UTF-8', 'XDG_CONFIG_DIRS': '/etc/xdg/xdg-ubuntu:/etc/xdg', 'XDG_DATA_DIRS': '/usr/share/ubuntu:/usr/share/gnome:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop', 'PYTHONPATH': '/opt/ros/jazzy/lib/python3.12/site-packages', 'COLCON': '1', 'MEMORY_PRESSURE_WRITE': 'c29tZSAyMDAwMDAgMjAwMDAwMAA=', 'VTE_VERSION': '7600', 'CMAKE_PREFIX_PATH': '/opt/ros/jazzy/opt/gz_sim_vendor:/opt/ros/jazzy/opt/gz_sensors_vendor:/opt/ros/jazzy/opt/gz_physics_vendor:/opt/ros/jazzy/opt/sdformat_vendor:/opt/ros/jazzy/opt/gz_gui_vendor:/opt/ros/jazzy/opt/gz_transport_vendor:/opt/ros/jazzy/opt/gz_rendering_vendor:/opt/ros/jazzy/opt/gz_plugin_vendor:/opt/ros/jazzy/opt/gz_fuel_tools_vendor:/opt/ros/jazzy/opt/gz_msgs_vendor:/opt/ros/jazzy/opt/gz_common_vendor:/opt/ros/jazzy/opt/gz_math_vendor:/opt/ros/jazzy/opt/gz_utils_vendor:/opt/ros/jazzy/opt/gz_tools_vendor:/opt/ros/jazzy/opt/gz_ogre_next_vendor:/opt/ros/jazzy/opt/gz_dartsim_vendor:/opt/ros/jazzy/opt/gz_cmake_vendor:/opt/ros/jazzy'}), 'shell': False}
+[0.500360] (-) TimerEvent: {}
+[0.511000] (cpp_pubsub) StdoutLine: {'line': b'-- Detecting C compiler ABI info - done\n'}
+[0.528789] (cpp_pubsub) StdoutLine: {'line': b'-- Check for working C compiler: /usr/bin/cc - skipped\n'}
+[0.529240] (cpp_pubsub) StdoutLine: {'line': b'-- Detecting C compile features\n'}
+[0.529914] (cpp_pubsub) StdoutLine: {'line': b'-- Detecting C compile features - done\n'}
+[0.551651] (cpp_pubsub) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info\n'}
+[0.589323] (usb_cam) StdoutLine: {'line': b'-- The C compiler identification is GNU 13.3.0\n'}
+[0.600539] (-) TimerEvent: {}
+[0.701007] (-) TimerEvent: {}
+[0.704456] (usb_cam) StdoutLine: {'line': b'-- The CXX compiler identification is GNU 13.3.0\n'}
+[0.742093] (usb_cam) StdoutLine: {'line': b'-- Detecting C compiler ABI info\n'}
+[0.777836] (cpp_pubsub) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info - done\n'}
+[0.796243] (cpp_pubsub) StdoutLine: {'line': b'-- Check for working CXX compiler: /usr/bin/c++ - skipped\n'}
+[0.796693] (cpp_pubsub) StdoutLine: {'line': b'-- Detecting CXX compile features\n'}
+[0.797680] (cpp_pubsub) StdoutLine: {'line': b'-- Detecting CXX compile features - done\n'}
+[0.801136] (-) TimerEvent: {}
+[0.807961] (cpp_pubsub) StdoutLine: {'line': b'-- Found ament_cmake: 2.5.4 (/opt/ros/jazzy/share/ament_cmake/cmake)\n'}
+[0.901334] (-) TimerEvent: {}
+[0.946446] (usb_cam) StdoutLine: {'line': b'-- Detecting C compiler ABI info - done\n'}
+[0.964098] (usb_cam) StdoutLine: {'line': b'-- Check for working C compiler: /usr/bin/cc - skipped\n'}
+[0.964592] (usb_cam) StdoutLine: {'line': b'-- Detecting C compile features\n'}
+[0.965333] (usb_cam) StdoutLine: {'line': b'-- Detecting C compile features - done\n'}
+[0.987676] (usb_cam) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info\n'}
+[1.001500] (-) TimerEvent: {}
+[1.102011] (-) TimerEvent: {}
+[1.119428] (cpp_pubsub) StdoutLine: {'line': b'-- Found Python3: /usr/bin/python3 (found version "3.12.3") found components: Interpreter \n'}
+[1.202181] (-) TimerEvent: {}
+[1.222485] (usb_cam) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info - done\n'}
+[1.241143] (usb_cam) StdoutLine: {'line': b'-- Check for working CXX compiler: /usr/bin/c++ - skipped\n'}
+[1.241676] (usb_cam) StdoutLine: {'line': b'-- Detecting CXX compile features\n'}
+[1.242637] (usb_cam) StdoutLine: {'line': b'-- Detecting CXX compile features - done\n'}
+[1.252929] (usb_cam) StdoutLine: {'line': b'-- Found ament_cmake_auto: 2.5.4 (/opt/ros/jazzy/share/ament_cmake_auto/cmake)\n'}
+[1.302368] (-) TimerEvent: {}
+[1.383042] (cpp_pubsub) StdoutLine: {'line': b'-- Found rclcpp: 28.1.13 (/opt/ros/jazzy/share/rclcpp/cmake)\n'}
+[1.402519] (-) TimerEvent: {}
+[1.502983] (-) TimerEvent: {}
+[1.507696] (cpp_pubsub) StdoutLine: {'line': b'-- Found rosidl_generator_c: 4.6.6 (/opt/ros/jazzy/share/rosidl_generator_c/cmake)\n'}
+[1.548786] (cpp_pubsub) StdoutLine: {'line': b'-- Found rosidl_generator_cpp: 4.6.6 (/opt/ros/jazzy/share/rosidl_generator_cpp/cmake)\n'}
+[1.576137] (usb_cam) StdoutLine: {'line': b'-- Found Python3: /usr/bin/python3 (found version "3.12.3") found components: Interpreter \n'}
+[1.594652] (cpp_pubsub) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c\n'}
+[1.603112] (-) TimerEvent: {}
+[1.643724] (cpp_pubsub) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp\n'}
+[1.703320] (-) TimerEvent: {}
+[1.803825] (-) TimerEvent: {}
+[1.840424] (cpp_pubsub) StdoutLine: {'line': b'-- Found rmw_implementation_cmake: 7.3.2 (/opt/ros/jazzy/share/rmw_implementation_cmake/cmake)\n'}
+[1.847136] (py_pubsub) Command: {'cmd': ['/usr/bin/python3', '-W', 'ignore:setup.py install is deprecated', '-W', 'ignore:easy_install command is deprecated', 'setup.py', 'egg_info', '--egg-base', '../../build/py_pubsub', 'build', '--build-base', '/home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/build/py_pubsub/build', 'install', '--record', '/home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/build/py_pubsub/install.log', '--single-version-externally-managed', 'install_data'], 'cwd': '/home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/src/py_pubsub', 'env': {'GZ_SIM_RESOURCE_PATH': '/opt/ros/jazzy/share', 'USER': 'isabella-herrarte', 'GZ_CONFIG_PATH': '/opt/ros/jazzy/opt/gz_sim_vendor/share/gz:/opt/ros/jazzy/opt/sdformat_vendor/share/gz:/opt/ros/jazzy/opt/gz_gui_vendor/share/gz:/opt/ros/jazzy/opt/gz_transport_vendor/share/gz:/opt/ros/jazzy/opt/gz_rendering_vendor/share/gz:/opt/ros/jazzy/opt/gz_plugin_vendor/share/gz:/opt/ros/jazzy/opt/gz_fuel_tools_vendor/share/gz:/opt/ros/jazzy/opt/gz_msgs_vendor/share/gz:/opt/ros/jazzy/opt/gz_common_vendor/share/gz', 'XDG_SESSION_TYPE': 'x11', 'CLUTTER_DISABLE_MIPMAPPED_TEXT': '1', 'SHLVL': '1', 'LD_LIBRARY_PATH': '/opt/ros/jazzy/opt/zenoh_cpp_vendor/lib:/opt/ros/jazzy/opt/gz_sim_vendor/lib:/opt/ros/jazzy/opt/gz_sensors_vendor/lib:/opt/ros/jazzy/opt/gz_physics_vendor/lib:/opt/ros/jazzy/opt/sdformat_vendor/lib:/opt/ros/jazzy/opt/rviz_ogre_vendor/lib:/opt/ros/jazzy/lib/x86_64-linux-gnu:/opt/ros/jazzy/opt/gz_gui_vendor/lib:/opt/ros/jazzy/opt/gz_transport_vendor/lib:/opt/ros/jazzy/opt/gz_rendering_vendor/lib:/opt/ros/jazzy/opt/gz_plugin_vendor/lib:/opt/ros/jazzy/opt/gz_fuel_tools_vendor/lib:/opt/ros/jazzy/opt/gz_msgs_vendor/lib:/opt/ros/jazzy/opt/gz_common_vendor/lib:/opt/ros/jazzy/opt/gz_math_vendor/lib:/opt/ros/jazzy/opt/gz_utils_vendor/lib:/opt/ros/jazzy/opt/gz_tools_vendor/lib:/opt/ros/jazzy/opt/gz_ogre_next_vendor/lib:/opt/ros/jazzy/opt/gz_dartsim_vendor/lib:/opt/ros/jazzy/opt/gz_cmake_vendor/lib:/opt/ros/jazzy/lib', 'HOME': '/home/isabella-herrarte', 'OLDPWD': '/home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/src', 'DESKTOP_SESSION': 'ubuntu', 'ROS_PYTHON_VERSION': '3', 'GNOME_SHELL_SESSION_MODE': 'ubuntu', 'GTK_MODULES': 'gail:atk-bridge', 'SYSTEMD_EXEC_PID': '2860', 'GSM_SKIP_SSH_AGENT_WORKAROUND': 'true', 'DBUS_SESSION_BUS_ADDRESS': 'unix:path=/run/user/1000/bus', 'COLORTERM': 'truecolor', 'DEBUGINFOD_URLS': 'https://debuginfod.ubuntu.com', 'ROS_DISTRO': 'jazzy', 'LOGNAME': 'isabella-herrarte', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'MEMORY_PRESSURE_WATCH': '/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/session.slice/org.gnome.Shell@x11.service/memory.pressure', 'XDG_SESSION_CLASS': 'user', 'USERNAME': 'isabella-herrarte', 'TERM': 'xterm-256color', 'GNOME_DESKTOP_SESSION_ID': 'this-is-deprecated', 'WINDOWPATH': '2', 'PATH': '/opt/ros/jazzy/opt/gz_msgs_vendor/bin:/opt/ros/jazzy/opt/gz_tools_vendor/bin:/opt/ros/jazzy/opt/gz_ogre_next_vendor/bin:/opt/ros/jazzy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin', 'SESSION_MANAGER': 'local/isabella-herrarte-HP-Laptop-15-ef2xxx:@/tmp/.ICE-unix/2817,unix/isabella-herrarte-HP-Laptop-15-ef2xxx:/tmp/.ICE-unix/2817', 'XDG_MENU_PREFIX': 'gnome-', 'GNOME_TERMINAL_SCREEN': '/org/gnome/Terminal/screen/55030a0a_c5f8_41e3_b032_1d0c1ee1f36f', 'XDG_RUNTIME_DIR': '/run/user/1000', 'DISPLAY': ':1', 'LANG': 'en_US.UTF-8', 'XDG_CURRENT_DESKTOP': 'ubuntu:GNOME', 'XMODIFIERS': '@im=ibus', 'XDG_SESSION_DESKTOP': 'ubuntu', 'XAUTHORITY': '/run/user/1000/gdm/Xauthority', 'GNOME_TERMINAL_SERVICE': ':1.125', 'SSH_AUTH_SOCK': '/run/user/1000/keyring/ssh', 'AMENT_PREFIX_PATH': '/opt/ros/jazzy', 'SHELL': '/bin/bash', 'QT_ACCESSIBILITY': '1', 'GDMSESSION': 'ubuntu', 'GPG_AGENT_INFO': '/run/user/1000/gnupg/S.gpg-agent:0:1', 'ROS_AUTOMATIC_DISCOVERY_RANGE': 'SUBNET', 'QT_IM_MODULE': 'ibus', 'PWD': '/home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/build/py_pubsub', 'TURTLEBOT3_MODEL': 'waffle', 'LC_ALL': 'en_US.UTF-8', 'XDG_CONFIG_DIRS': '/etc/xdg/xdg-ubuntu:/etc/xdg', 'XDG_DATA_DIRS': '/usr/share/ubuntu:/usr/share/gnome:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop', 'PYTHONPATH': '/home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/build/py_pubsub/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/install/py_pubsub/lib/python3.12/site-packages:/opt/ros/jazzy/lib/python3.12/site-packages', 'COLCON': '1', 'MEMORY_PRESSURE_WRITE': 'c29tZSAyMDAwMDAgMjAwMDAwMAA=', 'VTE_VERSION': '7600', 'CMAKE_PREFIX_PATH': '/opt/ros/jazzy/opt/gz_sim_vendor:/opt/ros/jazzy/opt/gz_sensors_vendor:/opt/ros/jazzy/opt/gz_physics_vendor:/opt/ros/jazzy/opt/sdformat_vendor:/opt/ros/jazzy/opt/gz_gui_vendor:/opt/ros/jazzy/opt/gz_transport_vendor:/opt/ros/jazzy/opt/gz_rendering_vendor:/opt/ros/jazzy/opt/gz_plugin_vendor:/opt/ros/jazzy/opt/gz_fuel_tools_vendor:/opt/ros/jazzy/opt/gz_msgs_vendor:/opt/ros/jazzy/opt/gz_common_vendor:/opt/ros/jazzy/opt/gz_math_vendor:/opt/ros/jazzy/opt/gz_utils_vendor:/opt/ros/jazzy/opt/gz_tools_vendor:/opt/ros/jazzy/opt/gz_ogre_next_vendor:/opt/ros/jazzy/opt/gz_dartsim_vendor:/opt/ros/jazzy/opt/gz_cmake_vendor'}, 'shell': False}
+[1.850704] (cpp_pubsub) StdoutLine: {'line': b'-- Found rmw_fastrtps_cpp: 8.4.3 (/opt/ros/jazzy/share/rmw_fastrtps_cpp/cmake)\n'}
+[1.903958] (-) TimerEvent: {}
+[2.004411] (-) TimerEvent: {}
+[2.099363] (cpp_pubsub) StdoutLine: {'line': b'-- Found OpenSSL: /usr/lib/x86_64-linux-gnu/libcrypto.so (found version "3.0.13")  \n'}
+[2.104540] (-) TimerEvent: {}
+[2.143563] (cpp_pubsub) StdoutLine: {'line': b'-- Found FastRTPS: /opt/ros/jazzy/include (Required is at least version "2.13") \n'}
+[2.156103] (usb_cam) StdoutLine: {'line': b'-- Found rosidl_generator_c: 4.6.6 (/opt/ros/jazzy/share/rosidl_generator_c/cmake)\n'}
+[2.195736] (cpp_pubsub) StdoutLine: {'line': b"-- Using RMW implementation 'rmw_fastrtps_cpp' as default\n"}
+[2.197209] (usb_cam) StdoutLine: {'line': b'-- Found rosidl_generator_cpp: 4.6.6 (/opt/ros/jazzy/share/rosidl_generator_cpp/cmake)\n'}
+[2.204677] (-) TimerEvent: {}
+[2.244160] (usb_cam) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c\n'}
+[2.293388] (usb_cam) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp\n'}
+[2.304811] (-) TimerEvent: {}
+[2.354031] (py_pubsub) StdoutLine: {'line': b'running egg_info\n'}
+[2.354509] (py_pubsub) StdoutLine: {'line': b'creating ../../build/py_pubsub/py_pubsub.egg-info\n'}
+[2.371494] (cpp_pubsub) StdoutLine: {'line': b'-- Found std_msgs: 5.3.6 (/opt/ros/jazzy/share/std_msgs/cmake)\n'}
+[2.392612] (py_pubsub) StdoutLine: {'line': b'writing ../../build/py_pubsub/py_pubsub.egg-info/PKG-INFO\n'}
+[2.392952] (py_pubsub) StdoutLine: {'line': b'writing dependency_links to ../../build/py_pubsub/py_pubsub.egg-info/dependency_links.txt\n'}
+[2.393182] (py_pubsub) StdoutLine: {'line': b'writing entry points to ../../build/py_pubsub/py_pubsub.egg-info/entry_points.txt\n'}
+[2.393478] (py_pubsub) StdoutLine: {'line': b'writing requirements to ../../build/py_pubsub/py_pubsub.egg-info/requires.txt\n'}
+[2.393662] (py_pubsub) StdoutLine: {'line': b'writing top-level names to ../../build/py_pubsub/py_pubsub.egg-info/top_level.txt\n'}
+[2.393884] (py_pubsub) StdoutLine: {'line': b"writing manifest file '../../build/py_pubsub/py_pubsub.egg-info/SOURCES.txt'\n"}
+[2.404959] (-) TimerEvent: {}
+[2.407098] (cpp_pubsub) StdoutLine: {'line': b'-- Found ament_lint_auto: 0.17.3 (/opt/ros/jazzy/share/ament_lint_auto/cmake)\n'}
+[2.472773] (py_pubsub) StdoutLine: {'line': b"reading manifest file '../../build/py_pubsub/py_pubsub.egg-info/SOURCES.txt'\n"}
+[2.473179] (py_pubsub) StdoutLine: {'line': b"adding license file 'LICENSE'\n"}
+[2.473931] (py_pubsub) StdoutLine: {'line': b"writing manifest file '../../build/py_pubsub/py_pubsub.egg-info/SOURCES.txt'\n"}
+[2.474314] (py_pubsub) StdoutLine: {'line': b'running build\n'}
+[2.474538] (py_pubsub) StdoutLine: {'line': b'running build_py\n'}
+[2.474703] (py_pubsub) StdoutLine: {'line': b'creating /home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/build/py_pubsub/build\n'}
+[2.474971] (py_pubsub) StdoutLine: {'line': b'creating /home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/build/py_pubsub/build/lib\n'}
+[2.475127] (py_pubsub) StdoutLine: {'line': b'creating /home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/build/py_pubsub/build/lib/py_pubsub\n'}
+[2.475246] (py_pubsub) StdoutLine: {'line': b'copying py_pubsub/__init__.py -> /home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/build/py_pubsub/build/lib/py_pubsub\n'}
+[2.475373] (py_pubsub) StdoutLine: {'line': b'copying py_pubsub/subscriber_member_function.py -> /home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/build/py_pubsub/build/lib/py_pubsub\n'}
+[2.475523] (py_pubsub) StdoutLine: {'line': b'copying py_pubsub/publisher_member_function.py -> /home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/build/py_pubsub/build/lib/py_pubsub\n'}
+[2.475633] (py_pubsub) StdoutLine: {'line': b'running install\n'}
+[2.486745] (py_pubsub) StdoutLine: {'line': b'running install_lib\n'}
+[2.492106] (usb_cam) StdoutLine: {'line': b'-- Found rmw_implementation_cmake: 7.3.2 (/opt/ros/jazzy/share/rmw_implementation_cmake/cmake)\n'}
+[2.502207] (usb_cam) StdoutLine: {'line': b'-- Found rmw_fastrtps_cpp: 8.4.3 (/opt/ros/jazzy/share/rmw_fastrtps_cpp/cmake)\n'}
+[2.505092] (-) TimerEvent: {}
+[2.526318] (py_pubsub) StdoutLine: {'line': b'creating /home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/install/py_pubsub/lib/python3.12/site-packages/py_pubsub\n'}
+[2.526666] (py_pubsub) StdoutLine: {'line': b'copying /home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/build/py_pubsub/build/lib/py_pubsub/__init__.py -> /home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/install/py_pubsub/lib/python3.12/site-packages/py_pubsub\n'}
+[2.526969] (py_pubsub) StdoutLine: {'line': b'copying /home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/build/py_pubsub/build/lib/py_pubsub/subscriber_member_function.py -> /home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/install/py_pubsub/lib/python3.12/site-packages/py_pubsub\n'}
+[2.527162] (py_pubsub) StdoutLine: {'line': b'copying /home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/build/py_pubsub/build/lib/py_pubsub/publisher_member_function.py -> /home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/install/py_pubsub/lib/python3.12/site-packages/py_pubsub\n'}
+[2.527735] (py_pubsub) StdoutLine: {'line': b'byte-compiling /home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/install/py_pubsub/lib/python3.12/site-packages/py_pubsub/__init__.py to __init__.cpython-312.pyc\n'}
+[2.528143] (py_pubsub) StdoutLine: {'line': b'byte-compiling /home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/install/py_pubsub/lib/python3.12/site-packages/py_pubsub/subscriber_member_function.py to subscriber_member_function.cpython-312.pyc\n'}
+[2.528951] (py_pubsub) StdoutLine: {'line': b'byte-compiling /home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/install/py_pubsub/lib/python3.12/site-packages/py_pubsub/publisher_member_function.py to publisher_member_function.cpython-312.pyc\n'}
+[2.529686] (py_pubsub) StdoutLine: {'line': b'running install_data\n'}
+[2.529985] (py_pubsub) StdoutLine: {'line': b'creating /home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/install/py_pubsub/share/ament_index\n'}
+[2.530112] (py_pubsub) StdoutLine: {'line': b'creating /home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/install/py_pubsub/share/ament_index/resource_index\n'}
+[2.530238] (py_pubsub) StdoutLine: {'line': b'creating /home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/install/py_pubsub/share/ament_index/resource_index/packages\n'}
+[2.530432] (py_pubsub) StdoutLine: {'line': b'copying resource/py_pubsub -> /home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/install/py_pubsub/share/ament_index/resource_index/packages\n'}
+[2.530561] (py_pubsub) StdoutLine: {'line': b'copying package.xml -> /home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/install/py_pubsub/share/py_pubsub\n'}
+[2.530712] (py_pubsub) StdoutLine: {'line': b'running install_egg_info\n'}
+[2.571405] (py_pubsub) StdoutLine: {'line': b'Copying ../../build/py_pubsub/py_pubsub.egg-info to /home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/install/py_pubsub/lib/python3.12/site-packages/py_pubsub-0.0.0-py3.12.egg-info\n'}
+[2.572939] (py_pubsub) StdoutLine: {'line': b'running install_scripts\n'}
+[2.605267] (-) TimerEvent: {}
+[2.621879] (cpp_pubsub) StdoutLine: {'line': b"-- Added test 'cppcheck' to perform static code analysis on C / C++ code\n"}
+[2.622265] (cpp_pubsub) StdoutLine: {'line': b'-- Configured cppcheck include dirs: \n'}
+[2.622451] (cpp_pubsub) StdoutLine: {'line': b'-- Configured cppcheck exclude dirs and/or files: \n'}
+[2.623931] (cpp_pubsub) StdoutLine: {'line': b"-- Added test 'lint_cmake' to check CMake code style\n"}
+[2.626347] (cpp_pubsub) StdoutLine: {'line': b"-- Added test 'uncrustify' to check C / C++ code style\n"}
+[2.626569] (cpp_pubsub) StdoutLine: {'line': b'-- Configured uncrustify additional arguments: \n'}
+[2.627937] (cpp_pubsub) StdoutLine: {'line': b"-- Added test 'xmllint' to check XML markup files\n"}
+[2.631530] (cpp_pubsub) StdoutLine: {'line': b'-- Configuring done (2.6s)\n'}
+[2.657230] (cpp_pubsub) StdoutLine: {'line': b'-- Generating done (0.0s)\n'}
+[2.666402] (cpp_pubsub) StdoutLine: {'line': b'-- Build files have been written to: /home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/build/cpp_pubsub\n'}
+[2.682954] (cpp_pubsub) CommandEnded: {'returncode': 0}
+[2.683868] (cpp_pubsub) JobProgress: {'identifier': 'cpp_pubsub', 'progress': 'build'}
+[2.685397] (cpp_pubsub) Command: {'cmd': ['/usr/bin/cmake', '--build', '/home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/build/cpp_pubsub', '--', '-j12', '-l12'], 'cwd': '/home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/build/cpp_pubsub', 'env': OrderedDict({'GZ_SIM_RESOURCE_PATH': '/opt/ros/jazzy/share', 'USER': 'isabella-herrarte', 'GZ_CONFIG_PATH': '/opt/ros/jazzy/opt/gz_sim_vendor/share/gz:/opt/ros/jazzy/opt/sdformat_vendor/share/gz:/opt/ros/jazzy/opt/gz_gui_vendor/share/gz:/opt/ros/jazzy/opt/gz_transport_vendor/share/gz:/opt/ros/jazzy/opt/gz_rendering_vendor/share/gz:/opt/ros/jazzy/opt/gz_plugin_vendor/share/gz:/opt/ros/jazzy/opt/gz_fuel_tools_vendor/share/gz:/opt/ros/jazzy/opt/gz_msgs_vendor/share/gz:/opt/ros/jazzy/opt/gz_common_vendor/share/gz', 'XDG_SESSION_TYPE': 'x11', 'CLUTTER_DISABLE_MIPMAPPED_TEXT': '1', 'SHLVL': '1', 'LD_LIBRARY_PATH': '/opt/ros/jazzy/opt/zenoh_cpp_vendor/lib:/opt/ros/jazzy/opt/gz_sim_vendor/lib:/opt/ros/jazzy/opt/gz_sensors_vendor/lib:/opt/ros/jazzy/opt/gz_physics_vendor/lib:/opt/ros/jazzy/opt/sdformat_vendor/lib:/opt/ros/jazzy/opt/rviz_ogre_vendor/lib:/opt/ros/jazzy/lib/x86_64-linux-gnu:/opt/ros/jazzy/opt/gz_gui_vendor/lib:/opt/ros/jazzy/opt/gz_transport_vendor/lib:/opt/ros/jazzy/opt/gz_rendering_vendor/lib:/opt/ros/jazzy/opt/gz_plugin_vendor/lib:/opt/ros/jazzy/opt/gz_fuel_tools_vendor/lib:/opt/ros/jazzy/opt/gz_msgs_vendor/lib:/opt/ros/jazzy/opt/gz_common_vendor/lib:/opt/ros/jazzy/opt/gz_math_vendor/lib:/opt/ros/jazzy/opt/gz_utils_vendor/lib:/opt/ros/jazzy/opt/gz_tools_vendor/lib:/opt/ros/jazzy/opt/gz_ogre_next_vendor/lib:/opt/ros/jazzy/opt/gz_dartsim_vendor/lib:/opt/ros/jazzy/opt/gz_cmake_vendor/lib:/opt/ros/jazzy/lib', 'HOME': '/home/isabella-herrarte', 'OLDPWD': '/home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/src', 'DESKTOP_SESSION': 'ubuntu', 'ROS_PYTHON_VERSION': '3', 'GNOME_SHELL_SESSION_MODE': 'ubuntu', 'GTK_MODULES': 'gail:atk-bridge', 'SYSTEMD_EXEC_PID': '2860', 'GSM_SKIP_SSH_AGENT_WORKAROUND': 'true', 'DBUS_SESSION_BUS_ADDRESS': 'unix:path=/run/user/1000/bus', 'COLORTERM': 'truecolor', 'DEBUGINFOD_URLS': 'https://debuginfod.ubuntu.com', 'ROS_DISTRO': 'jazzy', 'LOGNAME': 'isabella-herrarte', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'MEMORY_PRESSURE_WATCH': '/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/session.slice/org.gnome.Shell@x11.service/memory.pressure', 'XDG_SESSION_CLASS': 'user', 'USERNAME': 'isabella-herrarte', 'TERM': 'xterm-256color', 'GNOME_DESKTOP_SESSION_ID': 'this-is-deprecated', 'WINDOWPATH': '2', 'PATH': '/opt/ros/jazzy/opt/gz_msgs_vendor/bin:/opt/ros/jazzy/opt/gz_tools_vendor/bin:/opt/ros/jazzy/opt/gz_ogre_next_vendor/bin:/opt/ros/jazzy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin', 'SESSION_MANAGER': 'local/isabella-herrarte-HP-Laptop-15-ef2xxx:@/tmp/.ICE-unix/2817,unix/isabella-herrarte-HP-Laptop-15-ef2xxx:/tmp/.ICE-unix/2817', 'XDG_MENU_PREFIX': 'gnome-', 'GNOME_TERMINAL_SCREEN': '/org/gnome/Terminal/screen/55030a0a_c5f8_41e3_b032_1d0c1ee1f36f', 'XDG_RUNTIME_DIR': '/run/user/1000', 'DISPLAY': ':1', 'LANG': 'en_US.UTF-8', 'XDG_CURRENT_DESKTOP': 'ubuntu:GNOME', 'XMODIFIERS': '@im=ibus', 'XDG_SESSION_DESKTOP': 'ubuntu', 'XAUTHORITY': '/run/user/1000/gdm/Xauthority', 'GNOME_TERMINAL_SERVICE': ':1.125', 'SSH_AUTH_SOCK': '/run/user/1000/keyring/ssh', 'AMENT_PREFIX_PATH': '/opt/ros/jazzy', 'SHELL': '/bin/bash', 'QT_ACCESSIBILITY': '1', 'GDMSESSION': 'ubuntu', 'GPG_AGENT_INFO': '/run/user/1000/gnupg/S.gpg-agent:0:1', 'ROS_AUTOMATIC_DISCOVERY_RANGE': 'SUBNET', 'QT_IM_MODULE': 'ibus', 'PWD': '/home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/build/cpp_pubsub', 'TURTLEBOT3_MODEL': 'waffle', 'LC_ALL': 'en_US.UTF-8', 'XDG_CONFIG_DIRS': '/etc/xdg/xdg-ubuntu:/etc/xdg', 'XDG_DATA_DIRS': '/usr/share/ubuntu:/usr/share/gnome:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop', 'PYTHONPATH': '/opt/ros/jazzy/lib/python3.12/site-packages', 'COLCON': '1', 'MEMORY_PRESSURE_WRITE': 'c29tZSAyMDAwMDAgMjAwMDAwMAA=', 'VTE_VERSION': '7600', 'CMAKE_PREFIX_PATH': '/opt/ros/jazzy/opt/gz_sim_vendor:/opt/ros/jazzy/opt/gz_sensors_vendor:/opt/ros/jazzy/opt/gz_physics_vendor:/opt/ros/jazzy/opt/sdformat_vendor:/opt/ros/jazzy/opt/gz_gui_vendor:/opt/ros/jazzy/opt/gz_transport_vendor:/opt/ros/jazzy/opt/gz_rendering_vendor:/opt/ros/jazzy/opt/gz_plugin_vendor:/opt/ros/jazzy/opt/gz_fuel_tools_vendor:/opt/ros/jazzy/opt/gz_msgs_vendor:/opt/ros/jazzy/opt/gz_common_vendor:/opt/ros/jazzy/opt/gz_math_vendor:/opt/ros/jazzy/opt/gz_utils_vendor:/opt/ros/jazzy/opt/gz_tools_vendor:/opt/ros/jazzy/opt/gz_ogre_next_vendor:/opt/ros/jazzy/opt/gz_dartsim_vendor:/opt/ros/jazzy/opt/gz_cmake_vendor:/opt/ros/jazzy'}), 'shell': False}
+[2.705388] (-) TimerEvent: {}
+[2.736729] (usb_cam) StdoutLine: {'line': b'-- Found OpenSSL: /usr/lib/x86_64-linux-gnu/libcrypto.so (found version "3.0.13")  \n'}
+[2.781100] (usb_cam) StdoutLine: {'line': b'-- Found FastRTPS: /opt/ros/jazzy/include (Required is at least version "2.13") \n'}
+[2.796373] (cpp_pubsub) StdoutLine: {'line': b'[ 25%] \x1b[32mBuilding CXX object CMakeFiles/talker.dir/src/publisher_lambda_function.cpp.o\x1b[0m\n'}
+[2.797351] (cpp_pubsub) StdoutLine: {'line': b'[ 50%] \x1b[32mBuilding CXX object CMakeFiles/listener.dir/src/subscriber_lambda_function.cpp.o\x1b[0m\n'}
+[2.805517] (-) TimerEvent: {}
+[2.831604] (usb_cam) StdoutLine: {'line': b"-- Using RMW implementation 'rmw_fastrtps_cpp' as default\n"}
+[2.836070] (py_pubsub) StdoutLine: {'line': b'Installing listener script to /home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/install/py_pubsub/lib/py_pubsub\n'}
+[2.836666] (py_pubsub) StdoutLine: {'line': b'Installing talker script to /home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/install/py_pubsub/lib/py_pubsub\n'}
+[2.837483] (py_pubsub) StdoutLine: {'line': b"writing list of installed files to '/home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/build/py_pubsub/install.log'\n"}
+[2.905639] (-) TimerEvent: {}
+[2.909720] (py_pubsub) CommandEnded: {'returncode': 0}
+[2.923811] (py_pubsub) JobEnded: {'identifier': 'py_pubsub', 'rc': 0}
+[3.005809] (-) TimerEvent: {}
+[3.106224] (-) TimerEvent: {}
+[3.206657] (-) TimerEvent: {}
+[3.307045] (-) TimerEvent: {}
+[3.378288] (usb_cam) StdoutLine: {'line': b"-- Setting yaml-cpp_DIR to: '/opt/ros/jazzy/share/yaml_cpp_vendor/cmake/../../../opt/yaml_cpp_vendor/share/cmake/yaml-cpp'\n"}
+[3.407194] (-) TimerEvent: {}
+[3.507624] (-) TimerEvent: {}
+[3.608041] (-) TimerEvent: {}
+[3.705846] (usb_cam) StdoutLine: {'line': b'-- Found rosidl_adapter: 4.6.6 (/opt/ros/jazzy/share/rosidl_adapter/cmake)\n'}
+[3.708187] (-) TimerEvent: {}
+[3.719265] (usb_cam) StdoutLine: {'line': b'-- Found OpenCV: /usr (found version "4.6.0") \n'}
+[3.728523] (usb_cam) StdoutLine: {'line': b'-- Found PkgConfig: /usr/bin/pkg-config (found version "1.8.1") \n'}
+[3.730545] (usb_cam) StdoutLine: {'line': b"-- Checking for module 'libavcodec'\n"}
+[3.774684] (usb_cam) StdoutLine: {'line': b'--   Found libavcodec, version 60.31.102\n'}
+[3.808341] (-) TimerEvent: {}
+[3.882606] (usb_cam) StdoutLine: {'line': b"-- Checking for module 'libavutil'\n"}
+[3.908508] (-) TimerEvent: {}
+[3.923943] (usb_cam) StdoutLine: {'line': b'--   Found libavutil, version 58.29.100\n'}
+[4.008641] (-) TimerEvent: {}
+[4.020287] (usb_cam) StdoutLine: {'line': b"-- Checking for module 'libswscale'\n"}
+[4.059536] (usb_cam) StdoutLine: {'line': b'--   Found libswscale, version 7.5.100\n'}
+[4.108774] (-) TimerEvent: {}
+[4.176108] (usb_cam) StdoutLine: {'line': b'-- Found ament_lint_auto: 0.17.3 (/opt/ros/jazzy/share/ament_lint_auto/cmake)\n'}
+[4.208902] (-) TimerEvent: {}
+[4.281570] (usb_cam) StdoutLine: {'line': b"-- Found gtest sources under '/opt/ros/jazzy/src/gtest_vendor': C++ tests using 'Google Test' will be built\n"}
+[4.288227] (usb_cam) StdoutLine: {'line': b'-- Performing Test CMAKE_HAVE_LIBC_PTHREAD\n'}
+[4.309037] (-) TimerEvent: {}
+[4.409461] (-) TimerEvent: {}
+[4.483576] (usb_cam) StdoutLine: {'line': b'-- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success\n'}
+[4.485626] (usb_cam) StdoutLine: {'line': b'-- Found Threads: TRUE  \n'}
+[4.491457] (usb_cam) StderrLine: {'line': b'\x1b[0mIn this package, headers install destination is set to `include` by ament_auto_package. It is recommended to install `include/usb_cam` instead and will be the default behavior of ament_auto_package from ROS 2 Kilted Kaiju. On distributions before Kilted, ament_auto_package behaves the same way when you use USE_SCOPED_HEADER_INSTALL_DIR option.\x1b[0m\n'}
+[4.499464] (usb_cam) StdoutLine: {'line': b"-- Added test 'copyright' to check source files copyright and LICENSE\n"}
+[4.508153] (usb_cam) StdoutLine: {'line': b"-- Added test 'cppcheck' to perform static code analysis on C / C++ code\n"}
+[4.508724] (usb_cam) StdoutLine: {'line': b'-- Configured cppcheck include dirs: /home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/src/usb_cam/include\n'}
+[4.508952] (usb_cam) StdoutLine: {'line': b'-- Configured cppcheck exclude dirs and/or files: \n'}
+[4.509542] (-) TimerEvent: {}
+[4.517471] (usb_cam) StdoutLine: {'line': b"-- Added test 'cpplint' to check C / C++ code against the Google style\n"}
+[4.517801] (usb_cam) StdoutLine: {'line': b'-- Configured cpplint exclude dirs and/or files: \n'}
+[4.519927] (usb_cam) StdoutLine: {'line': b"-- Added test 'flake8' to check Python code syntax and style conventions\n"}
+[4.520232] (usb_cam) StdoutLine: {'line': b"-- Configured 'flake8' exclude dirs and/or files: \n"}
+[4.523189] (usb_cam) StdoutLine: {'line': b"-- Added test 'lint_cmake' to check CMake code style\n"}
+[4.525576] (usb_cam) StdoutLine: {'line': b"-- Added test 'pep257' to check Python code against some of the docstring style conventions in PEP 257\n"}
+[4.534204] (usb_cam) StdoutLine: {'line': b"-- Added test 'uncrustify' to check C / C++ code style\n"}
+[4.534548] (usb_cam) StdoutLine: {'line': b'-- Configured uncrustify additional arguments: \n'}
+[4.536624] (usb_cam) StdoutLine: {'line': b"-- Added test 'xmllint' to check XML markup files\n"}
+[4.543624] (usb_cam) StdoutLine: {'line': b'-- Configuring done (4.1s)\n'}
+[4.609684] (-) TimerEvent: {}
+[4.625022] (usb_cam) StdoutLine: {'line': b'-- Generating done (0.1s)\n'}
+[4.645290] (usb_cam) StdoutLine: {'line': b'-- Build files have been written to: /home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/build/usb_cam\n'}
+[4.671454] (usb_cam) CommandEnded: {'returncode': 0}
+[4.672433] (usb_cam) JobProgress: {'identifier': 'usb_cam', 'progress': 'build'}
+[4.673474] (usb_cam) Command: {'cmd': ['/usr/bin/cmake', '--build', '/home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/build/usb_cam', '--', '-j12', '-l12'], 'cwd': '/home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/build/usb_cam', 'env': OrderedDict({'GZ_SIM_RESOURCE_PATH': '/opt/ros/jazzy/share', 'USER': 'isabella-herrarte', 'GZ_CONFIG_PATH': '/opt/ros/jazzy/opt/gz_sim_vendor/share/gz:/opt/ros/jazzy/opt/sdformat_vendor/share/gz:/opt/ros/jazzy/opt/gz_gui_vendor/share/gz:/opt/ros/jazzy/opt/gz_transport_vendor/share/gz:/opt/ros/jazzy/opt/gz_rendering_vendor/share/gz:/opt/ros/jazzy/opt/gz_plugin_vendor/share/gz:/opt/ros/jazzy/opt/gz_fuel_tools_vendor/share/gz:/opt/ros/jazzy/opt/gz_msgs_vendor/share/gz:/opt/ros/jazzy/opt/gz_common_vendor/share/gz', 'XDG_SESSION_TYPE': 'x11', 'CLUTTER_DISABLE_MIPMAPPED_TEXT': '1', 'SHLVL': '1', 'LD_LIBRARY_PATH': '/opt/ros/jazzy/opt/zenoh_cpp_vendor/lib:/opt/ros/jazzy/opt/gz_sim_vendor/lib:/opt/ros/jazzy/opt/gz_sensors_vendor/lib:/opt/ros/jazzy/opt/gz_physics_vendor/lib:/opt/ros/jazzy/opt/sdformat_vendor/lib:/opt/ros/jazzy/opt/rviz_ogre_vendor/lib:/opt/ros/jazzy/lib/x86_64-linux-gnu:/opt/ros/jazzy/opt/gz_gui_vendor/lib:/opt/ros/jazzy/opt/gz_transport_vendor/lib:/opt/ros/jazzy/opt/gz_rendering_vendor/lib:/opt/ros/jazzy/opt/gz_plugin_vendor/lib:/opt/ros/jazzy/opt/gz_fuel_tools_vendor/lib:/opt/ros/jazzy/opt/gz_msgs_vendor/lib:/opt/ros/jazzy/opt/gz_common_vendor/lib:/opt/ros/jazzy/opt/gz_math_vendor/lib:/opt/ros/jazzy/opt/gz_utils_vendor/lib:/opt/ros/jazzy/opt/gz_tools_vendor/lib:/opt/ros/jazzy/opt/gz_ogre_next_vendor/lib:/opt/ros/jazzy/opt/gz_dartsim_vendor/lib:/opt/ros/jazzy/opt/gz_cmake_vendor/lib:/opt/ros/jazzy/lib', 'HOME': '/home/isabella-herrarte', 'OLDPWD': '/home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/src', 'DESKTOP_SESSION': 'ubuntu', 'ROS_PYTHON_VERSION': '3', 'GNOME_SHELL_SESSION_MODE': 'ubuntu', 'GTK_MODULES': 'gail:atk-bridge', 'SYSTEMD_EXEC_PID': '2860', 'GSM_SKIP_SSH_AGENT_WORKAROUND': 'true', 'DBUS_SESSION_BUS_ADDRESS': 'unix:path=/run/user/1000/bus', 'COLORTERM': 'truecolor', 'DEBUGINFOD_URLS': 'https://debuginfod.ubuntu.com', 'ROS_DISTRO': 'jazzy', 'LOGNAME': 'isabella-herrarte', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'MEMORY_PRESSURE_WATCH': '/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/session.slice/org.gnome.Shell@x11.service/memory.pressure', 'XDG_SESSION_CLASS': 'user', 'USERNAME': 'isabella-herrarte', 'TERM': 'xterm-256color', 'GNOME_DESKTOP_SESSION_ID': 'this-is-deprecated', 'WINDOWPATH': '2', 'PATH': '/opt/ros/jazzy/opt/gz_msgs_vendor/bin:/opt/ros/jazzy/opt/gz_tools_vendor/bin:/opt/ros/jazzy/opt/gz_ogre_next_vendor/bin:/opt/ros/jazzy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin', 'SESSION_MANAGER': 'local/isabella-herrarte-HP-Laptop-15-ef2xxx:@/tmp/.ICE-unix/2817,unix/isabella-herrarte-HP-Laptop-15-ef2xxx:/tmp/.ICE-unix/2817', 'XDG_MENU_PREFIX': 'gnome-', 'GNOME_TERMINAL_SCREEN': '/org/gnome/Terminal/screen/55030a0a_c5f8_41e3_b032_1d0c1ee1f36f', 'XDG_RUNTIME_DIR': '/run/user/1000', 'DISPLAY': ':1', 'LANG': 'en_US.UTF-8', 'XDG_CURRENT_DESKTOP': 'ubuntu:GNOME', 'XMODIFIERS': '@im=ibus', 'XDG_SESSION_DESKTOP': 'ubuntu', 'XAUTHORITY': '/run/user/1000/gdm/Xauthority', 'GNOME_TERMINAL_SERVICE': ':1.125', 'SSH_AUTH_SOCK': '/run/user/1000/keyring/ssh', 'AMENT_PREFIX_PATH': '/opt/ros/jazzy', 'SHELL': '/bin/bash', 'QT_ACCESSIBILITY': '1', 'GDMSESSION': 'ubuntu', 'GPG_AGENT_INFO': '/run/user/1000/gnupg/S.gpg-agent:0:1', 'ROS_AUTOMATIC_DISCOVERY_RANGE': 'SUBNET', 'QT_IM_MODULE': 'ibus', 'PWD': '/home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/build/usb_cam', 'TURTLEBOT3_MODEL': 'waffle', 'LC_ALL': 'en_US.UTF-8', 'XDG_CONFIG_DIRS': '/etc/xdg/xdg-ubuntu:/etc/xdg', 'XDG_DATA_DIRS': '/usr/share/ubuntu:/usr/share/gnome:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop', 'PYTHONPATH': '/opt/ros/jazzy/lib/python3.12/site-packages', 'COLCON': '1', 'MEMORY_PRESSURE_WRITE': 'c29tZSAyMDAwMDAgMjAwMDAwMAA=', 'VTE_VERSION': '7600', 'CMAKE_PREFIX_PATH': '/opt/ros/jazzy/opt/gz_sim_vendor:/opt/ros/jazzy/opt/gz_sensors_vendor:/opt/ros/jazzy/opt/gz_physics_vendor:/opt/ros/jazzy/opt/sdformat_vendor:/opt/ros/jazzy/opt/gz_gui_vendor:/opt/ros/jazzy/opt/gz_transport_vendor:/opt/ros/jazzy/opt/gz_rendering_vendor:/opt/ros/jazzy/opt/gz_plugin_vendor:/opt/ros/jazzy/opt/gz_fuel_tools_vendor:/opt/ros/jazzy/opt/gz_msgs_vendor:/opt/ros/jazzy/opt/gz_common_vendor:/opt/ros/jazzy/opt/gz_math_vendor:/opt/ros/jazzy/opt/gz_utils_vendor:/opt/ros/jazzy/opt/gz_tools_vendor:/opt/ros/jazzy/opt/gz_ogre_next_vendor:/opt/ros/jazzy/opt/gz_dartsim_vendor:/opt/ros/jazzy/opt/gz_cmake_vendor:/opt/ros/jazzy'}), 'shell': False}
+[4.709838] (-) TimerEvent: {}
+[4.801285] (usb_cam) StdoutLine: {'line': b'[  7%] \x1b[32mBuilding CXX object CMakeFiles/usb_cam.dir/src/usb_cam.cpp.o\x1b[0m\n'}
+[4.802510] (usb_cam) StdoutLine: {'line': b'[ 14%] \x1b[32mBuilding CXX object gtest/CMakeFiles/gtest_main.dir/src/gtest_main.cc.o\x1b[0m\n'}
+[4.805652] (usb_cam) StdoutLine: {'line': b'[ 28%] \x1b[32mBuilding CXX object CMakeFiles/usb_cam_node_exe.dir/rclcpp_components/node_main_usb_cam_node_exe.cpp.o\x1b[0m\n'}
+[4.805959] (usb_cam) StdoutLine: {'line': b'[ 28%] \x1b[32mBuilding CXX object gtest/CMakeFiles/gtest.dir/src/gtest-all.cc.o\x1b[0m\n'}
+[4.809979] (-) TimerEvent: {}
+[4.910385] (-) TimerEvent: {}
+[5.010800] (-) TimerEvent: {}
+[5.111217] (-) TimerEvent: {}
+[5.211674] (-) TimerEvent: {}
+[5.312077] (-) TimerEvent: {}
+[5.412522] (-) TimerEvent: {}
+[5.512938] (-) TimerEvent: {}
+[5.613367] (-) TimerEvent: {}
+[5.713780] (-) TimerEvent: {}
+[5.814223] (-) TimerEvent: {}
+[5.914663] (-) TimerEvent: {}
+[6.015096] (-) TimerEvent: {}
+[6.115551] (-) TimerEvent: {}
+[6.215996] (-) TimerEvent: {}
+[6.316450] (-) TimerEvent: {}
+[6.345495] (usb_cam) StdoutLine: {'line': b'[ 35%] \x1b[32m\x1b[1mLinking CXX static library libgtest_main.a\x1b[0m\n'}
+[6.416602] (-) TimerEvent: {}
+[6.434350] (usb_cam) StdoutLine: {'line': b'[ 35%] Built target gtest_main\n'}
+[6.516754] (-) TimerEvent: {}
+[6.617199] (-) TimerEvent: {}
+[6.717640] (-) TimerEvent: {}
+[6.818045] (-) TimerEvent: {}
+[6.918484] (-) TimerEvent: {}
+[7.018915] (-) TimerEvent: {}
+[7.119344] (-) TimerEvent: {}
+[7.219748] (-) TimerEvent: {}
+[7.320159] (-) TimerEvent: {}
+[7.420600] (-) TimerEvent: {}
+[7.520990] (-) TimerEvent: {}
+[7.621405] (-) TimerEvent: {}
+[7.721807] (-) TimerEvent: {}
+[7.822220] (-) TimerEvent: {}
+[7.922668] (-) TimerEvent: {}
+[8.023085] (-) TimerEvent: {}
+[8.051540] (usb_cam) StdoutLine: {'line': b'[ 42%] \x1b[32m\x1b[1mLinking CXX shared library libusb_cam.so\x1b[0m\n'}
+[8.123291] (-) TimerEvent: {}
+[8.223723] (-) TimerEvent: {}
+[8.324143] (-) TimerEvent: {}
+[8.424638] (-) TimerEvent: {}
+[8.471439] (usb_cam) StdoutLine: {'line': b'[ 42%] Built target usb_cam\n'}
+[8.518805] (usb_cam) StdoutLine: {'line': b'[ 50%] \x1b[32mBuilding CXX object CMakeFiles/usb_cam_node.dir/src/usb_cam_node.cpp.o\x1b[0m\n'}
+[8.524764] (-) TimerEvent: {}
+[8.625148] (-) TimerEvent: {}
+[8.725528] (-) TimerEvent: {}
+[8.825870] (-) TimerEvent: {}
+[8.926207] (-) TimerEvent: {}
+[9.026552] (-) TimerEvent: {}
+[9.126877] (-) TimerEvent: {}
+[9.227213] (-) TimerEvent: {}
+[9.327570] (-) TimerEvent: {}
+[9.427913] (-) TimerEvent: {}
+[9.528307] (-) TimerEvent: {}
+[9.628661] (-) TimerEvent: {}
+[9.729026] (-) TimerEvent: {}
+[9.804714] (cpp_pubsub) StdoutLine: {'line': b'[ 75%] \x1b[32m\x1b[1mLinking CXX executable talker\x1b[0m\n'}
+[9.829154] (-) TimerEvent: {}
+[9.875362] (usb_cam) StdoutLine: {'line': b'[ 57%] \x1b[32m\x1b[1mLinking CXX executable usb_cam_node_exe\x1b[0m\n'}
+[9.929358] (-) TimerEvent: {}
+[10.029764] (-) TimerEvent: {}
+[10.130209] (-) TimerEvent: {}
+[10.160135] (cpp_pubsub) StdoutLine: {'line': b'[ 75%] Built target talker\n'}
+[10.230360] (-) TimerEvent: {}
+[10.330713] (-) TimerEvent: {}
+[10.337844] (usb_cam) StdoutLine: {'line': b'[ 57%] Built target usb_cam_node_exe\n'}
+[10.430867] (-) TimerEvent: {}
+[10.531285] (-) TimerEvent: {}
+[10.631674] (-) TimerEvent: {}
+[10.710949] (usb_cam) StdoutLine: {'line': b'[ 64%] \x1b[32m\x1b[1mLinking CXX static library libgtest.a\x1b[0m\n'}
+[10.731818] (-) TimerEvent: {}
+[10.803991] (usb_cam) StdoutLine: {'line': b'[ 64%] Built target gtest\n'}
+[10.831938] (-) TimerEvent: {}
+[10.840425] (usb_cam) StdoutLine: {'line': b'[ 71%] \x1b[32mBuilding CXX object CMakeFiles/test_pixel_formats.dir/test/test_pixel_formats.cpp.o\x1b[0m\n'}
+[10.840806] (usb_cam) StdoutLine: {'line': b'[ 78%] \x1b[32mBuilding CXX object CMakeFiles/test_usb_cam_utils.dir/test/test_usb_cam_utils.cpp.o\x1b[0m\n'}
+[10.932083] (-) TimerEvent: {}
+[11.032449] (-) TimerEvent: {}
+[11.132767] (-) TimerEvent: {}
+[11.233081] (-) TimerEvent: {}
+[11.333454] (-) TimerEvent: {}
+[11.433789] (-) TimerEvent: {}
+[11.534170] (-) TimerEvent: {}
+[11.634618] (-) TimerEvent: {}
+[11.735043] (-) TimerEvent: {}
+[11.835483] (-) TimerEvent: {}
+[11.935908] (-) TimerEvent: {}
+[12.036337] (-) TimerEvent: {}
+[12.136748] (-) TimerEvent: {}
+[12.237203] (-) TimerEvent: {}
+[12.302654] (usb_cam) StdoutLine: {'line': b'[ 85%] \x1b[32m\x1b[1mLinking CXX executable test_usb_cam_utils\x1b[0m\n'}
+[12.337341] (-) TimerEvent: {}
+[12.437698] (-) TimerEvent: {}
+[12.538078] (-) TimerEvent: {}
+[12.567919] (usb_cam) StdoutLine: {'line': b'[ 92%] \x1b[32m\x1b[1mLinking CXX executable test_pixel_formats\x1b[0m\n'}
+[12.638241] (-) TimerEvent: {}
+[12.738694] (-) TimerEvent: {}
+[12.743634] (usb_cam) StdoutLine: {'line': b'[ 92%] Built target test_usb_cam_utils\n'}
+[12.838854] (-) TimerEvent: {}
+[12.939235] (-) TimerEvent: {}
+[12.983960] (usb_cam) StdoutLine: {'line': b'[ 92%] Built target test_pixel_formats\n'}
+[13.039356] (-) TimerEvent: {}
+[13.139664] (-) TimerEvent: {}
+[13.239960] (-) TimerEvent: {}
+[13.340304] (-) TimerEvent: {}
+[13.433508] (cpp_pubsub) StdoutLine: {'line': b'[100%] \x1b[32m\x1b[1mLinking CXX executable listener\x1b[0m\n'}
+[13.440428] (-) TimerEvent: {}
+[13.540812] (-) TimerEvent: {}
+[13.641226] (-) TimerEvent: {}
+[13.739933] (cpp_pubsub) StdoutLine: {'line': b'[100%] Built target listener\n'}
+[13.741350] (-) TimerEvent: {}
+[13.755949] (cpp_pubsub) CommandEnded: {'returncode': 0}
+[13.756765] (cpp_pubsub) JobProgress: {'identifier': 'cpp_pubsub', 'progress': 'install'}
+[13.770641] (cpp_pubsub) Command: {'cmd': ['/usr/bin/cmake', '--install', '/home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/build/cpp_pubsub'], 'cwd': '/home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/build/cpp_pubsub', 'env': OrderedDict({'GZ_SIM_RESOURCE_PATH': '/opt/ros/jazzy/share', 'USER': 'isabella-herrarte', 'GZ_CONFIG_PATH': '/opt/ros/jazzy/opt/gz_sim_vendor/share/gz:/opt/ros/jazzy/opt/sdformat_vendor/share/gz:/opt/ros/jazzy/opt/gz_gui_vendor/share/gz:/opt/ros/jazzy/opt/gz_transport_vendor/share/gz:/opt/ros/jazzy/opt/gz_rendering_vendor/share/gz:/opt/ros/jazzy/opt/gz_plugin_vendor/share/gz:/opt/ros/jazzy/opt/gz_fuel_tools_vendor/share/gz:/opt/ros/jazzy/opt/gz_msgs_vendor/share/gz:/opt/ros/jazzy/opt/gz_common_vendor/share/gz', 'XDG_SESSION_TYPE': 'x11', 'CLUTTER_DISABLE_MIPMAPPED_TEXT': '1', 'SHLVL': '1', 'LD_LIBRARY_PATH': '/opt/ros/jazzy/opt/zenoh_cpp_vendor/lib:/opt/ros/jazzy/opt/gz_sim_vendor/lib:/opt/ros/jazzy/opt/gz_sensors_vendor/lib:/opt/ros/jazzy/opt/gz_physics_vendor/lib:/opt/ros/jazzy/opt/sdformat_vendor/lib:/opt/ros/jazzy/opt/rviz_ogre_vendor/lib:/opt/ros/jazzy/lib/x86_64-linux-gnu:/opt/ros/jazzy/opt/gz_gui_vendor/lib:/opt/ros/jazzy/opt/gz_transport_vendor/lib:/opt/ros/jazzy/opt/gz_rendering_vendor/lib:/opt/ros/jazzy/opt/gz_plugin_vendor/lib:/opt/ros/jazzy/opt/gz_fuel_tools_vendor/lib:/opt/ros/jazzy/opt/gz_msgs_vendor/lib:/opt/ros/jazzy/opt/gz_common_vendor/lib:/opt/ros/jazzy/opt/gz_math_vendor/lib:/opt/ros/jazzy/opt/gz_utils_vendor/lib:/opt/ros/jazzy/opt/gz_tools_vendor/lib:/opt/ros/jazzy/opt/gz_ogre_next_vendor/lib:/opt/ros/jazzy/opt/gz_dartsim_vendor/lib:/opt/ros/jazzy/opt/gz_cmake_vendor/lib:/opt/ros/jazzy/lib', 'HOME': '/home/isabella-herrarte', 'OLDPWD': '/home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/src', 'DESKTOP_SESSION': 'ubuntu', 'ROS_PYTHON_VERSION': '3', 'GNOME_SHELL_SESSION_MODE': 'ubuntu', 'GTK_MODULES': 'gail:atk-bridge', 'SYSTEMD_EXEC_PID': '2860', 'GSM_SKIP_SSH_AGENT_WORKAROUND': 'true', 'DBUS_SESSION_BUS_ADDRESS': 'unix:path=/run/user/1000/bus', 'COLORTERM': 'truecolor', 'DEBUGINFOD_URLS': 'https://debuginfod.ubuntu.com', 'ROS_DISTRO': 'jazzy', 'LOGNAME': 'isabella-herrarte', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'MEMORY_PRESSURE_WATCH': '/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/session.slice/org.gnome.Shell@x11.service/memory.pressure', 'XDG_SESSION_CLASS': 'user', 'USERNAME': 'isabella-herrarte', 'TERM': 'xterm-256color', 'GNOME_DESKTOP_SESSION_ID': 'this-is-deprecated', 'WINDOWPATH': '2', 'PATH': '/opt/ros/jazzy/opt/gz_msgs_vendor/bin:/opt/ros/jazzy/opt/gz_tools_vendor/bin:/opt/ros/jazzy/opt/gz_ogre_next_vendor/bin:/opt/ros/jazzy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin', 'SESSION_MANAGER': 'local/isabella-herrarte-HP-Laptop-15-ef2xxx:@/tmp/.ICE-unix/2817,unix/isabella-herrarte-HP-Laptop-15-ef2xxx:/tmp/.ICE-unix/2817', 'XDG_MENU_PREFIX': 'gnome-', 'GNOME_TERMINAL_SCREEN': '/org/gnome/Terminal/screen/55030a0a_c5f8_41e3_b032_1d0c1ee1f36f', 'XDG_RUNTIME_DIR': '/run/user/1000', 'DISPLAY': ':1', 'LANG': 'en_US.UTF-8', 'XDG_CURRENT_DESKTOP': 'ubuntu:GNOME', 'XMODIFIERS': '@im=ibus', 'XDG_SESSION_DESKTOP': 'ubuntu', 'XAUTHORITY': '/run/user/1000/gdm/Xauthority', 'GNOME_TERMINAL_SERVICE': ':1.125', 'SSH_AUTH_SOCK': '/run/user/1000/keyring/ssh', 'AMENT_PREFIX_PATH': '/opt/ros/jazzy', 'SHELL': '/bin/bash', 'QT_ACCESSIBILITY': '1', 'GDMSESSION': 'ubuntu', 'GPG_AGENT_INFO': '/run/user/1000/gnupg/S.gpg-agent:0:1', 'ROS_AUTOMATIC_DISCOVERY_RANGE': 'SUBNET', 'QT_IM_MODULE': 'ibus', 'PWD': '/home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/build/cpp_pubsub', 'TURTLEBOT3_MODEL': 'waffle', 'LC_ALL': 'en_US.UTF-8', 'XDG_CONFIG_DIRS': '/etc/xdg/xdg-ubuntu:/etc/xdg', 'XDG_DATA_DIRS': '/usr/share/ubuntu:/usr/share/gnome:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop', 'PYTHONPATH': '/opt/ros/jazzy/lib/python3.12/site-packages', 'COLCON': '1', 'MEMORY_PRESSURE_WRITE': 'c29tZSAyMDAwMDAgMjAwMDAwMAA=', 'VTE_VERSION': '7600', 'CMAKE_PREFIX_PATH': '/opt/ros/jazzy/opt/gz_sim_vendor:/opt/ros/jazzy/opt/gz_sensors_vendor:/opt/ros/jazzy/opt/gz_physics_vendor:/opt/ros/jazzy/opt/sdformat_vendor:/opt/ros/jazzy/opt/gz_gui_vendor:/opt/ros/jazzy/opt/gz_transport_vendor:/opt/ros/jazzy/opt/gz_rendering_vendor:/opt/ros/jazzy/opt/gz_plugin_vendor:/opt/ros/jazzy/opt/gz_fuel_tools_vendor:/opt/ros/jazzy/opt/gz_msgs_vendor:/opt/ros/jazzy/opt/gz_common_vendor:/opt/ros/jazzy/opt/gz_math_vendor:/opt/ros/jazzy/opt/gz_utils_vendor:/opt/ros/jazzy/opt/gz_tools_vendor:/opt/ros/jazzy/opt/gz_ogre_next_vendor:/opt/ros/jazzy/opt/gz_dartsim_vendor:/opt/ros/jazzy/opt/gz_cmake_vendor:/opt/ros/jazzy'}), 'shell': False}
+[13.780326] (cpp_pubsub) StdoutLine: {'line': b'-- Install configuration: ""\n'}
+[13.780657] (cpp_pubsub) StdoutLine: {'line': b'-- Installing: /home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/install/cpp_pubsub/lib/cpp_pubsub/talker\n'}
+[13.782081] (cpp_pubsub) StdoutLine: {'line': b'-- Set non-toolchain portion of runtime path of "/home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/install/cpp_pubsub/lib/cpp_pubsub/talker" to ""\n'}
+[13.782282] (cpp_pubsub) StdoutLine: {'line': b'-- Installing: /home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/install/cpp_pubsub/lib/cpp_pubsub/listener\n'}
+[13.786892] (cpp_pubsub) StdoutLine: {'line': b'-- Set non-toolchain portion of runtime path of "/home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/install/cpp_pubsub/lib/cpp_pubsub/listener" to ""\n'}
+[13.787235] (cpp_pubsub) StdoutLine: {'line': b'-- Installing: /home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/install/cpp_pubsub/share/ament_index/resource_index/package_run_dependencies/cpp_pubsub\n'}
+[13.787451] (cpp_pubsub) StdoutLine: {'line': b'-- Installing: /home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/install/cpp_pubsub/share/ament_index/resource_index/parent_prefix_path/cpp_pubsub\n'}
+[13.787648] (cpp_pubsub) StdoutLine: {'line': b'-- Installing: /home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/install/cpp_pubsub/share/cpp_pubsub/environment/ament_prefix_path.sh\n'}
+[13.787852] (cpp_pubsub) StdoutLine: {'line': b'-- Installing: /home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/install/cpp_pubsub/share/cpp_pubsub/environment/ament_prefix_path.dsv\n'}
+[13.788058] (cpp_pubsub) StdoutLine: {'line': b'-- Installing: /home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/install/cpp_pubsub/share/cpp_pubsub/environment/path.sh\n'}
+[13.788234] (cpp_pubsub) StdoutLine: {'line': b'-- Installing: /home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/install/cpp_pubsub/share/cpp_pubsub/environment/path.dsv\n'}
+[13.788384] (cpp_pubsub) StdoutLine: {'line': b'-- Installing: /home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/install/cpp_pubsub/share/cpp_pubsub/local_setup.bash\n'}
+[13.788495] (cpp_pubsub) StdoutLine: {'line': b'-- Installing: /home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/install/cpp_pubsub/share/cpp_pubsub/local_setup.sh\n'}
+[13.788674] (cpp_pubsub) StdoutLine: {'line': b'-- Installing: /home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/install/cpp_pubsub/share/cpp_pubsub/local_setup.zsh\n'}
+[13.788851] (cpp_pubsub) StdoutLine: {'line': b'-- Installing: /home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/install/cpp_pubsub/share/cpp_pubsub/local_setup.dsv\n'}
+[13.789014] (cpp_pubsub) StdoutLine: {'line': b'-- Installing: /home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/install/cpp_pubsub/share/cpp_pubsub/package.dsv\n'}
+[13.789264] (cpp_pubsub) StdoutLine: {'line': b'-- Installing: /home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/install/cpp_pubsub/share/ament_index/resource_index/packages/cpp_pubsub\n'}
+[13.789482] (cpp_pubsub) StdoutLine: {'line': b'-- Installing: /home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/install/cpp_pubsub/share/cpp_pubsub/cmake/cpp_pubsubConfig.cmake\n'}
+[13.789643] (cpp_pubsub) StdoutLine: {'line': b'-- Installing: /home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/install/cpp_pubsub/share/cpp_pubsub/cmake/cpp_pubsubConfig-version.cmake\n'}
+[13.789825] (cpp_pubsub) StdoutLine: {'line': b'-- Installing: /home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/install/cpp_pubsub/share/cpp_pubsub/package.xml\n'}
+[13.792771] (cpp_pubsub) CommandEnded: {'returncode': 0}
+[13.802360] (cpp_pubsub) JobEnded: {'identifier': 'cpp_pubsub', 'rc': 0}
+[13.841476] (-) TimerEvent: {}
+[13.941785] (-) TimerEvent: {}
+[14.042151] (-) TimerEvent: {}
+[14.142751] (-) TimerEvent: {}
+[14.243008] (-) TimerEvent: {}
+[14.343208] (-) TimerEvent: {}
+[14.443514] (-) TimerEvent: {}
+[14.543902] (-) TimerEvent: {}
+[14.644311] (-) TimerEvent: {}
+[14.744703] (-) TimerEvent: {}
+[14.845081] (-) TimerEvent: {}
+[14.945492] (-) TimerEvent: {}
+[15.045881] (-) TimerEvent: {}
+[15.146237] (-) TimerEvent: {}
+[15.246598] (-) TimerEvent: {}
+[15.347027] (-) TimerEvent: {}
+[15.447423] (-) TimerEvent: {}
+[15.547720] (-) TimerEvent: {}
+[15.648060] (-) TimerEvent: {}
+[15.748305] (-) TimerEvent: {}
+[15.848598] (-) TimerEvent: {}
+[15.948988] (-) TimerEvent: {}
+[16.049540] (-) TimerEvent: {}
+[16.149880] (-) TimerEvent: {}
+[16.250219] (-) TimerEvent: {}
+[16.350592] (-) TimerEvent: {}
+[16.450935] (-) TimerEvent: {}
+[16.551293] (-) TimerEvent: {}
+[16.651643] (-) TimerEvent: {}
+[16.751981] (-) TimerEvent: {}
+[16.852328] (-) TimerEvent: {}
+[16.942834] (usb_cam) StdoutLine: {'line': b'[100%] \x1b[32m\x1b[1mLinking CXX shared library libusb_cam_node.so\x1b[0m\n'}
+[16.952468] (-) TimerEvent: {}
+[17.052822] (-) TimerEvent: {}
+[17.153163] (-) TimerEvent: {}
+[17.253486] (-) TimerEvent: {}
+[17.353788] (-) TimerEvent: {}
+[17.454070] (-) TimerEvent: {}
+[17.458712] (usb_cam) StdoutLine: {'line': b'[100%] Built target usb_cam_node\n'}
+[17.474815] (usb_cam) CommandEnded: {'returncode': 0}
+[17.475548] (usb_cam) JobProgress: {'identifier': 'usb_cam', 'progress': 'install'}
+[17.476087] (usb_cam) Command: {'cmd': ['/usr/bin/cmake', '--install', '/home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/build/usb_cam'], 'cwd': '/home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/build/usb_cam', 'env': OrderedDict({'GZ_SIM_RESOURCE_PATH': '/opt/ros/jazzy/share', 'USER': 'isabella-herrarte', 'GZ_CONFIG_PATH': '/opt/ros/jazzy/opt/gz_sim_vendor/share/gz:/opt/ros/jazzy/opt/sdformat_vendor/share/gz:/opt/ros/jazzy/opt/gz_gui_vendor/share/gz:/opt/ros/jazzy/opt/gz_transport_vendor/share/gz:/opt/ros/jazzy/opt/gz_rendering_vendor/share/gz:/opt/ros/jazzy/opt/gz_plugin_vendor/share/gz:/opt/ros/jazzy/opt/gz_fuel_tools_vendor/share/gz:/opt/ros/jazzy/opt/gz_msgs_vendor/share/gz:/opt/ros/jazzy/opt/gz_common_vendor/share/gz', 'XDG_SESSION_TYPE': 'x11', 'CLUTTER_DISABLE_MIPMAPPED_TEXT': '1', 'SHLVL': '1', 'LD_LIBRARY_PATH': '/opt/ros/jazzy/opt/zenoh_cpp_vendor/lib:/opt/ros/jazzy/opt/gz_sim_vendor/lib:/opt/ros/jazzy/opt/gz_sensors_vendor/lib:/opt/ros/jazzy/opt/gz_physics_vendor/lib:/opt/ros/jazzy/opt/sdformat_vendor/lib:/opt/ros/jazzy/opt/rviz_ogre_vendor/lib:/opt/ros/jazzy/lib/x86_64-linux-gnu:/opt/ros/jazzy/opt/gz_gui_vendor/lib:/opt/ros/jazzy/opt/gz_transport_vendor/lib:/opt/ros/jazzy/opt/gz_rendering_vendor/lib:/opt/ros/jazzy/opt/gz_plugin_vendor/lib:/opt/ros/jazzy/opt/gz_fuel_tools_vendor/lib:/opt/ros/jazzy/opt/gz_msgs_vendor/lib:/opt/ros/jazzy/opt/gz_common_vendor/lib:/opt/ros/jazzy/opt/gz_math_vendor/lib:/opt/ros/jazzy/opt/gz_utils_vendor/lib:/opt/ros/jazzy/opt/gz_tools_vendor/lib:/opt/ros/jazzy/opt/gz_ogre_next_vendor/lib:/opt/ros/jazzy/opt/gz_dartsim_vendor/lib:/opt/ros/jazzy/opt/gz_cmake_vendor/lib:/opt/ros/jazzy/lib', 'HOME': '/home/isabella-herrarte', 'OLDPWD': '/home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/src', 'DESKTOP_SESSION': 'ubuntu', 'ROS_PYTHON_VERSION': '3', 'GNOME_SHELL_SESSION_MODE': 'ubuntu', 'GTK_MODULES': 'gail:atk-bridge', 'SYSTEMD_EXEC_PID': '2860', 'GSM_SKIP_SSH_AGENT_WORKAROUND': 'true', 'DBUS_SESSION_BUS_ADDRESS': 'unix:path=/run/user/1000/bus', 'COLORTERM': 'truecolor', 'DEBUGINFOD_URLS': 'https://debuginfod.ubuntu.com', 'ROS_DISTRO': 'jazzy', 'LOGNAME': 'isabella-herrarte', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'MEMORY_PRESSURE_WATCH': '/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/session.slice/org.gnome.Shell@x11.service/memory.pressure', 'XDG_SESSION_CLASS': 'user', 'USERNAME': 'isabella-herrarte', 'TERM': 'xterm-256color', 'GNOME_DESKTOP_SESSION_ID': 'this-is-deprecated', 'WINDOWPATH': '2', 'PATH': '/opt/ros/jazzy/opt/gz_msgs_vendor/bin:/opt/ros/jazzy/opt/gz_tools_vendor/bin:/opt/ros/jazzy/opt/gz_ogre_next_vendor/bin:/opt/ros/jazzy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin', 'SESSION_MANAGER': 'local/isabella-herrarte-HP-Laptop-15-ef2xxx:@/tmp/.ICE-unix/2817,unix/isabella-herrarte-HP-Laptop-15-ef2xxx:/tmp/.ICE-unix/2817', 'XDG_MENU_PREFIX': 'gnome-', 'GNOME_TERMINAL_SCREEN': '/org/gnome/Terminal/screen/55030a0a_c5f8_41e3_b032_1d0c1ee1f36f', 'XDG_RUNTIME_DIR': '/run/user/1000', 'DISPLAY': ':1', 'LANG': 'en_US.UTF-8', 'XDG_CURRENT_DESKTOP': 'ubuntu:GNOME', 'XMODIFIERS': '@im=ibus', 'XDG_SESSION_DESKTOP': 'ubuntu', 'XAUTHORITY': '/run/user/1000/gdm/Xauthority', 'GNOME_TERMINAL_SERVICE': ':1.125', 'SSH_AUTH_SOCK': '/run/user/1000/keyring/ssh', 'AMENT_PREFIX_PATH': '/opt/ros/jazzy', 'SHELL': '/bin/bash', 'QT_ACCESSIBILITY': '1', 'GDMSESSION': 'ubuntu', 'GPG_AGENT_INFO': '/run/user/1000/gnupg/S.gpg-agent:0:1', 'ROS_AUTOMATIC_DISCOVERY_RANGE': 'SUBNET', 'QT_IM_MODULE': 'ibus', 'PWD': '/home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/build/usb_cam', 'TURTLEBOT3_MODEL': 'waffle', 'LC_ALL': 'en_US.UTF-8', 'XDG_CONFIG_DIRS': '/etc/xdg/xdg-ubuntu:/etc/xdg', 'XDG_DATA_DIRS': '/usr/share/ubuntu:/usr/share/gnome:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop', 'PYTHONPATH': '/opt/ros/jazzy/lib/python3.12/site-packages', 'COLCON': '1', 'MEMORY_PRESSURE_WRITE': 'c29tZSAyMDAwMDAgMjAwMDAwMAA=', 'VTE_VERSION': '7600', 'CMAKE_PREFIX_PATH': '/opt/ros/jazzy/opt/gz_sim_vendor:/opt/ros/jazzy/opt/gz_sensors_vendor:/opt/ros/jazzy/opt/gz_physics_vendor:/opt/ros/jazzy/opt/sdformat_vendor:/opt/ros/jazzy/opt/gz_gui_vendor:/opt/ros/jazzy/opt/gz_transport_vendor:/opt/ros/jazzy/opt/gz_rendering_vendor:/opt/ros/jazzy/opt/gz_plugin_vendor:/opt/ros/jazzy/opt/gz_fuel_tools_vendor:/opt/ros/jazzy/opt/gz_msgs_vendor:/opt/ros/jazzy/opt/gz_common_vendor:/opt/ros/jazzy/opt/gz_math_vendor:/opt/ros/jazzy/opt/gz_utils_vendor:/opt/ros/jazzy/opt/gz_tools_vendor:/opt/ros/jazzy/opt/gz_ogre_next_vendor:/opt/ros/jazzy/opt/gz_dartsim_vendor:/opt/ros/jazzy/opt/gz_cmake_vendor:/opt/ros/jazzy'}), 'shell': False}
+[17.486846] (usb_cam) StdoutLine: {'line': b'-- Install configuration: ""\n'}
+[17.487180] (usb_cam) StdoutLine: {'line': b'-- Installing: /home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/install/usb_cam/share/usb_cam/environment/library_path.sh\n'}
+[17.487495] (usb_cam) StdoutLine: {'line': b'-- Installing: /home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/install/usb_cam/share/usb_cam/environment/library_path.dsv\n'}
+[17.487735] (usb_cam) StdoutLine: {'line': b'-- Installing: /home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/install/usb_cam/lib/usb_cam/usb_cam_node_exe\n'}
+[17.488003] (usb_cam) StdoutLine: {'line': b'-- Set non-toolchain portion of runtime path of "/home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/install/usb_cam/lib/usb_cam/usb_cam_node_exe" to ""\n'}
+[17.488243] (usb_cam) StdoutLine: {'line': b'-- Installing: /home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/install/usb_cam/lib/usb_cam/show_image.py\n'}
+[17.488478] (usb_cam) StdoutLine: {'line': b'-- Installing: /home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/install/usb_cam/lib/libusb_cam.so\n'}
+[17.489016] (usb_cam) StdoutLine: {'line': b'-- Installing: /home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/install/usb_cam/lib/libusb_cam_node.so\n'}
+[17.492845] (usb_cam) StdoutLine: {'line': b'-- Set non-toolchain portion of runtime path of "/home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/install/usb_cam/lib/libusb_cam_node.so" to ""\n'}
+[17.493113] (usb_cam) StdoutLine: {'line': b'-- Installing: /home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/install/usb_cam/include\n'}
+[17.493419] (usb_cam) StdoutLine: {'line': b'-- Installing: /home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/install/usb_cam/include/usb_cam\n'}
+[17.493610] (usb_cam) StdoutLine: {'line': b'-- Installing: /home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/install/usb_cam/include/usb_cam/constants.hpp\n'}
+[17.493791] (usb_cam) StdoutLine: {'line': b'-- Installing: /home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/install/usb_cam/include/usb_cam/formats\n'}
+[17.493969] (usb_cam) StdoutLine: {'line': b'-- Installing: /home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/install/usb_cam/include/usb_cam/formats/mjpeg.hpp\n'}
+[17.494147] (usb_cam) StdoutLine: {'line': b'-- Installing: /home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/install/usb_cam/include/usb_cam/formats/mono.hpp\n'}
+[17.494457] (usb_cam) StdoutLine: {'line': b'-- Installing: /home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/install/usb_cam/include/usb_cam/formats/uyvy.hpp\n'}
+[17.494649] (usb_cam) StdoutLine: {'line': b'-- Installing: /home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/install/usb_cam/include/usb_cam/formats/av_pixel_format_helper.hpp\n'}
+[17.494829] (usb_cam) StdoutLine: {'line': b'-- Installing: /home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/install/usb_cam/include/usb_cam/formats/yuyv.hpp\n'}
+[17.495000] (usb_cam) StdoutLine: {'line': b'-- Installing: /home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/install/usb_cam/include/usb_cam/formats/utils.hpp\n'}
+[17.495176] (usb_cam) StdoutLine: {'line': b'-- Installing: /home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/install/usb_cam/include/usb_cam/formats/pixel_format_base.hpp\n'}
+[17.495445] (usb_cam) StdoutLine: {'line': b'-- Installing: /home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/install/usb_cam/include/usb_cam/formats/rgb.hpp\n'}
+[17.495646] (usb_cam) StdoutLine: {'line': b'-- Installing: /home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/install/usb_cam/include/usb_cam/formats/m420.hpp\n'}
+[17.495711] (usb_cam) StdoutLine: {'line': b'-- Installing: /home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/install/usb_cam/include/usb_cam/conversions.hpp\n'}
+[17.495792] (usb_cam) StdoutLine: {'line': b'-- Installing: /home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/install/usb_cam/include/usb_cam/utils.hpp\n'}
+[17.495848] (usb_cam) StdoutLine: {'line': b'-- Installing: /home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/install/usb_cam/include/usb_cam/usb_cam_node.hpp\n'}
+[17.495912] (usb_cam) StdoutLine: {'line': b'-- Installing: /home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/install/usb_cam/include/usb_cam/usb_cam.hpp\n'}
+[17.495972] (usb_cam) StdoutLine: {'line': b'-- Up-to-date: /home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/install/usb_cam/lib/libusb_cam_node.so\n'}
+[17.496035] (usb_cam) StdoutLine: {'line': b'-- Installing: /home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/install/usb_cam/share/usb_cam/launch\n'}
+[17.496091] (usb_cam) StdoutLine: {'line': b'-- Installing: /home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/install/usb_cam/share/usb_cam/launch/__init__.py\n'}
+[17.496150] (usb_cam) StdoutLine: {'line': b'-- Installing: /home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/install/usb_cam/share/usb_cam/launch/camera.launch.py\n'}
+[17.496212] (usb_cam) StdoutLine: {'line': b'-- Installing: /home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/install/usb_cam/share/usb_cam/launch/camera_config.py\n'}
+[17.496314] (usb_cam) StdoutLine: {'line': b'-- Installing: /home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/install/usb_cam/share/usb_cam/config\n'}
+[17.496377] (usb_cam) StdoutLine: {'line': b'-- Installing: /home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/install/usb_cam/share/usb_cam/config/params_2.yaml\n'}
+[17.496440] (usb_cam) StdoutLine: {'line': b'-- Installing: /home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/install/usb_cam/share/usb_cam/config/params_1.yaml\n'}
+[17.496498] (usb_cam) StdoutLine: {'line': b'-- Installing: /home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/install/usb_cam/share/usb_cam/config/camera_info.yaml\n'}
+[17.496559] (usb_cam) StdoutLine: {'line': b'-- Installing: /home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/install/usb_cam/share/ament_index/resource_index/package_run_dependencies/usb_cam\n'}
+[17.496655] (usb_cam) StdoutLine: {'line': b'-- Installing: /home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/install/usb_cam/share/ament_index/resource_index/parent_prefix_path/usb_cam\n'}
+[17.496717] (usb_cam) StdoutLine: {'line': b'-- Installing: /home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/install/usb_cam/share/usb_cam/environment/ament_prefix_path.sh\n'}
+[17.496780] (usb_cam) StdoutLine: {'line': b'-- Installing: /home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/install/usb_cam/share/usb_cam/environment/ament_prefix_path.dsv\n'}
+[17.496864] (usb_cam) StdoutLine: {'line': b'-- Installing: /home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/install/usb_cam/share/usb_cam/environment/path.sh\n'}
+[17.496948] (usb_cam) StdoutLine: {'line': b'-- Installing: /home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/install/usb_cam/share/usb_cam/environment/path.dsv\n'}
+[17.497029] (usb_cam) StdoutLine: {'line': b'-- Installing: /home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/install/usb_cam/share/usb_cam/local_setup.bash\n'}
+[17.497167] (usb_cam) StdoutLine: {'line': b'-- Installing: /home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/install/usb_cam/share/usb_cam/local_setup.sh\n'}
+[17.497329] (usb_cam) StdoutLine: {'line': b'-- Installing: /home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/install/usb_cam/share/usb_cam/local_setup.zsh\n'}
+[17.497494] (usb_cam) StdoutLine: {'line': b'-- Installing: /home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/install/usb_cam/share/usb_cam/local_setup.dsv\n'}
+[17.497615] (usb_cam) StdoutLine: {'line': b'-- Installing: /home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/install/usb_cam/share/usb_cam/package.dsv\n'}
+[17.497823] (usb_cam) StdoutLine: {'line': b'-- Installing: /home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/install/usb_cam/share/ament_index/resource_index/packages/usb_cam\n'}
+[17.498004] (usb_cam) StdoutLine: {'line': b'-- Installing: /home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/install/usb_cam/share/ament_index/resource_index/rclcpp_components/usb_cam\n'}
+[17.498172] (usb_cam) StdoutLine: {'line': b'-- Installing: /home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/install/usb_cam/share/usb_cam/cmake/ament_cmake_export_libraries-extras.cmake\n'}
+[17.498331] (usb_cam) StdoutLine: {'line': b'-- Installing: /home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/install/usb_cam/share/usb_cam/cmake/ament_cmake_export_dependencies-extras.cmake\n'}
+[17.498487] (usb_cam) StdoutLine: {'line': b'-- Installing: /home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/install/usb_cam/share/usb_cam/cmake/ament_cmake_export_include_directories-extras.cmake\n'}
+[17.498631] (usb_cam) StdoutLine: {'line': b'-- Installing: /home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/install/usb_cam/share/usb_cam/cmake/usb_camConfig.cmake\n'}
+[17.498755] (usb_cam) StdoutLine: {'line': b'-- Installing: /home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/install/usb_cam/share/usb_cam/cmake/usb_camConfig-version.cmake\n'}
+[17.498877] (usb_cam) StdoutLine: {'line': b'-- Installing: /home/isabella-herrarte/robotica-servicios-2025-iherrl00-reorganizado/P1/ros2_ws/install/usb_cam/share/usb_cam/package.xml\n'}
+[17.502025] (usb_cam) CommandEnded: {'returncode': 0}
+[17.514089] (usb_cam) JobEnded: {'identifier': 'usb_cam', 'rc': 0}
+[17.515283] (-) EventReactorShutdown: {}

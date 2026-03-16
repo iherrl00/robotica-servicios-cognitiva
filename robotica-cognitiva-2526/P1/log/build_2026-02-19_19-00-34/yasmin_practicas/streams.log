@@ -1,0 +1,30 @@
+[1.202s] Invoking command in '/home/user/ros2_ws/src/yasmin_practicas': PYTHONPATH=/home/user/ros2_ws/build/yasmin_practicas/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/user/ros2_ws/install/yasmin_practicas/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/yasmin_practicas build --build-base /home/user/ros2_ws/build/yasmin_practicas/build install --record /home/user/ros2_ws/build/yasmin_practicas/install.log --single-version-externally-managed install_data
+[1.669s] running egg_info
+[1.670s] writing ../../build/yasmin_practicas/yasmin_practicas.egg-info/PKG-INFO
+[1.670s] writing dependency_links to ../../build/yasmin_practicas/yasmin_practicas.egg-info/dependency_links.txt
+[1.670s] writing entry points to ../../build/yasmin_practicas/yasmin_practicas.egg-info/entry_points.txt
+[1.670s] writing requirements to ../../build/yasmin_practicas/yasmin_practicas.egg-info/requires.txt
+[1.671s] writing top-level names to ../../build/yasmin_practicas/yasmin_practicas.egg-info/top_level.txt
+[1.674s] reading manifest file '../../build/yasmin_practicas/yasmin_practicas.egg-info/SOURCES.txt'
+[1.675s] writing manifest file '../../build/yasmin_practicas/yasmin_practicas.egg-info/SOURCES.txt'
+[1.676s] running build
+[1.676s] running build_py
+[1.676s] copying yasmin_practicas/action_client_monitor.py -> /home/user/ros2_ws/build/yasmin_practicas/build/lib/yasmin_practicas
+[1.676s] copying yasmin_practicas/service_client_multi.py -> /home/user/ros2_ws/build/yasmin_practicas/build/lib/yasmin_practicas
+[1.677s] running install
+[1.677s] running install_lib
+[1.679s] copying /home/user/ros2_ws/build/yasmin_practicas/build/lib/yasmin_practicas/action_client_monitor.py -> /home/user/ros2_ws/install/yasmin_practicas/lib/python3.10/site-packages/yasmin_practicas
+[1.681s] copying /home/user/ros2_ws/build/yasmin_practicas/build/lib/yasmin_practicas/service_client_multi.py -> /home/user/ros2_ws/install/yasmin_practicas/lib/python3.10/site-packages/yasmin_practicas
+[1.682s] byte-compiling /home/user/ros2_ws/install/yasmin_practicas/lib/python3.10/site-packages/yasmin_practicas/action_client_monitor.py to action_client_monitor.cpython-310.pyc
+[1.684s] byte-compiling /home/user/ros2_ws/install/yasmin_practicas/lib/python3.10/site-packages/yasmin_practicas/service_client_multi.py to service_client_multi.cpython-310.pyc
+[1.686s] running install_data
+[1.686s] running install_egg_info
+[1.689s] removing '/home/user/ros2_ws/install/yasmin_practicas/lib/python3.10/site-packages/yasmin_practicas-0.0.0-py3.10.egg-info' (and everything under it)
+[1.690s] Copying ../../build/yasmin_practicas/yasmin_practicas.egg-info to /home/user/ros2_ws/install/yasmin_practicas/lib/python3.10/site-packages/yasmin_practicas-0.0.0-py3.10.egg-info
+[1.691s] running install_scripts
+[1.728s] Installing action_client_monitor script to /home/user/ros2_ws/install/yasmin_practicas/lib/yasmin_practicas
+[1.728s] Installing service_client_multi script to /home/user/ros2_ws/install/yasmin_practicas/lib/yasmin_practicas
+[1.728s] Installing yasmin_demo_ejercicio1 script to /home/user/ros2_ws/install/yasmin_practicas/lib/yasmin_practicas
+[1.728s] Installing yasmin_demo_ejercicio2 script to /home/user/ros2_ws/install/yasmin_practicas/lib/yasmin_practicas
+[1.729s] writing list of installed files to '/home/user/ros2_ws/build/yasmin_practicas/install.log'
+[1.777s] Invoked command in '/home/user/ros2_ws/src/yasmin_practicas' returned '0': PYTHONPATH=/home/user/ros2_ws/build/yasmin_practicas/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/user/ros2_ws/install/yasmin_practicas/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/yasmin_practicas build --build-base /home/user/ros2_ws/build/yasmin_practicas/build install --record /home/user/ros2_ws/build/yasmin_practicas/install.log --single-version-externally-managed install_data

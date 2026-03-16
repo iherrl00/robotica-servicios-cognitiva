@@ -1,0 +1,43 @@
+PRÁCTICA 2 - ROBÓTICA DE SERVICIOS
+Turtlebot 4 con Gazebo Ignition y ROS 2
+Estudiante: Isabella Herrarte López
+Fecha: Octubre 2025
+Repositorio: robotica-servicios-2025-iherrl00
+
+1. ROS2 (PUBLISH - SUBSCRIBE)
+Carpeta: ros2_ws/src
+
+2. SIMULACIÓN DE UN ROBOT TURTLEBOT
+README: TurtleBot Setup
+Archivo: circle_drive.py
+
+# Crear la imagen
+docker build -t ros2_humble_practicas .
+
+# Conectarse al contenedor
+docker exec -it ros2_p2_container bash
+# Compilar workspace
+colcon build --symlink-install
+source /opt/ros/humble/setup.bash
+# Ir al workspace
+cd ~/ros2_ws
+# Crear el archivo
+nano circle_drive.py
+# Dar permisos de ejecución
+chmod +x circle_drive.py
+# Terminal 1: Gazebo
+source install/setup.bash
+export TURTLEBOT3_MODEL=waffle
+ros2 launch turtlebot3_gazebo turtlebot3_world.launch.py
+# Otras opciones
+sudo apt-get update
+sudo apt-get install ros-humble-turtlebot4-simulator
+ros2 launch turtlebot4_ignition_bringup turtlebot4_ignition.launch.py world:=maze
+ros2 launch turtlebot4_ignition_bringup turtlebot4_ignition.launch.py rviz:=true
+ros2 run teleop_twist_keyboard teleop_twist_keyboard
+ros2 topic pub /cmd_vel geometry_msgs/msg/Twist '{linear: {x: 0.2}, angular: {z: -0.2}}'
+# Terminal 2: Ejecutar el script
+docker exec -it ros2_p2_container bash
+source install/setup.bash
+cd src
+python3 circle_drive.py

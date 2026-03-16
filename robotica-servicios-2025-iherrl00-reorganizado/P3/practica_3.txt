@@ -1,0 +1,899 @@
+PRÁCTICA 3 - ROBÓTICA DE SERVICIOS
+Modern Gazebo Fortress
+
+Estudiante: Isabella Herrarte López
+Fecha: Octubre 2025
+Repositorio: robotica-servicios-2025-iherrl00
+
+INTRODUCCIÓN
+Esta práctica cubre el uso de Modern Gazebo Fortress con ROS 2, incluyendo
+la instalación, configuración, y creación de simulaciones con sensores,
+robots y plugins personalizados.
+
+EJERCICIO 1: INSTALACIÓN Y CONFIGURACIÓN DE GAZEBO FORTRESS
+
+1.1 CLONAR REPOSITORIO DEL TUTORIAL
+Para comenzar, necesitamos clonar el repositorio con los materiales:
+
+cd ~
+git clone https://github.com/fjrodl/ROS2andGazebo.git
+
+1.2 CONFIGURACIÓN CON DOCKER (ALTERNATIVA)
+Si prefieres usar Docker para el entorno de desarrollo:
+
+PASO 1: Construir la imagen Docker
+cd ROSConES/Docker
+docker build -t ros2_humble_practicas .
+docker compose up
+
+PASO 2: Acceder al contenedor
+En otro terminal:
+docker exec -it ros2_p3_container bash
+
+PASO 3: Solución de problemas
+Si falla la conexión:
+# Fuera del contendor
+docker context use default
+docker context ls
+
+#Dentro del contenedor
+sudo chown -R user:user /home/user/ros2_ws
+
+1.3 COMPILAR EL WORKSPACE
+Una vez configurado el entorno:
+
+colcon build --symlink-install
+source /opt/ros/humble/setup.bash
+source install/setup.bash
+
+¿POR QUÉ USAR --symlink-install?
+- Permite modificar archivos sin recompilar
+- Útil para desarrollo iterativo
+- Ahorra tiempo en el proceso de desarrollo
+
+EJERCICIO 2: COMANDOS BÁSICOS DE GAZEBO
+
+2.1 INICIAR GAZEBO
+Existen diferentes formas de iniciar Gazebo:
+
+OPCIÓN A: Con menú de selección de escena
+ign gazebo
+
+OPCIÓN B: Escena vacía directamente
+ign gazebo empty.sdf
+
+2.2 COMANDOS DE TOPICS DE GAZEBO
+Gazebo tiene su propio sistema de topics, similar a ROS pero independiente.
+
+LISTAR TOPICS ACTIVOS:
+ign topic -l
+
+INFORMACIÓN DE UN TOPIC ESPECÍFICO:
+ign topic -i -t /topic_name
+
+ESCUCHAR CONTENIDO DE UN TOPIC:
+ign topic -e -t /topic_name
+
+EJEMPLO PRÁCTICO:
+ign topic -e -t cube_camera/camera_info
+
+¿QUÉ SON LOS TOPICS DE GAZEBO?
+- Sistema de comunicación interno de Gazebo
+- Similar a ROS topics pero independiente
+- Requiere bridge para comunicarse con ROS 2
+
+EJERCICIO 3: KEY PUBLISHER PLUGIN
+
+Este ejemplo muestra cómo usar plugins de Gazebo para capturar entradas
+del teclado.
+
+PASO 1: Abrir Gazebo con escena vacía
+ign gazebo empty.sdf
+
+PASO 2: Añadir plugin Key Publisher
+Desde el menú de Gazebo (3 puntos verticales), seleccionar Key Publisher
+
+PASO 3: Iniciar simulación
+Presionar el botón play en la interfaz de Gazebo
+
+PASO 4: Verificar topics
+En otra terminal:
+ign topic -l
+
+Deberías ver el topic /keyboard/keypress
+
+PASO 5: Escuchar teclas presionadas
+ign topic -e -t /keyboard/keypress
+
+RESULTADO ESPERADO:
+Cada vez que presiones una tecla en la ventana de Gazebo, verás el código
+de la tecla publicado en el topic.
+
+EJERCICIO 4: SPAWN DE OBJETO SIMPLE
+
+Este ejemplo muestra cómo crear y cargar un objeto básico en Gazebo
+usando URDF/XACRO.
+
+4.1 CREAR EL PAQUETE
+PASO 1: Crear estructura del paquete
+ros2 pkg create spawn_simple_object --dependencies xacro
+cd spawn_simple_object
+mkdir launch urdf
+
+PASO 2: Crear archivo URDF
+cd urdf
+nano cube.urdf.xacro
+
+Este archivo contendrá la descripción del cubo que queremos spawnear.
+
+4.2 CONFIGURAR CMAKELISTS.TXT
+Es importante instalar las carpetas launch y urdf para que sean accesibles:
+
+MODIFICAR CMakeLists.txt:
+Añadir después de find_package:
+install(DIRECTORY launch urdf DESTINATION share/${PROJECT_NAME})
+
+¿POR QUÉ ES NECESARIO?
+- Copia los archivos al espacio de instalación
+- Permite que ros2 launch encuentre los archivos
+- Necesario para compartir el paquete
+
+4.3 COMPILAR Y LANZAR
+COMPILAR:
+cd ~/ros2_ws
+colcon build --symlink-install
+source install/setup.bash
+
+LANZAR:
+ros2 launch spawn_simple_object spawn_model.launch.py
+
+RESULTADO ESPERADO:
+Deberías ver Gazebo abrirse con un cubo en la escena.
+
+EJERCICIO 5: SENSORES EN GAZEBO
+
+Este ejemplo muestra cómo añadir diferentes sensores (cámara RGB,
+profundidad y LIDAR) a un objeto en Gazebo.
+
+5.1 INSTALAR DEPENDENCIAS
+Primero necesitamos instalar los paquetes de RealSense:
+
+sudo apt-get install ros-humble-realsense2-camera
+sudo apt-get install ros-humble-realsense2-description
+
+¿QUÉ SON ESTOS PAQUETES?
+- realsense2-camera: Driver para cámaras Intel RealSense
+- realsense2-description: Modelos URDF de las cámaras
+
+5.2 CREAR EL PAQUETE
+ros2 pkg create gazebo_sensors --dependencies xacro realsense2_description
+cd gazebo_sensors
+mkdir urdf launch
+touch urdf/cube_with_sensors.urdf.xacro
+touch launch/cube_with_sensors.launch.py
+
+5.3 PARÁMETROS DE SENSORES EN XACRO
+El archivo XACRO permite activar/desactivar sensores mediante parámetros:
+
+PARÁMETROS DISPONIBLES:
+- use_camera: Activar cámara RGB
+- use_depth: Activar cámara de profundidad
+- use_lidar: Activar sensor LIDAR
+
+EJEMPLO DE USO:
+<xacro:arg name="use_camera" default="true"/>
+<xacro:arg name="use_depth" default="true"/>
+<xacro:arg name="use_lidar" default="true"/>
+
+5.4 VISUALIZACIÓN CON RQT
+Para visualizar las imágenes de las cámaras:
+
+INSTALAR RQT:
+sudo apt-get install ros-humble-rqt-*
+
+EJECUTAR VISOR DE IMÁGENES:
+ros2 run rqt_image_view rqt_image_view
+
+FUNCIONALIDAD:
+- Interfaz gráfica para ver imágenes
+- Permite seleccionar diferentes topics
+- Útil para debugging de sensores
+
+5.5 VISUALIZACIÓN CON RVIZ2
+Para visualizar datos 3D como nubes de puntos y laser scans:
+
+EJECUTAR RVIZ2:
+rviz2
+
+CONFIGURACIÓN:
+1. Añadir plugin LaserScan para visualizar LIDAR
+2. Añadir plugin PointCloud2 para profundidad
+3. Añadir plugin Image para cámaras
+4. Configurar Fixed Frame apropiado
+
+EJERCICIO 6: ROS2 BRIDGE
+
+El ros_gz_bridge es fundamental para comunicar Gazebo con ROS 2, traduciendo
+mensajes entre ambos sistemas.
+
+6.1 CONCEPTO DEL BRIDGE
+¿QUÉ ES EL BRIDGE?
+- Traduce mensajes entre ROS 2 y Gazebo
+- Permite comunicación bidireccional
+- Mapea tipos de mensajes entre sistemas
+
+¿POR QUÉ ES NECESARIO?
+- Gazebo usa su propio sistema de mensajes
+- ROS 2 tiene sus propios tipos de mensajes
+- El bridge hace la conversión automática
+
+6.2 SINTAXIS BÁSICA
+COMANDO GENERAL:
+ros2 run ros_gz_bridge parameter_bridge /TOPIC@ROS_MSG@GZ_MSG
+
+EJEMPLO:
+ros2 run ros_gz_bridge parameter_bridge /cube_camera/camera_info@sensor_msgs/msg/CameraInfo@ignition.msgs.CameraInfo
+
+SÍMBOLOS DE DIRECCIÓN:
+- @ : Bidireccional (ROS ↔ Gazebo)
+- [ : Unidireccional Gazebo → ROS 2
+- ] : Unidireccional ROS 2 → Gazebo
+
+6.3 EJEMPLO: KEY PUBLISHER BRIDGE
+Vamos a conectar el Key Publisher de Gazebo con ROS 2.
+
+PASO 1: Obtener tipo de mensaje de Gazebo
+ign topic -i -t /keyboard/keypress
+
+Esto mostrará: ignition.msgs.Int32
+
+PASO 2: Iniciar el bridge
+ros2 run ros_gz_bridge parameter_bridge /keyboard/keypress@std_msgs/msg/Int32[ignition.msgs.Int32
+
+NOTA EL SÍMBOLO [: 
+Indica que los mensajes solo van de Gazebo a ROS 2.
+
+PASO 3: Escuchar en ROS 2
+En otra terminal:
+ros2 topic echo /keyboard/keypress
+
+RESULTADO ESPERADO:
+Verás los códigos de teclas publicados en el topic de ROS 2 cuando
+presiones teclas en Gazebo.
+
+6.4 BRIDGE DE SENSORES
+Para sensores es más conveniente usar un launch file:
+
+LANZAR SIMULACIÓN:
+ros2 launch gazebo_sensors cube_with_sensors.launch.py
+
+LANZAR BRIDGE:
+ros2 launch gazebo_sensors gazebo_bridge.launch.py
+
+6.5 VERIFICAR TIPOS DE MENSAJE
+Es importante conocer los tipos de mensaje para configurar el bridge:
+
+CÁMARA INFO:
+ign topic -i -t /cube_camera/camera_info
+# Tipo: CameraInfo
+
+IMAGEN RAW:
+ign topic -i -t /cube_camera/image_raw
+# Tipo: Image
+
+NUBE DE PUNTOS:
+ign topic -i -t /cube_depth/image_raw/points
+# Tipo: PointCloudPacked
+
+LASER SCAN:
+ign topic -i -t /lidar
+# Tipo: LaserScan
+
+EJERCICIO 7: ROBOT DIFFERENTIAL DRIVE
+
+Este ejemplo muestra cómo crear un robot móvil con tracción diferencial,
+capaz de moverse en el entorno simulado.
+
+7.1 CREAR EL PAQUETE
+ros2 pkg create diff_drive_description --dependencies xacro
+cd diff_drive_description
+mkdir urdf launch
+nano urdf/diff_drive.urdf.xacro
+nano urdf/diff_drive_macro.xacro
+nano launch/diff_drive.launch.py
+
+¿POR QUÉ DOS ARCHIVOS XACRO?
+- diff_drive.urdf.xacro: Archivo principal
+- diff_drive_macro.xacro: Macros reutilizables (ruedas, etc.)
+
+7.2 ESTRUCTURA DEL ROBOT
+El robot differential drive típicamente tiene:
+
+COMPONENTES:
+- Base circular (link principal)
+- 2 ruedas activas con continuous joints
+- 2 ruedas pasivas (casters) con fixed joints
+- Sensor LIDAR para navegación
+
+¿QUÉ ES UN CONTINUOUS JOINT?
+- Joint que puede rotar infinitamente
+- No tiene límites de rotación
+- Ideal para ruedas
+
+7.3 PLUGIN DIFFERENTIAL DRIVE
+Este plugin controla el movimiento del robot:
+
+CONFIGURACIÓN EN XACRO:
+<plugin filename="libignition-gazebo-diff-drive-system.so" 
+        name="ignition::gazebo::systems::DiffDrive">
+    <left_joint>left_wheel_joint</left_joint>
+    <right_joint>right_wheel_joint</right_joint>
+    <wheel_separation>0.3</wheel_separation>
+    <wheel_radius>0.039</wheel_radius>
+    <odom_publish_frequency>10</odom_publish_frequency>
+    <topic>cmd_vel</topic>
+    <robotBaseFrame>base_link</robotBaseFrame>
+</plugin>
+
+PARÁMETROS IMPORTANTES:
+- left_joint/right_joint: Nombres de los joints de las ruedas
+- wheel_separation: Distancia entre ruedas (metros)
+- wheel_radius: Radio de las ruedas (metros)
+- odom_publish_frequency: Hz de publicación de odometría
+- topic: Topic para comandos de velocidad (cmd_vel)
+
+7.4 COMPILAR Y LANZAR
+COMPILAR:
+cd ~/ros2_ws
+colcon build --symlink-install
+source install/setup.bash
+
+LANZAR:
+ros2 launch diff_drive_description diff_drive.launch.py
+
+7.5 CONTROLAR EL ROBOT
+Existen varias formas de enviar comandos de velocidad:
+
+OPCIÓN A: Usando RQT (Recomendado)
+rqt
+
+Luego seleccionar: Plugins → Robot Tools → Robot Steering
+
+OPCIÓN B: Por línea de comandos
+ros2 topic pub /cmd_vel geometry_msgs/msg/Twist "{linear: {x: 0.5}, angular: {z: 0.5}}"
+
+EXPLICACIÓN DEL MENSAJE:
+- linear.x: Velocidad lineal (m/s) hacia adelante/atrás
+- angular.z: Velocidad angular (rad/s) rotación
+
+7.6 TOPICS DEL BRIDGE
+El differential drive usa estos topics:
+
+COMANDO DE VELOCIDAD:
+- Topic: /cmd_vel
+- Dirección: ROS 2 → Gazebo
+- Tipo: geometry_msgs/msg/Twist
+
+ODOMETRÍA:
+- Topic: /model/diff_drive/odometry
+- Dirección: Gazebo → ROS 2
+- Tipo: nav_msgs/msg/Odometry
+
+¿QUÉ ES ODOMETRÍA?
+- Estimación de posición del robot
+- Basada en rotación de ruedas
+- Incluye pose y velocidad
+
+EJERCICIO 8: PLUGINS PERSONALIZADOS DE GAZEBO
+
+Los plugins personalizados permiten añadir funcionalidad específica
+a la simulación que no existe en los plugins estándar.
+
+8.1 ESTRUCTURA BÁSICA
+CREAR DIRECTORIOS:
+mkdir hello_world && cd hello_world
+nano HelloWorld.cpp
+nano CMakeLists.txt
+nano hello_world_plugin.sdf
+
+8.2 COMPILAR EL PLUGIN
+PASO 1: Compilar con CMake
+mkdir build && cd build
+cmake ..
+make
+
+PASO 2: Exportar ruta del plugin
+export GZ_SIM_SYSTEM_PLUGIN_PATH=`pwd`/build
+
+¿POR QUÉ EXPORTAR LA RUTA?
+- Gazebo necesita saber dónde encontrar el plugin
+- La variable de entorno indica la ubicación
+- Se puede añadir al .bashrc para persistencia
+
+8.3 LANZAR CON EL PLUGIN
+ign gazebo -v 3 hello_world_plugin.sdf
+
+NOTA: -v 3 activa verbosidad nivel 3 para ver mensajes del plugin
+
+8.4 ESTRUCTURA DE UN PLUGIN EN C++
+CÓDIGO BÁSICO:
+#include <gz/plugin/Register.hh>
+#include <gz/sim/System.hh>
+
+namespace mi_plugin {
+    class MiPlugin : 
+        public gz::sim::System,
+        public gz::sim::ISystemPostUpdate
+    {
+        public: void PostUpdate(
+            const gz::sim::UpdateInfo &_info,
+            const gz::sim::EntityComponentManager &_ecm) override;
+    };
+}
+
+IGNITION_ADD_PLUGIN(
+    mi_plugin::MiPlugin, 
+    gz::sim::System,
+    mi_plugin::MiPlugin::ISystemPostUpdate
+)
+
+INTERFACES DISPONIBLES:
+- ISystemConfigure: Inicialización
+- ISystemPreUpdate: Antes de cada paso
+- ISystemUpdate: Durante cada paso
+- ISystemPostUpdate: Después de cada paso
+
+EJERCICIO 9: FORMATOS DE ARCHIVO EN ROS/GAZEBO
+
+Es importante entender los diferentes formatos de archivo utilizados
+en robótica para elegir el apropiado para cada tarea.
+
+9.1 URDF (UNIFIED ROBOT DESCRIPTION FORMAT)
+¿QUÉ ES?
+- Formato XML para describir robots en ROS
+- Estándar de facto en ROS
+- Relativamente simple pero limitado
+
+COMPONENTES:
+- Links: Partes físicas del robot
+- Joints: Conexiones entre links
+- Visual: Geometría para visualización
+- Collision: Geometría para colisiones
+- Inertial: Propiedades físicas
+
+LIMITACIONES:
+- No puede describir mundos completos
+- Sensores limitados
+- No soporta física compleja
+
+USO TÍPICO:
+- Descripción estática de robots
+- Visualización en RViz
+- Cinemática básica
+
+9.2 SDF (SIMULATION DESCRIPTION FORMAT)
+¿QUÉ ES?
+- Formato XML agnóstico a ROS
+- Más completo y flexible que URDF
+- Estándar para Gazebo
+
+VENTAJAS SOBRE URDF:
+- Puede describir mundos completos
+- Sensores avanzados
+- Física detallada
+- Plugins integrados
+- Múltiples modelos en un archivo
+
+USO TÍPICO:
+- Simulaciones complejas en Gazebo
+- Mundos con múltiples robots
+- Física avanzada
+
+COMPATIBILIDAD:
+- URDF puede convertirse a SDF
+- SDF no siempre puede convertirse a URDF
+
+9.3 XACRO (XML MACROS)
+¿QUÉ ES?
+- Extensión de URDF/XML
+- Añade programabilidad a XML
+- Reduce repetición de código
+
+CARACTERÍSTICAS:
+- Macros: Bloques de código reutilizables
+- Variables: Parámetros configurables
+- Lógica condicional: if/unless
+- Operaciones matemáticas
+- Inclusión de archivos
+
+EJEMPLO DE MACRO:
+<xacro:macro name="rueda" params="nombre radio">
+  <link name="${nombre}">
+    <visual>
+      <geometry>
+        <cylinder radius="${radio}" length="0.05"/>
+      </geometry>
+    </visual>
+  </link>
+</xacro:macro>
+
+PROCESAMIENTO:
+xacro file.xacro > output.urdf
+
+USO TÍPICO:
+- Robots con partes repetitivas (ruedas)
+- Configuraciones parametrizables
+- Proyectos grandes modulares
+
+9.4 DAE (COLLADA DIGITAL ASSET EXCHANGE)
+¿QUÉ ES?
+- Formato 3D basado en XML
+- Estándar de intercambio de modelos 3D
+- Ampliamente soportado
+
+CONTENIDO:
+- Geometría 3D (meshes)
+- Texturas y materiales
+- Colores y shaders
+- Animaciones (opcional)
+- Cámaras y luces
+
+USO EN ROS/GAZEBO:
+- Visualización de robots con modelos complejos
+- Meshes personalizados
+- Apariencia realista
+
+HERRAMIENTAS COMPATIBLES:
+- Blender (open source)
+- Maya
+- 3ds Max
+- SketchUp
+
+CONVERSIÓN:
+Muchas herramientas 3D pueden exportar a DAE.
+
+EJERCICIO 10: LAUNCH FILES EN ROS 2
+
+Los launch files permiten iniciar múltiples nodos y configurar parámetros
+de forma automatizada.
+
+10.1 TIPOS DE LAUNCH FILES
+ROS 2 soporta tres formatos:
+
+1. PYTHON (.py)
+VENTAJAS:
+- Máxima flexibilidad
+- Lógica avanzada (if/else, loops)
+- Integración con código Python
+
+DESVENTAJAS:
+- Más verboso
+- Requiere conocimientos de Python
+
+2. XML (.xml)
+VENTAJAS:
+- Sintaxis simple
+- Compatible con ROS 1
+- Fácil de leer
+
+DESVENTAJAS:
+- Menos flexible
+- No permite lógica compleja
+
+3. YAML (.yaml)
+VENTAJAS:
+- Muy compacto
+- Fácil de escribir
+- Bueno para configuraciones
+
+DESVENTAJAS:
+- Funcionalidad limitada
+- No todo está implementado aún
+
+10.2 ESTRUCTURA BÁSICA EN PYTHON
+PLANTILLA:
+from launch import LaunchDescription
+from launch_ros.actions import Node
+
+def generate_launch_description():
+    return LaunchDescription([
+        Node(
+            package='mi_paquete',
+            executable='mi_nodo',
+            name='mi_nodo_nombre',
+            output='screen',
+            parameters=[{'param': value}]
+        )
+    ])
+
+COMPONENTES:
+- LaunchDescription: Contenedor principal
+- Node: Representa un nodo a lanzar
+- package: Nombre del paquete ROS
+- executable: Nombre del ejecutable
+- name: Nombre del nodo en runtime
+- output: Dónde mostrar la salida
+- parameters: Diccionario de parámetros
+
+10.3 LANZAR UN LAUNCH FILE
+SINTAXIS:
+ros2 launch paquete archivo.launch.py
+
+EJEMPLO:
+ros2 launch diff_drive_description diff_drive.launch.py
+
+BÚSQUEDA:
+ros2 launch busca automáticamente en:
+- share/paquete/launch/
+
+10.4 ELEMENTOS AVANZADOS
+INCLUIR OTROS LAUNCH FILES:
+from launch.actions import IncludeLaunchDescription
+
+IncludeLaunchDescription(
+    PythonLaunchDescriptionSource('otro.launch.py')
+)
+
+ARGUMENTOS:
+from launch.actions import DeclareLaunchArgument
+
+DeclareLaunchArgument(
+    'use_sim_time',
+    default_value='true'
+)
+
+CONDICIONALES:
+from launch.conditions import IfCondition
+
+Node(
+    ...,
+    condition=IfCondition(LaunchConfiguration('use_camera'))
+)
+
+EJERCICIO 11: CONCEPTOS CLAVE DE GAZEBO Y ROS 2
+
+11.1 GAZEBO TOPICS
+¿QUÉ SON?
+- Sistema de comunicación interno de Gazebo
+- Similar a ROS topics pero independiente
+- Usa el protocolo Ignition Transport
+
+DIFERENCIAS CON ROS TOPICS:
+- No son automáticamente accesibles desde ROS
+- Requieren bridge para interoperar
+- Tipos de mensaje diferentes
+
+COMANDOS ÚTILES:
+ign topic -l                    # Listar topics
+ign topic -i -t /topic          # Info del topic
+ign topic -e -t /topic          # Escuchar topic
+
+11.2 ROS_GZ_BRIDGE
+¿QUÉ ES?
+- Puente de comunicación entre ROS 2 y Gazebo
+- Traduce tipos de mensajes
+- Permite control bidireccional
+
+FUNCIONAMIENTO:
+1. Escucha topics de Gazebo
+2. Traduce mensajes al formato ROS
+3. Publica en topics ROS
+4. Y viceversa
+
+LIMITACIONES:
+- No todos los tipos de mensaje son compatibles
+- Puede introducir latencia mínima
+- Requiere configuración explícita
+
+11.3 PLUGINS DE GAZEBO
+¿QUÉ SON?
+- Componentes que añaden funcionalidad
+- Se cargan dinámicamente
+- Pueden modificar la simulación
+
+TIPOS:
+- World: Afectan al mundo completo
+- Model: Afectan a un modelo específico
+- Sensor: Procesan datos de sensores
+- System: Funcionalidad general
+
+VENTAJA EN MODERN GAZEBO:
+- Un plugin universal para todos los sensores
+- Configuración más simple
+- Mejor rendimiento
+
+11.4 ROBOT_STATE_PUBLISHER
+¿QUÉ ES?
+- Nodo que publica transformadas (TF) del robot
+- Lee la descripción del robot
+- Calcula cinemática directa
+
+FUNCIONAMIENTO:
+1. Lee URDF del topic /robot_description
+2. Calcula posición de todos los links
+3. Publica transformadas en /tf
+
+¿POR QUÉ ES NECESARIO?
+- RViz necesita las transformadas para visualizar
+- Otros nodos necesitan saber dónde están las partes
+- Fundamental para navegación y manipulación
+
+LANZAMIENTO TÍPICO:
+Node(
+    package='robot_state_publisher',
+    executable='robot_state_publisher',
+    parameters=[{'robot_description': robot_desc}]
+)
+
+EJERCICIO 12: DEBUGGING Y HERRAMIENTAS
+
+12.1 VERIFICAR TOPICS ROS 2
+LISTAR TODOS LOS TOPICS:
+ros2 topic list
+
+VER MENSAJES EN TIEMPO REAL:
+ros2 topic echo /topic_name
+
+EJEMPLO:
+ros2 topic echo /cube_camera/camera_info
+
+INFORMACIÓN DEL TOPIC:
+ros2 topic info /topic_name
+
+Muestra:
+- Tipo de mensaje
+- Número de publishers
+- Número de subscribers
+
+FRECUENCIA DE PUBLICACIÓN:
+ros2 topic hz /topic_name
+
+12.2 VERIFICAR NODOS ROS 2
+LISTAR NODOS ACTIVOS:
+ros2 node list
+
+INFORMACIÓN DE UN NODO:
+ros2 node info /node_name
+
+Muestra:
+- Subscribers
+- Publishers
+- Services
+- Actions
+
+12.3 VERIFICAR TRANSFORMADAS (TF)
+GENERAR GRÁFICO DE TRANSFORMADAS:
+ros2 run tf2_tools view_frames
+
+Genera un PDF con el árbol de transformadas.
+
+VER TRANSFORMADA ENTRE DOS FRAMES:
+ros2 run tf2_ros tf2_echo frame1 frame2
+
+EJEMPLO:
+ros2 run tf2_ros tf2_echo base_link lidar_link
+
+12.4 LOGS DE GAZEBO
+AUMENTAR VERBOSIDAD:
+ign gazebo -v 3 world.sdf  # Nivel 3
+ign gazebo -v 4 world.sdf  # Nivel 4 (máximo)
+
+NIVELES:
+- 0: Silencioso
+- 1: Errores
+- 2: Warnings
+- 3: Info
+- 4: Debug
+
+EJERCICIO 13: ERRORES COMUNES Y SOLUCIONES
+
+13.1 PLUGIN NO ENCONTRADO
+SÍNTOMA:
+Error: "Failed to load plugin"
+
+SOLUCIÓN:
+Exportar la ruta de plugins:
+export GZ_SIM_SYSTEM_PLUGIN_PATH=/ruta/a/plugins
+
+HACER PERMANENTE:
+Añadir al ~/.bashrc:
+echo 'export GZ_SIM_SYSTEM_PLUGIN_PATH=/ruta/a/plugins' >> ~/.bashrc
+
+13.2 BRIDGE NO FUNCIONA
+SÍNTOMA:
+Los topics no aparecen en ROS 2
+
+DIAGNÓSTICO:
+1. Verificar tipo de mensaje en Gazebo:
+   ign topic -i -t /topic_name
+
+2. Verificar tipo en ROS 2:
+   ros2 interface show tipo/mensaje
+
+3. Confirmar compatibilidad entre tipos
+
+SOLUCIÓN:
+Usar los tipos de mensaje correctos en el bridge.
+
+13.3 ROBOT CAE INFINITAMENTE
+SÍNTOMA:
+El robot desaparece hacia abajo en la simulación
+
+CAUSA:
+No hay plano de suelo en el mundo
+
+SOLUCIÓN A:
+Usar un mundo que incluya suelo:
+ign gazebo empty.sdf
+
+SOLUCIÓN B:
+Añadir ground plane manualmente en el archivo SDF del mundo.
+
+13.4 COMPILACIÓN FALLA
+SÍNTOMA:
+Errores durante colcon build
+
+SOLUCIÓN 1: Limpiar workspace
+rm -rf build install log
+colcon build --symlink-install
+source install/setup.bash
+
+SOLUCIÓN 2: Verificar dependencias
+rosdep install --from-paths src -y --ignore-src
+
+SOLUCIÓN 3: Compilar paquete individual
+colcon build --packages-select nombre_paquete
+
+CONCLUSIONES DE LA PRÁCTICA
+En esta práctica he aprendido:
+
+1. ✓ Instalar y configurar Gazebo Fortress
+2. ✓ Usar comandos básicos de Gazebo (ign gazebo, ign topic)
+3. ✓ Crear objetos simples en simulación
+4. ✓ Añadir sensores (cámara, profundidad, LIDAR) a modelos
+5. ✓ Usar el ros_gz_bridge para comunicar ROS 2 con Gazebo
+6. ✓ Crear un robot differential drive funcional
+7. ✓ Desarrollar plugins personalizados de Gazebo
+8. ✓ Entender diferentes formatos (URDF, SDF, XACRO, DAE)
+9. ✓ Crear launch files para automatizar inicialización
+10. ✓ Visualizar datos con RViz2 y rqt_image_view
+11. ✓ Debuggear problemas comunes en simulación
+
+COMANDOS ESENCIALES A RECORDAR:
+
+# Gazebo
+ign gazebo empty.sdf
+ign topic -l
+ign topic -e -t /topic_name
+
+# Compilar
+colcon build --symlink-install
+source install/setup.bash
+
+# Bridge
+ros2 run ros_gz_bridge parameter_bridge /topic@ROS_MSG@GZ_MSG
+
+# Control de robot
+ros2 topic pub /cmd_vel geometry_msgs/msg/Twist "{linear: {x: 0.5}}"
+
+# Visualización
+rviz2
+ros2 run rqt_image_view rqt_image_view
+
+# Debugging
+ros2 topic list
+ros2 topic echo /topic_name
+ros2 node list
+
+BUENAS PRÁCTICAS:
+- Siempre hacer source install/setup.bash después de compilar
+- Usar --symlink-install para desarrollo iterativo
+- Verificar tipos de mensaje antes de configurar bridge
+- Aumentar verbosidad de Gazebo (-v 3) para debugging
+- Mantener código URDF/XACRO modular con macros
+- Documentar parámetros en launch files
+
+RECURSOS ADICIONALES:
+- Documentación Gazebo Fortress: https://gazebosim.org/docs/fortress
+- ROS 2 Humble Docs: https://docs.ros.org/en/humble/
+- Tutorial original: https://github.com/fjrodl/ROS2andGazebo
