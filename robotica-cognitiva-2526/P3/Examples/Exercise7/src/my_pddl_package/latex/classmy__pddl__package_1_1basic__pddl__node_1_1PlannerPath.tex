@@ -1,0 +1,241 @@
+\doxysection{my\+\_\+pddl\+\_\+package.\+basic\+\_\+pddl\+\_\+node.\+Planner\+Path Class Reference}
+\hypertarget{classmy__pddl__package_1_1basic__pddl__node_1_1PlannerPath}{}\label{classmy__pddl__package_1_1basic__pddl__node_1_1PlannerPath}\index{my\_pddl\_package.basic\_pddl\_node.PlannerPath@{my\_pddl\_package.basic\_pddl\_node.PlannerPath}}
+
+
+Inheritance diagram for my\+\_\+pddl\+\_\+package.\+basic\+\_\+pddl\+\_\+node.\+Planner\+Path\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=213pt]{classmy__pddl__package_1_1basic__pddl__node_1_1PlannerPath__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for my\+\_\+pddl\+\_\+package.\+basic\+\_\+pddl\+\_\+node.\+Planner\+Path\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=213pt]{classmy__pddl__package_1_1basic__pddl__node_1_1PlannerPath__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classmy__pddl__package_1_1basic__pddl__node_1_1PlannerPath_a89dff1e4fb3967f9aac776ef4b254078}{\+\_\+\+\_\+init\+\_\+\+\_\+}} (self)
+\item 
+\mbox{\hyperlink{classmy__pddl__package_1_1basic__pddl__node_1_1PlannerPath_ab94e7e6b7fca9eef1f6d5db21dea6f6d}{load\+\_\+waypoints}} (self, file\+\_\+path)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classmy__pddl__package_1_1basic__pddl__node_1_1PlannerPath_acbf7f13a03344c4f248ddb094bf14373}{nav\+\_\+pose\+\_\+client}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyVerb}Class in charge of loading and sending waypoints
+\end{DoxyVerb}
+ 
+
+Definition at line \mbox{\hyperlink{basic__pddl__node_8py_source_l00044}{44}} of file \mbox{\hyperlink{basic__pddl__node_8py_source}{basic\+\_\+pddl\+\_\+node.\+py}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classmy__pddl__package_1_1basic__pddl__node_1_1PlannerPath_a89dff1e4fb3967f9aac776ef4b254078}\label{classmy__pddl__package_1_1basic__pddl__node_1_1PlannerPath_a89dff1e4fb3967f9aac776ef4b254078} 
+\index{my\_pddl\_package.basic\_pddl\_node.PlannerPath@{my\_pddl\_package.basic\_pddl\_node.PlannerPath}!\_\_init\_\_@{\_\_init\_\_}}
+\index{\_\_init\_\_@{\_\_init\_\_}!my\_pddl\_package.basic\_pddl\_node.PlannerPath@{my\_pddl\_package.basic\_pddl\_node.PlannerPath}}
+\doxysubsubsection{\texorpdfstring{\_\_init\_\_()}{\_\_init\_\_()}}
+{\footnotesize\ttfamily my\+\_\+pddl\+\_\+package.\+basic\+\_\+pddl\+\_\+node.\+Planner\+Path.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{basic__pddl__node_8py_source_l00048}{48}} of file \mbox{\hyperlink{basic__pddl__node_8py_source}{basic\+\_\+pddl\+\_\+node.\+py}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00048\ \ \ \ \ \textcolor{keyword}{def\ }\_\_init\_\_(self):}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ super().\_\_init\_\_(\textcolor{stringliteral}{"{}planer\_path"{}})}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ self.nav\_pose\_client\ =\ ActionClient(self,\ NavigateToPose,\ \textcolor{stringliteral}{"{}navigate\_to\_pose"{}})}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \textcolor{keyword}{with}\ open(os.path.join(PATH\_PDDL\_FILES,\ DOMAIN\_PDDL\_FILE),\ encoding=\textcolor{stringliteral}{"{}utf-\/8"{}})\ \textcolor{keyword}{as}\ f:}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \ \ \ \ read\_data\ =\ f.read()}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \ \ \ \ self.get\_logger().info(f\textcolor{stringliteral}{"{}PDDL\ Domain\ File\ Content:\(\backslash\)n\{read\_data\}"{}})}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Launch\ the\ planner}}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ solver\ =\ subprocess.Popen(}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \ \ \ \ args=[}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ SOLVER\_PATH,}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ os.path.join(PATH\_PDDL\_FILES,\ DOMAIN\_PDDL\_FILE),}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ os.path.join(PATH\_PDDL\_FILES,\ PROBLEM\_PDDL\_FILE),}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \ \ \ \ ],}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \ \ \ \ stdout=subprocess.PIPE,}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ )}
+\DoxyCodeLine{00065\ }
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Load\ waypoints\ while\ the\ solver\ is\ running}}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ waypoints\ =\ self.load\_waypoints(}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \ \ \ \ os.path.join(PATH\_FOLDER\_WAYPOINTS,\ \textcolor{stringliteral}{"{}waypoints.yaml"{}})}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ )}
+\DoxyCodeLine{00070\ }
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ solver.wait()}
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ self.get\_logger().info(\textcolor{stringliteral}{"{}Finished\ PDDL\ solving\ step"{}})}
+\DoxyCodeLine{00073\ }
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Parse\ the\ output\ from\ the\ solver}}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ path\ =\ []}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ line\ \textcolor{keywordflow}{in}\ solver.stdout.readlines():}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \ \ \ \ self.get\_logger().info(f\textcolor{stringliteral}{"{}Solver\ output:\ \{line.strip()\}"{}})}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \ \ \ \ path.append(str(line).split(\textcolor{stringliteral}{"{}\ "{}})[2][:-\/1])}
+\DoxyCodeLine{00079\ }
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ navigator\ =\ BasicNavigator()}
+\DoxyCodeLine{00081\ }
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Send\ the\ path}}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ self.nav\_pose\_client.wait\_for\_server()}
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ point\ \textcolor{keywordflow}{in}\ path:}
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Get\ the\ waypoint\ to\ go\ to}}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \ \ \ \ waypoint\ =\ waypoints[point]}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{print}\ (\textcolor{stringliteral}{"{}>>>>>>>>>>>\ "{}}+point)}
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{print}\ (waypoint)}
+\DoxyCodeLine{00089\ }
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Set\ our\ demo's\ initial\ pose}}
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ initial\_pose\ =\ PoseStamped()}}
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ initial\_pose.header.frame\_id\ =\ 'map'}}
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ initial\_pose.header.stamp\ =\ navigator.get\_clock().now().to\_msg()}}
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ initial\_pose.pose.position.x\ =\ 0.0}}
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ initial\_pose.pose.position.y\ =\ 0.0}}
+\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ initial\_pose.pose.orientation.z\ =\ 0.0}}
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ initial\_pose.pose.orientation.w\ =\ 1.0}}
+\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ navigator.setInitialPose(initial\_pose)}}
+\DoxyCodeLine{00099\ }
+\DoxyCodeLine{00100\ }
+\DoxyCodeLine{00101\ }
+\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ If\ autostart,\ you\ should\ \`{}waitUntilNav2Active()`\ instead.}}
+\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ navigator.lifecycleStartup()}}
+\DoxyCodeLine{00104\ }
+\DoxyCodeLine{00105\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ \#\ Wait\ for\ navigation\ to\ fully\ activate,\ since\ autostarting\ nav2}}
+\DoxyCodeLine{00106\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ navigator.waitUntilNav2Active()}}
+\DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Go\ to\ our\ demos\ first\ goal\ pose}}
+\DoxyCodeLine{00108\ \ \ \ \ \ \ \ \ \ \ \ \ goal\_pose\ =\ PoseStamped()}
+\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ \ \ \ \ goal\_pose.header.stamp\ =\ navigator.get\_clock().now().to\_msg()}
+\DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ \ \ \ \ goal\_pose.header.frame\_id\ =\ waypoint[\textcolor{stringliteral}{"{}frame\_id"{}}]}
+\DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ \ \ \ \ goal\_pose.pose.position.x\ =\ waypoint[\textcolor{stringliteral}{"{}position"{}}][\textcolor{stringliteral}{"{}x"{}}]}
+\DoxyCodeLine{00112\ \ \ \ \ \ \ \ \ \ \ \ \ goal\_pose.pose.position.y\ =\ waypoint[\textcolor{stringliteral}{"{}position"{}}][\textcolor{stringliteral}{"{}y"{}}]}
+\DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ \ \ \ \ goal\_pose.pose.position.z\ =\ waypoint[\textcolor{stringliteral}{"{}position"{}}][\textcolor{stringliteral}{"{}z"{}}]}
+\DoxyCodeLine{00114\ \ \ \ \ \ \ \ \ \ \ \ \ goal\_pose.pose.orientation.x\ =\ waypoint[\textcolor{stringliteral}{"{}orientation"{}}][\textcolor{stringliteral}{"{}x"{}}]}
+\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ \ \ \ \ goal\_pose.pose.orientation.y\ =\ waypoint[\textcolor{stringliteral}{"{}orientation"{}}][\textcolor{stringliteral}{"{}y"{}}]}
+\DoxyCodeLine{00116\ \ \ \ \ \ \ \ \ \ \ \ \ goal\_pose.pose.orientation.w\ =\ waypoint[\textcolor{stringliteral}{"{}orientation"{}}][\textcolor{stringliteral}{"{}w"{}}]}
+\DoxyCodeLine{00117\ \ \ \ \ \ \ \ \ \ \ \ \ goal\_pose.pose.orientation.z\ =\ waypoint[\textcolor{stringliteral}{"{}orientation"{}}][\textcolor{stringliteral}{"{}z"{}}]}
+\DoxyCodeLine{00118\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ sanity\ check\ a\ valid\ path\ exists}}
+\DoxyCodeLine{00119\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ path\ =\ navigator.getPath(initial\_pose,\ goal\_pose)}}
+\DoxyCodeLine{00120\ }
+\DoxyCodeLine{00121\ \ \ \ \ \ \ \ \ \ \ \ \ navigator.goToPose(goal\_pose)}
+\DoxyCodeLine{00122\ }
+\DoxyCodeLine{00123\ \ \ \ \ \ \ \ \ \ \ \ \ i\ =\ 0}
+\DoxyCodeLine{00124\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ \textcolor{keywordflow}{not}\ navigator.isTaskComplete():}
+\DoxyCodeLine{00125\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00131\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ i\ =\ i\ +\ 1}
+\DoxyCodeLine{00132\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ feedback\ =\ navigator.getFeedback()}
+\DoxyCodeLine{00133\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ feedback\ \textcolor{keywordflow}{and}\ i\ \%\ 5\ ==\ 0:}
+\DoxyCodeLine{00134\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ print(\textcolor{stringliteral}{'Estimated\ time\ of\ arrival:\ '}\ +\ \textcolor{stringliteral}{'\{0:.0f\}'}.format(}
+\DoxyCodeLine{00135\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Duration.from\_msg(feedback.estimated\_time\_remaining).nanoseconds\ /\ 1e9)}
+\DoxyCodeLine{00136\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ +\ \textcolor{stringliteral}{'\ seconds.'})}
+\DoxyCodeLine{00137\ }
+\DoxyCodeLine{00138\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Some\ navigation\ timeout\ to\ demo\ cancellation}}
+\DoxyCodeLine{00139\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ Duration.from\_msg(feedback.navigation\_time)\ >\ Duration(seconds=600.0):}
+\DoxyCodeLine{00140\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ navigator.cancelTask()}
+\DoxyCodeLine{00141\ }
+\DoxyCodeLine{00142\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Some\ navigation\ request\ change\ to\ demo\ preemption}}
+\DoxyCodeLine{00143\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ Duration.from\_msg(feedback.navigation\_time)\ >\ Duration(seconds=18.0):}
+\DoxyCodeLine{00144\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ goal\_pose.pose.position.x\ =\ -\/3.0}
+\DoxyCodeLine{00145\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ navigator.goToPose(goal\_pose)}
+\DoxyCodeLine{00146\ }
+\DoxyCodeLine{00147\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Do\ something\ depending\ on\ the\ return\ code}}
+\DoxyCodeLine{00148\ \ \ \ \ \ \ \ \ \ \ \ \ result\ =\ navigator.getResult()}
+\DoxyCodeLine{00149\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ result\ ==\ TaskResult.SUCCEEDED:}
+\DoxyCodeLine{00150\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ self.get\_logger().info(\textcolor{stringliteral}{'Goal\ succeeded!'})}
+\DoxyCodeLine{00151\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{elif}\ result\ ==\ TaskResult.CANCELED:}
+\DoxyCodeLine{00152\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ self.get\_logger().info(\textcolor{stringliteral}{'Goal\ was\ canceled!'})}
+\DoxyCodeLine{00153\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{elif}\ result\ ==\ TaskResult.FAILED:}
+\DoxyCodeLine{00154\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ self.get\_logger().info(\textcolor{stringliteral}{'Goal\ failed!'})}
+\DoxyCodeLine{00155\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}:}
+\DoxyCodeLine{00156\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ self.get\_logger().info(\textcolor{stringliteral}{'Goal\ has\ an\ invalid\ return\ status!'})}
+\DoxyCodeLine{00157\ }
+\DoxyCodeLine{00158\ \ \ \ \ \ \ \ \ \ \ \ \ self.get\_logger().info(\textcolor{stringliteral}{"{}Arrived\ at\ the\ destination"{}})}
+\DoxyCodeLine{00159\ }
+\DoxyCodeLine{00160\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Check\ lifecycle\ and\ how\ to\ use\ it}}
+\DoxyCodeLine{00161\ \ \ \ \ \ \ \ \ navigator.lifecycleShutdown()}
+\DoxyCodeLine{00162\ }
+\DoxyCodeLine{00163\ }
+
+\end{DoxyCode}
+
+
+References \mbox{\hyperlink{basic__pddl__node_8py_source_l00048}{my\+\_\+pddl\+\_\+package.\+basic\+\_\+pddl\+\_\+node.\+Planner\+Path.\+\_\+\+\_\+init\+\_\+\+\_\+()}}.
+
+
+
+Referenced by \mbox{\hyperlink{basic__pddl__node_8py_source_l00048}{my\+\_\+pddl\+\_\+package.\+basic\+\_\+pddl\+\_\+node.\+Planner\+Path.\+\_\+\+\_\+init\+\_\+\+\_\+()}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=216pt]{classmy__pddl__package_1_1basic__pddl__node_1_1PlannerPath_a89dff1e4fb3967f9aac776ef4b254078_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=216pt]{classmy__pddl__package_1_1basic__pddl__node_1_1PlannerPath_a89dff1e4fb3967f9aac776ef4b254078_icgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classmy__pddl__package_1_1basic__pddl__node_1_1PlannerPath_ab94e7e6b7fca9eef1f6d5db21dea6f6d}\label{classmy__pddl__package_1_1basic__pddl__node_1_1PlannerPath_ab94e7e6b7fca9eef1f6d5db21dea6f6d} 
+\index{my\_pddl\_package.basic\_pddl\_node.PlannerPath@{my\_pddl\_package.basic\_pddl\_node.PlannerPath}!load\_waypoints@{load\_waypoints}}
+\index{load\_waypoints@{load\_waypoints}!my\_pddl\_package.basic\_pddl\_node.PlannerPath@{my\_pddl\_package.basic\_pddl\_node.PlannerPath}}
+\doxysubsubsection{\texorpdfstring{load\_waypoints()}{load\_waypoints()}}
+{\footnotesize\ttfamily my\+\_\+pddl\+\_\+package.\+basic\+\_\+pddl\+\_\+node.\+Planner\+Path.\+load\+\_\+waypoints (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{file\+\_\+path }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Load waypoints from a yaml file.
+\end{DoxyVerb}
+ 
+
+Definition at line \mbox{\hyperlink{basic__pddl__node_8py_source_l00164}{164}} of file \mbox{\hyperlink{basic__pddl__node_8py_source}{basic\+\_\+pddl\+\_\+node.\+py}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00164\ \ \ \ \ \textcolor{keyword}{def\ }load\_waypoints(self,\ file\_path):}
+\DoxyCodeLine{00165\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}}}
+\DoxyCodeLine{00166\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Load\ waypoints\ from\ a\ yaml\ file.}}
+\DoxyCodeLine{00167\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ "{}"{}"{}}}
+\DoxyCodeLine{00168\ \ \ \ \ \ \ \ \ \textcolor{keyword}{with}\ open(file\_path,\ \textcolor{stringliteral}{"{}r"{}})\ \textcolor{keyword}{as}\ file:}
+\DoxyCodeLine{00169\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ yaml.safe\_load(file)}
+\DoxyCodeLine{00170\ }
+\DoxyCodeLine{00171\ }
+\DoxyCodeLine{00172\ }
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classmy__pddl__package_1_1basic__pddl__node_1_1PlannerPath_acbf7f13a03344c4f248ddb094bf14373}\label{classmy__pddl__package_1_1basic__pddl__node_1_1PlannerPath_acbf7f13a03344c4f248ddb094bf14373} 
+\index{my\_pddl\_package.basic\_pddl\_node.PlannerPath@{my\_pddl\_package.basic\_pddl\_node.PlannerPath}!nav\_pose\_client@{nav\_pose\_client}}
+\index{nav\_pose\_client@{nav\_pose\_client}!my\_pddl\_package.basic\_pddl\_node.PlannerPath@{my\_pddl\_package.basic\_pddl\_node.PlannerPath}}
+\doxysubsubsection{\texorpdfstring{nav\_pose\_client}{nav\_pose\_client}}
+{\footnotesize\ttfamily my\+\_\+pddl\+\_\+package.\+basic\+\_\+pddl\+\_\+node.\+Planner\+Path.\+nav\+\_\+pose\+\_\+client}
+
+
+
+Definition at line \mbox{\hyperlink{basic__pddl__node_8py_source_l00050}{50}} of file \mbox{\hyperlink{basic__pddl__node_8py_source}{basic\+\_\+pddl\+\_\+node.\+py}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+my\+\_\+pddl\+\_\+package/\mbox{\hyperlink{basic__pddl__node_8py}{basic\+\_\+pddl\+\_\+node.\+py}}\end{DoxyCompactItemize}

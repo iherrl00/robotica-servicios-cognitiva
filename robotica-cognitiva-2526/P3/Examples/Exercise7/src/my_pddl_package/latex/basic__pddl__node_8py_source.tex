@@ -1,0 +1,186 @@
+\doxysection{basic\+\_\+pddl\+\_\+node.\+py}
+\hypertarget{basic__pddl__node_8py_source}{}\label{basic__pddl__node_8py_source}\index{my\_pddl\_package/basic\_pddl\_node.py@{my\_pddl\_package/basic\_pddl\_node.py}}
+\mbox{\hyperlink{basic__pddl__node_8py}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{basic__pddl__node_8py_source_l00001}\mbox{\hyperlink{namespacemy__pddl__package}{00001}}\ }
+\DoxyCodeLine{\Hypertarget{basic__pddl__node_8py_source_l00002}00002\ \textcolor{comment}{\#It\ is\ missed\ if\ everything\ is\ used,\ TODO:check}}
+\DoxyCodeLine{\Hypertarget{basic__pddl__node_8py_source_l00003}00003\ \textcolor{keyword}{import}\ subprocess}
+\DoxyCodeLine{\Hypertarget{basic__pddl__node_8py_source_l00004}00004\ \textcolor{keyword}{import}\ os}
+\DoxyCodeLine{\Hypertarget{basic__pddl__node_8py_source_l00005}00005\ \textcolor{keyword}{import}\ time\ }
+\DoxyCodeLine{\Hypertarget{basic__pddl__node_8py_source_l00006}00006\ \textcolor{keyword}{import}\ yaml}
+\DoxyCodeLine{\Hypertarget{basic__pddl__node_8py_source_l00007}00007\ }
+\DoxyCodeLine{\Hypertarget{basic__pddl__node_8py_source_l00008}00008\ }
+\DoxyCodeLine{\Hypertarget{basic__pddl__node_8py_source_l00009}00009\ \textcolor{comment}{\#\ ROS\ 2\ related\ }}
+\DoxyCodeLine{\Hypertarget{basic__pddl__node_8py_source_l00010}00010\ \textcolor{keyword}{import}\ rclpy}
+\DoxyCodeLine{\Hypertarget{basic__pddl__node_8py_source_l00011}00011\ \textcolor{keyword}{from}\ rclpy.node\ \textcolor{keyword}{import}\ Node}
+\DoxyCodeLine{\Hypertarget{basic__pddl__node_8py_source_l00012}00012\ \textcolor{keyword}{from}\ rclpy.duration\ \textcolor{keyword}{import}\ Duration}
+\DoxyCodeLine{\Hypertarget{basic__pddl__node_8py_source_l00013}00013\ }
+\DoxyCodeLine{\Hypertarget{basic__pddl__node_8py_source_l00014}00014\ \textcolor{comment}{\#\ NAV2\ related}}
+\DoxyCodeLine{\Hypertarget{basic__pddl__node_8py_source_l00015}00015\ \textcolor{keyword}{from}\ nav2\_msgs.action\ \textcolor{keyword}{import}\ NavigateToPose}
+\DoxyCodeLine{\Hypertarget{basic__pddl__node_8py_source_l00016}00016\ \textcolor{keyword}{from}\ nav2\_simple\_commander.robot\_navigator\ \textcolor{keyword}{import}\ BasicNavigator,\ TaskResult}
+\DoxyCodeLine{\Hypertarget{basic__pddl__node_8py_source_l00017}00017\ }
+\DoxyCodeLine{\Hypertarget{basic__pddl__node_8py_source_l00018}00018\ \textcolor{keyword}{from}\ rclpy.action\ \textcolor{keyword}{import}\ ActionClient}
+\DoxyCodeLine{\Hypertarget{basic__pddl__node_8py_source_l00019}00019\ }
+\DoxyCodeLine{\Hypertarget{basic__pddl__node_8py_source_l00020}00020\ \textcolor{keyword}{from}\ geometry\_msgs.msg\ \textcolor{keyword}{import}\ PoseStamped}
+\DoxyCodeLine{\Hypertarget{basic__pddl__node_8py_source_l00021}00021\ }
+\DoxyCodeLine{\Hypertarget{basic__pddl__node_8py_source_l00022}00022\ }
+\DoxyCodeLine{\Hypertarget{basic__pddl__node_8py_source_l00023}00023\ }
+\DoxyCodeLine{\Hypertarget{basic__pddl__node_8py_source_l00024}00024\ }
+\DoxyCodeLine{\Hypertarget{basic__pddl__node_8py_source_l00025}00025\ \textcolor{comment}{\#\ You\ should\ be\ ussing\ ROS\ 2\ parameters\ here.\ }}
+\DoxyCodeLine{\Hypertarget{basic__pddl__node_8py_source_l00026}00026\ }
+\DoxyCodeLine{\Hypertarget{basic__pddl__node_8py_source_l00027}\mbox{\hyperlink{namespacemy__pddl__package_1_1basic__pddl__node_ac724bf7c2755958faaef546aa0467cff}{00027}}\ HOME\ =\ \textcolor{stringliteral}{"{}/home/odiseo"{}}}
+\DoxyCodeLine{\Hypertarget{basic__pddl__node_8py_source_l00028}\mbox{\hyperlink{namespacemy__pddl__package_1_1basic__pddl__node_a4769348af353a046262c57ba3d1fe718}{00028}}\ PACKAGE\_PATH=\ HOME+\textcolor{stringliteral}{"{}/PDDL-\/course/Examples/Exercise7/src/my\_pddl\_package/"{}}}
+\DoxyCodeLine{\Hypertarget{basic__pddl__node_8py_source_l00029}00029\ \textcolor{comment}{\#\ SOLVER\_PATH\ =\ "{}<ROUTE\_TO\_YOUR\_PLANNER>/SMTPlan"{}}}
+\DoxyCodeLine{\Hypertarget{basic__pddl__node_8py_source_l00030}00030\ \textcolor{comment}{\#\ Example\ }}
+\DoxyCodeLine{\Hypertarget{basic__pddl__node_8py_source_l00031}\mbox{\hyperlink{namespacemy__pddl__package_1_1basic__pddl__node_a0634dfa24b7e27585bf6d68af2aee2b3}{00031}}\ SOLVER\_PATH\ =\ HOME+\textcolor{stringliteral}{"{}/PDDL-\/course/Planners/SMTPlan"{}}}
+\DoxyCodeLine{\Hypertarget{basic__pddl__node_8py_source_l00032}00032\ \textcolor{comment}{\#SOLVER\_PATH\ =\ "{}/usr/local/lib/popf/popf"{}}}
+\DoxyCodeLine{\Hypertarget{basic__pddl__node_8py_source_l00033}00033\ }
+\DoxyCodeLine{\Hypertarget{basic__pddl__node_8py_source_l00034}00034\ \textcolor{comment}{\#\ PATH\_PDDL\_FILES\ =\ "{}ROUTE\ TO\ YOUR\ FOLDER\ WITH\ DOMAIN\ AND\ SOLVER"{}}}
+\DoxyCodeLine{\Hypertarget{basic__pddl__node_8py_source_l00035}\mbox{\hyperlink{namespacemy__pddl__package_1_1basic__pddl__node_aad4ad63137825a267fce9b5f934c1f56}{00035}}\ PATH\_PDDL\_FILES\ =\ PACKAGE\_PATH\ +\ \textcolor{stringliteral}{"{}domains\_and\_problems"{}}}
+\DoxyCodeLine{\Hypertarget{basic__pddl__node_8py_source_l00036}00036\ }
+\DoxyCodeLine{\Hypertarget{basic__pddl__node_8py_source_l00037}00037\ \textcolor{comment}{\#These\ are\ just\ examples,\ double\ check\ with\ the\ domain\ and\ problem\ that\ you\ want\ to\ use}}
+\DoxyCodeLine{\Hypertarget{basic__pddl__node_8py_source_l00038}\mbox{\hyperlink{namespacemy__pddl__package_1_1basic__pddl__node_ab93afd26cbc24f57b016e1e83389e87a}{00038}}\ DOMAIN\_PDDL\_FILE\ =\ \textcolor{stringliteral}{"{}domain.pddl"{}}}
+\DoxyCodeLine{\Hypertarget{basic__pddl__node_8py_source_l00039}\mbox{\hyperlink{namespacemy__pddl__package_1_1basic__pddl__node_a2443952bbdcbabd8f19429f643838db2}{00039}}\ PROBLEM\_PDDL\_FILE\ =\ \textcolor{stringliteral}{"{}problem.pddl"{}}}
+\DoxyCodeLine{\Hypertarget{basic__pddl__node_8py_source_l00040}00040\ }
+\DoxyCodeLine{\Hypertarget{basic__pddl__node_8py_source_l00041}00041\ \textcolor{comment}{\#\ Path\ to\ folder\ with\ waypoints}}
+\DoxyCodeLine{\Hypertarget{basic__pddl__node_8py_source_l00042}\mbox{\hyperlink{namespacemy__pddl__package_1_1basic__pddl__node_a35d533c7064542b96b3301fede74aeb4}{00042}}\ PATH\_FOLDER\_WAYPOINTS=\ PACKAGE\_PATH+\textcolor{stringliteral}{"{}waypoints/"{}}}
+\DoxyCodeLine{\Hypertarget{basic__pddl__node_8py_source_l00043}00043\ }
+\DoxyCodeLine{\Hypertarget{basic__pddl__node_8py_source_l00044}\mbox{\hyperlink{classmy__pddl__package_1_1basic__pddl__node_1_1PlannerPath}{00044}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classmy__pddl__package_1_1basic__pddl__node_1_1PlannerPath}{PlannerPath}}(Node):}
+\DoxyCodeLine{\Hypertarget{basic__pddl__node_8py_source_l00045}00045\ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{basic__pddl__node_8py_source_l00046}00046\ \textcolor{stringliteral}{\ \ \ \ Class\ in\ charge\ of\ loading\ and\ sending\ waypoints}}
+\DoxyCodeLine{\Hypertarget{basic__pddl__node_8py_source_l00047}00047\ \textcolor{stringliteral}{\ \ \ \ "{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{basic__pddl__node_8py_source_l00048}\mbox{\hyperlink{classmy__pddl__package_1_1basic__pddl__node_1_1PlannerPath_a89dff1e4fb3967f9aac776ef4b254078}{00048}}\ \ \ \ \ \textcolor{keyword}{def\ }\mbox{\hyperlink{classmy__pddl__package_1_1basic__pddl__node_1_1PlannerPath_a89dff1e4fb3967f9aac776ef4b254078}{\_\_init\_\_}}(self):}
+\DoxyCodeLine{\Hypertarget{basic__pddl__node_8py_source_l00049}00049\ \ \ \ \ \ \ \ \ super().\mbox{\hyperlink{classmy__pddl__package_1_1basic__pddl__node_1_1PlannerPath_a89dff1e4fb3967f9aac776ef4b254078}{\_\_init\_\_}}(\textcolor{stringliteral}{"{}planer\_path"{}})}
+\DoxyCodeLine{\Hypertarget{basic__pddl__node_8py_source_l00050}\mbox{\hyperlink{classmy__pddl__package_1_1basic__pddl__node_1_1PlannerPath_acbf7f13a03344c4f248ddb094bf14373}{00050}}\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classmy__pddl__package_1_1basic__pddl__node_1_1PlannerPath_acbf7f13a03344c4f248ddb094bf14373}{nav\_pose\_client}}\ =\ ActionClient(self,\ NavigateToPose,\ \textcolor{stringliteral}{"{}navigate\_to\_pose"{}})}
+\DoxyCodeLine{\Hypertarget{basic__pddl__node_8py_source_l00051}00051\ }
+\DoxyCodeLine{\Hypertarget{basic__pddl__node_8py_source_l00052}00052\ \ \ \ \ \ \ \ \ \textcolor{keyword}{with}\ open(os.path.join(PATH\_PDDL\_FILES,\ DOMAIN\_PDDL\_FILE),\ encoding=\textcolor{stringliteral}{"{}utf-\/8"{}})\ \textcolor{keyword}{as}\ f:}
+\DoxyCodeLine{\Hypertarget{basic__pddl__node_8py_source_l00053}00053\ \ \ \ \ \ \ \ \ \ \ \ \ read\_data\ =\ f.read()}
+\DoxyCodeLine{\Hypertarget{basic__pddl__node_8py_source_l00054}00054\ \ \ \ \ \ \ \ \ \ \ \ \ self.get\_logger().info(f\textcolor{stringliteral}{"{}PDDL\ Domain\ File\ Content:\(\backslash\)n\{read\_data\}"{}})}
+\DoxyCodeLine{\Hypertarget{basic__pddl__node_8py_source_l00055}00055\ }
+\DoxyCodeLine{\Hypertarget{basic__pddl__node_8py_source_l00056}00056\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Launch\ the\ planner}}
+\DoxyCodeLine{\Hypertarget{basic__pddl__node_8py_source_l00057}00057\ \ \ \ \ \ \ \ \ solver\ =\ subprocess.Popen(}
+\DoxyCodeLine{\Hypertarget{basic__pddl__node_8py_source_l00058}00058\ \ \ \ \ \ \ \ \ \ \ \ \ args=[}
+\DoxyCodeLine{\Hypertarget{basic__pddl__node_8py_source_l00059}00059\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ SOLVER\_PATH,}
+\DoxyCodeLine{\Hypertarget{basic__pddl__node_8py_source_l00060}00060\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ os.path.join(PATH\_PDDL\_FILES,\ DOMAIN\_PDDL\_FILE),}
+\DoxyCodeLine{\Hypertarget{basic__pddl__node_8py_source_l00061}00061\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ os.path.join(PATH\_PDDL\_FILES,\ PROBLEM\_PDDL\_FILE),}
+\DoxyCodeLine{\Hypertarget{basic__pddl__node_8py_source_l00062}00062\ \ \ \ \ \ \ \ \ \ \ \ \ ],}
+\DoxyCodeLine{\Hypertarget{basic__pddl__node_8py_source_l00063}00063\ \ \ \ \ \ \ \ \ \ \ \ \ stdout=subprocess.PIPE,}
+\DoxyCodeLine{\Hypertarget{basic__pddl__node_8py_source_l00064}00064\ \ \ \ \ \ \ \ \ )}
+\DoxyCodeLine{\Hypertarget{basic__pddl__node_8py_source_l00065}00065\ }
+\DoxyCodeLine{\Hypertarget{basic__pddl__node_8py_source_l00066}00066\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Load\ waypoints\ while\ the\ solver\ is\ running}}
+\DoxyCodeLine{\Hypertarget{basic__pddl__node_8py_source_l00067}00067\ \ \ \ \ \ \ \ \ waypoints\ =\ self.\mbox{\hyperlink{classmy__pddl__package_1_1basic__pddl__node_1_1PlannerPath_ab94e7e6b7fca9eef1f6d5db21dea6f6d}{load\_waypoints}}(}
+\DoxyCodeLine{\Hypertarget{basic__pddl__node_8py_source_l00068}00068\ \ \ \ \ \ \ \ \ \ \ \ \ os.path.join(PATH\_FOLDER\_WAYPOINTS,\ \textcolor{stringliteral}{"{}waypoints.yaml"{}})}
+\DoxyCodeLine{\Hypertarget{basic__pddl__node_8py_source_l00069}00069\ \ \ \ \ \ \ \ \ )}
+\DoxyCodeLine{\Hypertarget{basic__pddl__node_8py_source_l00070}00070\ }
+\DoxyCodeLine{\Hypertarget{basic__pddl__node_8py_source_l00071}00071\ \ \ \ \ \ \ \ \ solver.wait()}
+\DoxyCodeLine{\Hypertarget{basic__pddl__node_8py_source_l00072}00072\ \ \ \ \ \ \ \ \ self.get\_logger().info(\textcolor{stringliteral}{"{}Finished\ PDDL\ solving\ step"{}})}
+\DoxyCodeLine{\Hypertarget{basic__pddl__node_8py_source_l00073}00073\ }
+\DoxyCodeLine{\Hypertarget{basic__pddl__node_8py_source_l00074}00074\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Parse\ the\ output\ from\ the\ solver}}
+\DoxyCodeLine{\Hypertarget{basic__pddl__node_8py_source_l00075}00075\ \ \ \ \ \ \ \ \ path\ =\ []}
+\DoxyCodeLine{\Hypertarget{basic__pddl__node_8py_source_l00076}00076\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ line\ \textcolor{keywordflow}{in}\ solver.stdout.readlines():}
+\DoxyCodeLine{\Hypertarget{basic__pddl__node_8py_source_l00077}00077\ \ \ \ \ \ \ \ \ \ \ \ \ self.get\_logger().info(f\textcolor{stringliteral}{"{}Solver\ output:\ \{line.strip()\}"{}})}
+\DoxyCodeLine{\Hypertarget{basic__pddl__node_8py_source_l00078}00078\ \ \ \ \ \ \ \ \ \ \ \ \ path.append(str(line).split(\textcolor{stringliteral}{"{}\ "{}})[2][:-\/1])}
+\DoxyCodeLine{\Hypertarget{basic__pddl__node_8py_source_l00079}00079\ }
+\DoxyCodeLine{\Hypertarget{basic__pddl__node_8py_source_l00080}00080\ \ \ \ \ \ \ \ \ navigator\ =\ BasicNavigator()}
+\DoxyCodeLine{\Hypertarget{basic__pddl__node_8py_source_l00081}00081\ }
+\DoxyCodeLine{\Hypertarget{basic__pddl__node_8py_source_l00082}00082\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Send\ the\ path}}
+\DoxyCodeLine{\Hypertarget{basic__pddl__node_8py_source_l00083}00083\ \ \ \ \ \ \ \ \ self.\mbox{\hyperlink{classmy__pddl__package_1_1basic__pddl__node_1_1PlannerPath_acbf7f13a03344c4f248ddb094bf14373}{nav\_pose\_client}}.wait\_for\_server()}
+\DoxyCodeLine{\Hypertarget{basic__pddl__node_8py_source_l00084}00084\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ point\ \textcolor{keywordflow}{in}\ path:}
+\DoxyCodeLine{\Hypertarget{basic__pddl__node_8py_source_l00085}00085\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Get\ the\ waypoint\ to\ go\ to}}
+\DoxyCodeLine{\Hypertarget{basic__pddl__node_8py_source_l00086}00086\ \ \ \ \ \ \ \ \ \ \ \ \ waypoint\ =\ waypoints[point]}
+\DoxyCodeLine{\Hypertarget{basic__pddl__node_8py_source_l00087}00087\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{print}\ (\textcolor{stringliteral}{"{}>>>>>>>>>>>\ "{}}+point)}
+\DoxyCodeLine{\Hypertarget{basic__pddl__node_8py_source_l00088}00088\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{print}\ (waypoint)}
+\DoxyCodeLine{\Hypertarget{basic__pddl__node_8py_source_l00089}00089\ }
+\DoxyCodeLine{\Hypertarget{basic__pddl__node_8py_source_l00090}00090\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Set\ our\ demo's\ initial\ pose}}
+\DoxyCodeLine{\Hypertarget{basic__pddl__node_8py_source_l00091}00091\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ initial\_pose\ =\ PoseStamped()}}
+\DoxyCodeLine{\Hypertarget{basic__pddl__node_8py_source_l00092}00092\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ initial\_pose.header.frame\_id\ =\ 'map'}}
+\DoxyCodeLine{\Hypertarget{basic__pddl__node_8py_source_l00093}00093\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ initial\_pose.header.stamp\ =\ navigator.get\_clock().now().to\_msg()}}
+\DoxyCodeLine{\Hypertarget{basic__pddl__node_8py_source_l00094}00094\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ initial\_pose.pose.position.x\ =\ 0.0}}
+\DoxyCodeLine{\Hypertarget{basic__pddl__node_8py_source_l00095}00095\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ initial\_pose.pose.position.y\ =\ 0.0}}
+\DoxyCodeLine{\Hypertarget{basic__pddl__node_8py_source_l00096}00096\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ initial\_pose.pose.orientation.z\ =\ 0.0}}
+\DoxyCodeLine{\Hypertarget{basic__pddl__node_8py_source_l00097}00097\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ initial\_pose.pose.orientation.w\ =\ 1.0}}
+\DoxyCodeLine{\Hypertarget{basic__pddl__node_8py_source_l00098}00098\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ navigator.setInitialPose(initial\_pose)}}
+\DoxyCodeLine{\Hypertarget{basic__pddl__node_8py_source_l00099}00099\ }
+\DoxyCodeLine{\Hypertarget{basic__pddl__node_8py_source_l00100}00100\ }
+\DoxyCodeLine{\Hypertarget{basic__pddl__node_8py_source_l00101}00101\ }
+\DoxyCodeLine{\Hypertarget{basic__pddl__node_8py_source_l00102}00102\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ If\ autostart,\ you\ should\ \`{}waitUntilNav2Active()`\ instead.}}
+\DoxyCodeLine{\Hypertarget{basic__pddl__node_8py_source_l00103}00103\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ navigator.lifecycleStartup()}}
+\DoxyCodeLine{\Hypertarget{basic__pddl__node_8py_source_l00104}00104\ }
+\DoxyCodeLine{\Hypertarget{basic__pddl__node_8py_source_l00105}00105\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ \#\ Wait\ for\ navigation\ to\ fully\ activate,\ since\ autostarting\ nav2}}
+\DoxyCodeLine{\Hypertarget{basic__pddl__node_8py_source_l00106}00106\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ navigator.waitUntilNav2Active()}}
+\DoxyCodeLine{\Hypertarget{basic__pddl__node_8py_source_l00107}00107\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Go\ to\ our\ demos\ first\ goal\ pose}}
+\DoxyCodeLine{\Hypertarget{basic__pddl__node_8py_source_l00108}00108\ \ \ \ \ \ \ \ \ \ \ \ \ goal\_pose\ =\ PoseStamped()}
+\DoxyCodeLine{\Hypertarget{basic__pddl__node_8py_source_l00109}00109\ \ \ \ \ \ \ \ \ \ \ \ \ goal\_pose.header.stamp\ =\ navigator.get\_clock().now().to\_msg()}
+\DoxyCodeLine{\Hypertarget{basic__pddl__node_8py_source_l00110}00110\ \ \ \ \ \ \ \ \ \ \ \ \ goal\_pose.header.frame\_id\ =\ waypoint[\textcolor{stringliteral}{"{}frame\_id"{}}]}
+\DoxyCodeLine{\Hypertarget{basic__pddl__node_8py_source_l00111}00111\ \ \ \ \ \ \ \ \ \ \ \ \ goal\_pose.pose.position.x\ =\ waypoint[\textcolor{stringliteral}{"{}position"{}}][\textcolor{stringliteral}{"{}x"{}}]}
+\DoxyCodeLine{\Hypertarget{basic__pddl__node_8py_source_l00112}00112\ \ \ \ \ \ \ \ \ \ \ \ \ goal\_pose.pose.position.y\ =\ waypoint[\textcolor{stringliteral}{"{}position"{}}][\textcolor{stringliteral}{"{}y"{}}]}
+\DoxyCodeLine{\Hypertarget{basic__pddl__node_8py_source_l00113}00113\ \ \ \ \ \ \ \ \ \ \ \ \ goal\_pose.pose.position.z\ =\ waypoint[\textcolor{stringliteral}{"{}position"{}}][\textcolor{stringliteral}{"{}z"{}}]}
+\DoxyCodeLine{\Hypertarget{basic__pddl__node_8py_source_l00114}00114\ \ \ \ \ \ \ \ \ \ \ \ \ goal\_pose.pose.orientation.x\ =\ waypoint[\textcolor{stringliteral}{"{}orientation"{}}][\textcolor{stringliteral}{"{}x"{}}]}
+\DoxyCodeLine{\Hypertarget{basic__pddl__node_8py_source_l00115}00115\ \ \ \ \ \ \ \ \ \ \ \ \ goal\_pose.pose.orientation.y\ =\ waypoint[\textcolor{stringliteral}{"{}orientation"{}}][\textcolor{stringliteral}{"{}y"{}}]}
+\DoxyCodeLine{\Hypertarget{basic__pddl__node_8py_source_l00116}00116\ \ \ \ \ \ \ \ \ \ \ \ \ goal\_pose.pose.orientation.w\ =\ waypoint[\textcolor{stringliteral}{"{}orientation"{}}][\textcolor{stringliteral}{"{}w"{}}]}
+\DoxyCodeLine{\Hypertarget{basic__pddl__node_8py_source_l00117}00117\ \ \ \ \ \ \ \ \ \ \ \ \ goal\_pose.pose.orientation.z\ =\ waypoint[\textcolor{stringliteral}{"{}orientation"{}}][\textcolor{stringliteral}{"{}z"{}}]}
+\DoxyCodeLine{\Hypertarget{basic__pddl__node_8py_source_l00118}00118\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ sanity\ check\ a\ valid\ path\ exists}}
+\DoxyCodeLine{\Hypertarget{basic__pddl__node_8py_source_l00119}00119\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ path\ =\ navigator.getPath(initial\_pose,\ goal\_pose)}}
+\DoxyCodeLine{\Hypertarget{basic__pddl__node_8py_source_l00120}00120\ }
+\DoxyCodeLine{\Hypertarget{basic__pddl__node_8py_source_l00121}00121\ \ \ \ \ \ \ \ \ \ \ \ \ navigator.goToPose(goal\_pose)}
+\DoxyCodeLine{\Hypertarget{basic__pddl__node_8py_source_l00122}00122\ }
+\DoxyCodeLine{\Hypertarget{basic__pddl__node_8py_source_l00123}00123\ \ \ \ \ \ \ \ \ \ \ \ \ i\ =\ 0}
+\DoxyCodeLine{\Hypertarget{basic__pddl__node_8py_source_l00124}00124\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ \textcolor{keywordflow}{not}\ navigator.isTaskComplete():}
+\DoxyCodeLine{\Hypertarget{basic__pddl__node_8py_source_l00125}00125\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{basic__pddl__node_8py_source_l00131}00131\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ i\ =\ i\ +\ 1}
+\DoxyCodeLine{\Hypertarget{basic__pddl__node_8py_source_l00132}00132\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ feedback\ =\ navigator.getFeedback()}
+\DoxyCodeLine{\Hypertarget{basic__pddl__node_8py_source_l00133}00133\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ feedback\ \textcolor{keywordflow}{and}\ i\ \%\ 5\ ==\ 0:}
+\DoxyCodeLine{\Hypertarget{basic__pddl__node_8py_source_l00134}00134\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ print(\textcolor{stringliteral}{'Estimated\ time\ of\ arrival:\ '}\ +\ \textcolor{stringliteral}{'\{0:.0f\}'}.format(}
+\DoxyCodeLine{\Hypertarget{basic__pddl__node_8py_source_l00135}00135\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Duration.from\_msg(feedback.estimated\_time\_remaining).nanoseconds\ /\ 1e9)}
+\DoxyCodeLine{\Hypertarget{basic__pddl__node_8py_source_l00136}00136\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ +\ \textcolor{stringliteral}{'\ seconds.'})}
+\DoxyCodeLine{\Hypertarget{basic__pddl__node_8py_source_l00137}00137\ }
+\DoxyCodeLine{\Hypertarget{basic__pddl__node_8py_source_l00138}00138\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Some\ navigation\ timeout\ to\ demo\ cancellation}}
+\DoxyCodeLine{\Hypertarget{basic__pddl__node_8py_source_l00139}00139\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ Duration.from\_msg(feedback.navigation\_time)\ >\ Duration(seconds=600.0):}
+\DoxyCodeLine{\Hypertarget{basic__pddl__node_8py_source_l00140}00140\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ navigator.cancelTask()}
+\DoxyCodeLine{\Hypertarget{basic__pddl__node_8py_source_l00141}00141\ }
+\DoxyCodeLine{\Hypertarget{basic__pddl__node_8py_source_l00142}00142\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Some\ navigation\ request\ change\ to\ demo\ preemption}}
+\DoxyCodeLine{\Hypertarget{basic__pddl__node_8py_source_l00143}00143\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ Duration.from\_msg(feedback.navigation\_time)\ >\ Duration(seconds=18.0):}
+\DoxyCodeLine{\Hypertarget{basic__pddl__node_8py_source_l00144}00144\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ goal\_pose.pose.position.x\ =\ -\/3.0}
+\DoxyCodeLine{\Hypertarget{basic__pddl__node_8py_source_l00145}00145\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ navigator.goToPose(goal\_pose)}
+\DoxyCodeLine{\Hypertarget{basic__pddl__node_8py_source_l00146}00146\ }
+\DoxyCodeLine{\Hypertarget{basic__pddl__node_8py_source_l00147}00147\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Do\ something\ depending\ on\ the\ return\ code}}
+\DoxyCodeLine{\Hypertarget{basic__pddl__node_8py_source_l00148}00148\ \ \ \ \ \ \ \ \ \ \ \ \ result\ =\ navigator.getResult()}
+\DoxyCodeLine{\Hypertarget{basic__pddl__node_8py_source_l00149}00149\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ result\ ==\ TaskResult.SUCCEEDED:}
+\DoxyCodeLine{\Hypertarget{basic__pddl__node_8py_source_l00150}00150\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ self.get\_logger().info(\textcolor{stringliteral}{'Goal\ succeeded!'})}
+\DoxyCodeLine{\Hypertarget{basic__pddl__node_8py_source_l00151}00151\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{elif}\ result\ ==\ TaskResult.CANCELED:}
+\DoxyCodeLine{\Hypertarget{basic__pddl__node_8py_source_l00152}00152\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ self.get\_logger().info(\textcolor{stringliteral}{'Goal\ was\ canceled!'})}
+\DoxyCodeLine{\Hypertarget{basic__pddl__node_8py_source_l00153}00153\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{elif}\ result\ ==\ TaskResult.FAILED:}
+\DoxyCodeLine{\Hypertarget{basic__pddl__node_8py_source_l00154}00154\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ self.get\_logger().info(\textcolor{stringliteral}{'Goal\ failed!'})}
+\DoxyCodeLine{\Hypertarget{basic__pddl__node_8py_source_l00155}00155\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}:}
+\DoxyCodeLine{\Hypertarget{basic__pddl__node_8py_source_l00156}00156\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ self.get\_logger().info(\textcolor{stringliteral}{'Goal\ has\ an\ invalid\ return\ status!'})}
+\DoxyCodeLine{\Hypertarget{basic__pddl__node_8py_source_l00157}00157\ }
+\DoxyCodeLine{\Hypertarget{basic__pddl__node_8py_source_l00158}00158\ \ \ \ \ \ \ \ \ \ \ \ \ self.get\_logger().info(\textcolor{stringliteral}{"{}Arrived\ at\ the\ destination"{}})}
+\DoxyCodeLine{\Hypertarget{basic__pddl__node_8py_source_l00159}00159\ }
+\DoxyCodeLine{\Hypertarget{basic__pddl__node_8py_source_l00160}00160\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Check\ lifecycle\ and\ how\ to\ use\ it}}
+\DoxyCodeLine{\Hypertarget{basic__pddl__node_8py_source_l00161}00161\ \ \ \ \ \ \ \ \ navigator.lifecycleShutdown()}
+\DoxyCodeLine{\Hypertarget{basic__pddl__node_8py_source_l00162}00162\ }
+\DoxyCodeLine{\Hypertarget{basic__pddl__node_8py_source_l00163}00163\ }
+\DoxyCodeLine{\Hypertarget{basic__pddl__node_8py_source_l00164}\mbox{\hyperlink{classmy__pddl__package_1_1basic__pddl__node_1_1PlannerPath_ab94e7e6b7fca9eef1f6d5db21dea6f6d}{00164}}\ \ \ \ \ \textcolor{keyword}{def\ }\mbox{\hyperlink{classmy__pddl__package_1_1basic__pddl__node_1_1PlannerPath_ab94e7e6b7fca9eef1f6d5db21dea6f6d}{load\_waypoints}}(self,\ file\_path):}
+\DoxyCodeLine{\Hypertarget{basic__pddl__node_8py_source_l00165}00165\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{basic__pddl__node_8py_source_l00166}00166\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Load\ waypoints\ from\ a\ yaml\ file.}}
+\DoxyCodeLine{\Hypertarget{basic__pddl__node_8py_source_l00167}00167\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ "{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{basic__pddl__node_8py_source_l00168}00168\ \ \ \ \ \ \ \ \ \textcolor{keyword}{with}\ open(file\_path,\ \textcolor{stringliteral}{"{}r"{}})\ \textcolor{keyword}{as}\ file:}
+\DoxyCodeLine{\Hypertarget{basic__pddl__node_8py_source_l00169}00169\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ yaml.safe\_load(file)}
+\DoxyCodeLine{\Hypertarget{basic__pddl__node_8py_source_l00170}00170\ }
+\DoxyCodeLine{\Hypertarget{basic__pddl__node_8py_source_l00171}00171\ }
+\DoxyCodeLine{\Hypertarget{basic__pddl__node_8py_source_l00172}00172\ }
+\DoxyCodeLine{\Hypertarget{basic__pddl__node_8py_source_l00173}\mbox{\hyperlink{namespacemy__pddl__package_1_1basic__pddl__node_a83600465e231de6eca497f222279f0a2}{00173}}\ \textcolor{keyword}{def\ }main(args=None):}
+\DoxyCodeLine{\Hypertarget{basic__pddl__node_8py_source_l00174}00174\ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{basic__pddl__node_8py_source_l00175}00175\ \textcolor{stringliteral}{\ \ \ \ Main\ function}}
+\DoxyCodeLine{\Hypertarget{basic__pddl__node_8py_source_l00176}00176\ \textcolor{stringliteral}{\ \ \ \ "{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{basic__pddl__node_8py_source_l00177}00177\ \ \ \ \ rclpy.init(args=args)}
+\DoxyCodeLine{\Hypertarget{basic__pddl__node_8py_source_l00178}00178\ \ \ \ \ node\ =\ \mbox{\hyperlink{classmy__pddl__package_1_1basic__pddl__node_1_1PlannerPath}{PlannerPath}}()}
+\DoxyCodeLine{\Hypertarget{basic__pddl__node_8py_source_l00179}00179\ \ \ \ \ rclpy.spin(node)}
+\DoxyCodeLine{\Hypertarget{basic__pddl__node_8py_source_l00180}00180\ \ \ \ \ node.destroy\_node()}
+\DoxyCodeLine{\Hypertarget{basic__pddl__node_8py_source_l00181}00181\ \ \ \ \ rclpy.shutdown()}
+\DoxyCodeLine{\Hypertarget{basic__pddl__node_8py_source_l00182}00182\ }
+\DoxyCodeLine{\Hypertarget{basic__pddl__node_8py_source_l00183}00183\ }
+\DoxyCodeLine{\Hypertarget{basic__pddl__node_8py_source_l00184}00184\ \textcolor{keywordflow}{if}\ \_\_name\_\_\ ==\ \textcolor{stringliteral}{"{}\_\_main\_\_"{}}:}
+\DoxyCodeLine{\Hypertarget{basic__pddl__node_8py_source_l00185}00185\ \ \ \ \ main()}
+
+\end{DoxyCode}

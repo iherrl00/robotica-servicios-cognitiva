@@ -1,0 +1,31 @@
+\doxysection{setup.\+py}
+\hypertarget{setup_8py_source}{}\label{setup_8py_source}\mbox{\hyperlink{setup_8py}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{setup_8py_source_l00001}\mbox{\hyperlink{namespacesetup}{00001}}\ \textcolor{keyword}{from}\ setuptools\ \textcolor{keyword}{import}\ find\_packages,\ setup}
+\DoxyCodeLine{\Hypertarget{setup_8py_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{setup_8py_source_l00003}\mbox{\hyperlink{namespacesetup_a69903e4f05cebc9e005b22b36f5724eb}{00003}}\ package\_name\ =\ \textcolor{stringliteral}{'my\_pddl\_package'}}
+\DoxyCodeLine{\Hypertarget{setup_8py_source_l00004}00004\ }
+\DoxyCodeLine{\Hypertarget{setup_8py_source_l00005}00005\ \mbox{\hyperlink{namespacesetup}{setup}}(}
+\DoxyCodeLine{\Hypertarget{setup_8py_source_l00006}\mbox{\hyperlink{namespacesetup_ab3a7a0638d76a01367c5bc3cc699447f}{00006}}\ \ \ \ \ name=package\_name,}
+\DoxyCodeLine{\Hypertarget{setup_8py_source_l00007}\mbox{\hyperlink{namespacesetup_a2aa722b36a933088812b50ea79b97a5c}{00007}}\ \ \ \ \ version=\textcolor{stringliteral}{'0.0.0'},}
+\DoxyCodeLine{\Hypertarget{setup_8py_source_l00008}\mbox{\hyperlink{namespacesetup_aff2375a361fd5865c77bd9aa093be747}{00008}}\ \ \ \ \ packages=find\_packages(exclude=[\textcolor{stringliteral}{'test'}]),}
+\DoxyCodeLine{\Hypertarget{setup_8py_source_l00009}\mbox{\hyperlink{namespacesetup_ad027a8e9452da003dca32bf7467bd16e}{00009}}\ \ \ \ \ data\_files=[}
+\DoxyCodeLine{\Hypertarget{setup_8py_source_l00010}00010\ \ \ \ \ \ \ \ \ (\textcolor{stringliteral}{'share/ament\_index/resource\_index/packages'},}
+\DoxyCodeLine{\Hypertarget{setup_8py_source_l00011}00011\ \ \ \ \ \ \ \ \ \ \ \ \ [\textcolor{stringliteral}{'resource/'}\ +\ package\_name]),}
+\DoxyCodeLine{\Hypertarget{setup_8py_source_l00012}00012\ \ \ \ \ \ \ \ \ (\textcolor{stringliteral}{'share/'}\ +\ package\_name,\ [\textcolor{stringliteral}{'package.xml'}]),}
+\DoxyCodeLine{\Hypertarget{setup_8py_source_l00013}00013\ \ \ \ \ ],}
+\DoxyCodeLine{\Hypertarget{setup_8py_source_l00014}\mbox{\hyperlink{namespacesetup_abead4f26b530856f858f0d44c7cf2588}{00014}}\ \ \ \ \ install\_requires=[\textcolor{stringliteral}{'setuptools'}],}
+\DoxyCodeLine{\Hypertarget{setup_8py_source_l00015}\mbox{\hyperlink{namespacesetup_a13510753661cb74083a0c664db11dde9}{00015}}\ \ \ \ \ zip\_safe=\textcolor{keyword}{True},}
+\DoxyCodeLine{\Hypertarget{setup_8py_source_l00016}\mbox{\hyperlink{namespacesetup_aa1a7cf9bbf76004bb72697dc00bbee9d}{00016}}\ \ \ \ \ maintainer=\textcolor{stringliteral}{'odiseo'},}
+\DoxyCodeLine{\Hypertarget{setup_8py_source_l00017}\mbox{\hyperlink{namespacesetup_a92a81adbfdd219564d5246ce8d77f869}{00017}}\ \ \ \ \ maintainer\_email=\textcolor{stringliteral}{'fjrodl'},}
+\DoxyCodeLine{\Hypertarget{setup_8py_source_l00018}\mbox{\hyperlink{namespacesetup_aedf461ec52a946bda975938ba0b93ec0}{00018}}\ \ \ \ \ description=\textcolor{stringliteral}{'TODO:\ Package\ description'},}
+\DoxyCodeLine{\Hypertarget{setup_8py_source_l00019}\mbox{\hyperlink{namespacesetup_a8ed6f50a28bd6a8794f8e1153baa6de9}{00019}}\ \ \ \ \ license=\textcolor{stringliteral}{'Apache-\/2.0'},}
+\DoxyCodeLine{\Hypertarget{setup_8py_source_l00020}\mbox{\hyperlink{namespacesetup_a6369bb060267ccf90b93519796e7cc2c}{00020}}\ \ \ \ \ tests\_require=[\textcolor{stringliteral}{'pytest'}],}
+\DoxyCodeLine{\Hypertarget{setup_8py_source_l00021}\mbox{\hyperlink{namespacesetup_ada7058afc98897f073d3f3b8b9157059}{00021}}\ \ \ \ \ entry\_points=\{}
+\DoxyCodeLine{\Hypertarget{setup_8py_source_l00022}00022\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{'console\_scripts'}:\ [}
+\DoxyCodeLine{\Hypertarget{setup_8py_source_l00023}00023\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{'basic\_pddl\_node\ =\ my\_pddl\_package.basic\_pddl\_node:main'}}
+\DoxyCodeLine{\Hypertarget{setup_8py_source_l00024}00024\ \ \ \ \ \ \ \ \ ],}
+\DoxyCodeLine{\Hypertarget{setup_8py_source_l00025}00025\ \ \ \ \ \},}
+\DoxyCodeLine{\Hypertarget{setup_8py_source_l00026}00026\ )}
+
+\end{DoxyCode}

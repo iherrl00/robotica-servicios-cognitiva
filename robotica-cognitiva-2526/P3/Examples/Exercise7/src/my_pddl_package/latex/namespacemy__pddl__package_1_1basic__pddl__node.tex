@@ -1,0 +1,132 @@
+\doxysection{my\+\_\+pddl\+\_\+package.\+basic\+\_\+pddl\+\_\+node Namespace Reference}
+\hypertarget{namespacemy__pddl__package_1_1basic__pddl__node}{}\label{namespacemy__pddl__package_1_1basic__pddl__node}\index{my\_pddl\_package.basic\_pddl\_node@{my\_pddl\_package.basic\_pddl\_node}}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classmy__pddl__package_1_1basic__pddl__node_1_1PlannerPath}{Planner\+Path}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{namespacemy__pddl__package_1_1basic__pddl__node_a83600465e231de6eca497f222279f0a2}{main}} (args=None)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+str \mbox{\hyperlink{namespacemy__pddl__package_1_1basic__pddl__node_ac724bf7c2755958faaef546aa0467cff}{HOME}} = "{}/home/odiseo"{}
+\item 
+str \mbox{\hyperlink{namespacemy__pddl__package_1_1basic__pddl__node_a4769348af353a046262c57ba3d1fe718}{PACKAGE\+\_\+\+PATH}} = \mbox{\hyperlink{namespacemy__pddl__package_1_1basic__pddl__node_ac724bf7c2755958faaef546aa0467cff}{HOME}}+"{}/PDDL-\/course/Examples/Exercise7/src/my\+\_\+pddl\+\_\+package/"{}
+\item 
+str \mbox{\hyperlink{namespacemy__pddl__package_1_1basic__pddl__node_a0634dfa24b7e27585bf6d68af2aee2b3}{SOLVER\+\_\+\+PATH}} = \mbox{\hyperlink{namespacemy__pddl__package_1_1basic__pddl__node_ac724bf7c2755958faaef546aa0467cff}{HOME}}+"{}/PDDL-\/course/Planners/SMTPlan"{}
+\item 
+str \mbox{\hyperlink{namespacemy__pddl__package_1_1basic__pddl__node_aad4ad63137825a267fce9b5f934c1f56}{PATH\+\_\+\+PDDL\+\_\+\+FILES}} = \mbox{\hyperlink{namespacemy__pddl__package_1_1basic__pddl__node_a4769348af353a046262c57ba3d1fe718}{PACKAGE\+\_\+\+PATH}} + "{}domains\+\_\+and\+\_\+problems"{}
+\item 
+str \mbox{\hyperlink{namespacemy__pddl__package_1_1basic__pddl__node_ab93afd26cbc24f57b016e1e83389e87a}{DOMAIN\+\_\+\+PDDL\+\_\+\+FILE}} = "{}domain.\+pddl"{}
+\item 
+str \mbox{\hyperlink{namespacemy__pddl__package_1_1basic__pddl__node_a2443952bbdcbabd8f19429f643838db2}{PROBLEM\+\_\+\+PDDL\+\_\+\+FILE}} = "{}problem.\+pddl"{}
+\item 
+str \mbox{\hyperlink{namespacemy__pddl__package_1_1basic__pddl__node_a35d533c7064542b96b3301fede74aeb4}{PATH\+\_\+\+FOLDER\+\_\+\+WAYPOINTS}} = \mbox{\hyperlink{namespacemy__pddl__package_1_1basic__pddl__node_a4769348af353a046262c57ba3d1fe718}{PACKAGE\+\_\+\+PATH}}+"{}waypoints/"{}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{namespacemy__pddl__package_1_1basic__pddl__node_a83600465e231de6eca497f222279f0a2}\label{namespacemy__pddl__package_1_1basic__pddl__node_a83600465e231de6eca497f222279f0a2} 
+\index{my\_pddl\_package.basic\_pddl\_node@{my\_pddl\_package.basic\_pddl\_node}!main@{main}}
+\index{main@{main}!my\_pddl\_package.basic\_pddl\_node@{my\_pddl\_package.basic\_pddl\_node}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily my\+\_\+pddl\+\_\+package.\+basic\+\_\+pddl\+\_\+node.\+main (\begin{DoxyParamCaption}\item[{}]{args = {\ttfamily None} }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Main function
+\end{DoxyVerb}
+ 
+
+Definition at line \mbox{\hyperlink{basic__pddl__node_8py_source_l00173}{173}} of file \mbox{\hyperlink{basic__pddl__node_8py_source}{basic\+\_\+pddl\+\_\+node.\+py}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00173\ \textcolor{keyword}{def\ }main(args=None):}
+\DoxyCodeLine{00174\ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}}}
+\DoxyCodeLine{00175\ \textcolor{stringliteral}{\ \ \ \ Main\ function}}
+\DoxyCodeLine{00176\ \textcolor{stringliteral}{\ \ \ \ "{}"{}"{}}}
+\DoxyCodeLine{00177\ \ \ \ \ rclpy.init(args=args)}
+\DoxyCodeLine{00178\ \ \ \ \ node\ =\ PlannerPath()}
+\DoxyCodeLine{00179\ \ \ \ \ rclpy.spin(node)}
+\DoxyCodeLine{00180\ \ \ \ \ node.destroy\_node()}
+\DoxyCodeLine{00181\ \ \ \ \ rclpy.shutdown()}
+\DoxyCodeLine{00182\ }
+\DoxyCodeLine{00183\ }
+
+\end{DoxyCode}
+
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{namespacemy__pddl__package_1_1basic__pddl__node_ab93afd26cbc24f57b016e1e83389e87a}\label{namespacemy__pddl__package_1_1basic__pddl__node_ab93afd26cbc24f57b016e1e83389e87a} 
+\index{my\_pddl\_package.basic\_pddl\_node@{my\_pddl\_package.basic\_pddl\_node}!DOMAIN\_PDDL\_FILE@{DOMAIN\_PDDL\_FILE}}
+\index{DOMAIN\_PDDL\_FILE@{DOMAIN\_PDDL\_FILE}!my\_pddl\_package.basic\_pddl\_node@{my\_pddl\_package.basic\_pddl\_node}}
+\doxysubsubsection{\texorpdfstring{DOMAIN\_PDDL\_FILE}{DOMAIN\_PDDL\_FILE}}
+{\footnotesize\ttfamily str my\+\_\+pddl\+\_\+package.\+basic\+\_\+pddl\+\_\+node.\+DOMAIN\+\_\+\+PDDL\+\_\+\+FILE = "{}domain.\+pddl"{}}
+
+
+
+Definition at line \mbox{\hyperlink{basic__pddl__node_8py_source_l00038}{38}} of file \mbox{\hyperlink{basic__pddl__node_8py_source}{basic\+\_\+pddl\+\_\+node.\+py}}.
+
+\Hypertarget{namespacemy__pddl__package_1_1basic__pddl__node_ac724bf7c2755958faaef546aa0467cff}\label{namespacemy__pddl__package_1_1basic__pddl__node_ac724bf7c2755958faaef546aa0467cff} 
+\index{my\_pddl\_package.basic\_pddl\_node@{my\_pddl\_package.basic\_pddl\_node}!HOME@{HOME}}
+\index{HOME@{HOME}!my\_pddl\_package.basic\_pddl\_node@{my\_pddl\_package.basic\_pddl\_node}}
+\doxysubsubsection{\texorpdfstring{HOME}{HOME}}
+{\footnotesize\ttfamily str my\+\_\+pddl\+\_\+package.\+basic\+\_\+pddl\+\_\+node.\+HOME = "{}/home/odiseo"{}}
+
+
+
+Definition at line \mbox{\hyperlink{basic__pddl__node_8py_source_l00027}{27}} of file \mbox{\hyperlink{basic__pddl__node_8py_source}{basic\+\_\+pddl\+\_\+node.\+py}}.
+
+\Hypertarget{namespacemy__pddl__package_1_1basic__pddl__node_a4769348af353a046262c57ba3d1fe718}\label{namespacemy__pddl__package_1_1basic__pddl__node_a4769348af353a046262c57ba3d1fe718} 
+\index{my\_pddl\_package.basic\_pddl\_node@{my\_pddl\_package.basic\_pddl\_node}!PACKAGE\_PATH@{PACKAGE\_PATH}}
+\index{PACKAGE\_PATH@{PACKAGE\_PATH}!my\_pddl\_package.basic\_pddl\_node@{my\_pddl\_package.basic\_pddl\_node}}
+\doxysubsubsection{\texorpdfstring{PACKAGE\_PATH}{PACKAGE\_PATH}}
+{\footnotesize\ttfamily str my\+\_\+pddl\+\_\+package.\+basic\+\_\+pddl\+\_\+node.\+PACKAGE\+\_\+\+PATH = \mbox{\hyperlink{namespacemy__pddl__package_1_1basic__pddl__node_ac724bf7c2755958faaef546aa0467cff}{HOME}}+"{}/PDDL-\/course/Examples/Exercise7/src/my\+\_\+pddl\+\_\+package/"{}}
+
+
+
+Definition at line \mbox{\hyperlink{basic__pddl__node_8py_source_l00028}{28}} of file \mbox{\hyperlink{basic__pddl__node_8py_source}{basic\+\_\+pddl\+\_\+node.\+py}}.
+
+\Hypertarget{namespacemy__pddl__package_1_1basic__pddl__node_a35d533c7064542b96b3301fede74aeb4}\label{namespacemy__pddl__package_1_1basic__pddl__node_a35d533c7064542b96b3301fede74aeb4} 
+\index{my\_pddl\_package.basic\_pddl\_node@{my\_pddl\_package.basic\_pddl\_node}!PATH\_FOLDER\_WAYPOINTS@{PATH\_FOLDER\_WAYPOINTS}}
+\index{PATH\_FOLDER\_WAYPOINTS@{PATH\_FOLDER\_WAYPOINTS}!my\_pddl\_package.basic\_pddl\_node@{my\_pddl\_package.basic\_pddl\_node}}
+\doxysubsubsection{\texorpdfstring{PATH\_FOLDER\_WAYPOINTS}{PATH\_FOLDER\_WAYPOINTS}}
+{\footnotesize\ttfamily str my\+\_\+pddl\+\_\+package.\+basic\+\_\+pddl\+\_\+node.\+PATH\+\_\+\+FOLDER\+\_\+\+WAYPOINTS = \mbox{\hyperlink{namespacemy__pddl__package_1_1basic__pddl__node_a4769348af353a046262c57ba3d1fe718}{PACKAGE\+\_\+\+PATH}}+"{}waypoints/"{}}
+
+
+
+Definition at line \mbox{\hyperlink{basic__pddl__node_8py_source_l00042}{42}} of file \mbox{\hyperlink{basic__pddl__node_8py_source}{basic\+\_\+pddl\+\_\+node.\+py}}.
+
+\Hypertarget{namespacemy__pddl__package_1_1basic__pddl__node_aad4ad63137825a267fce9b5f934c1f56}\label{namespacemy__pddl__package_1_1basic__pddl__node_aad4ad63137825a267fce9b5f934c1f56} 
+\index{my\_pddl\_package.basic\_pddl\_node@{my\_pddl\_package.basic\_pddl\_node}!PATH\_PDDL\_FILES@{PATH\_PDDL\_FILES}}
+\index{PATH\_PDDL\_FILES@{PATH\_PDDL\_FILES}!my\_pddl\_package.basic\_pddl\_node@{my\_pddl\_package.basic\_pddl\_node}}
+\doxysubsubsection{\texorpdfstring{PATH\_PDDL\_FILES}{PATH\_PDDL\_FILES}}
+{\footnotesize\ttfamily str my\+\_\+pddl\+\_\+package.\+basic\+\_\+pddl\+\_\+node.\+PATH\+\_\+\+PDDL\+\_\+\+FILES = \mbox{\hyperlink{namespacemy__pddl__package_1_1basic__pddl__node_a4769348af353a046262c57ba3d1fe718}{PACKAGE\+\_\+\+PATH}} + "{}domains\+\_\+and\+\_\+problems"{}}
+
+
+
+Definition at line \mbox{\hyperlink{basic__pddl__node_8py_source_l00035}{35}} of file \mbox{\hyperlink{basic__pddl__node_8py_source}{basic\+\_\+pddl\+\_\+node.\+py}}.
+
+\Hypertarget{namespacemy__pddl__package_1_1basic__pddl__node_a2443952bbdcbabd8f19429f643838db2}\label{namespacemy__pddl__package_1_1basic__pddl__node_a2443952bbdcbabd8f19429f643838db2} 
+\index{my\_pddl\_package.basic\_pddl\_node@{my\_pddl\_package.basic\_pddl\_node}!PROBLEM\_PDDL\_FILE@{PROBLEM\_PDDL\_FILE}}
+\index{PROBLEM\_PDDL\_FILE@{PROBLEM\_PDDL\_FILE}!my\_pddl\_package.basic\_pddl\_node@{my\_pddl\_package.basic\_pddl\_node}}
+\doxysubsubsection{\texorpdfstring{PROBLEM\_PDDL\_FILE}{PROBLEM\_PDDL\_FILE}}
+{\footnotesize\ttfamily str my\+\_\+pddl\+\_\+package.\+basic\+\_\+pddl\+\_\+node.\+PROBLEM\+\_\+\+PDDL\+\_\+\+FILE = "{}problem.\+pddl"{}}
+
+
+
+Definition at line \mbox{\hyperlink{basic__pddl__node_8py_source_l00039}{39}} of file \mbox{\hyperlink{basic__pddl__node_8py_source}{basic\+\_\+pddl\+\_\+node.\+py}}.
+
+\Hypertarget{namespacemy__pddl__package_1_1basic__pddl__node_a0634dfa24b7e27585bf6d68af2aee2b3}\label{namespacemy__pddl__package_1_1basic__pddl__node_a0634dfa24b7e27585bf6d68af2aee2b3} 
+\index{my\_pddl\_package.basic\_pddl\_node@{my\_pddl\_package.basic\_pddl\_node}!SOLVER\_PATH@{SOLVER\_PATH}}
+\index{SOLVER\_PATH@{SOLVER\_PATH}!my\_pddl\_package.basic\_pddl\_node@{my\_pddl\_package.basic\_pddl\_node}}
+\doxysubsubsection{\texorpdfstring{SOLVER\_PATH}{SOLVER\_PATH}}
+{\footnotesize\ttfamily str my\+\_\+pddl\+\_\+package.\+basic\+\_\+pddl\+\_\+node.\+SOLVER\+\_\+\+PATH = \mbox{\hyperlink{namespacemy__pddl__package_1_1basic__pddl__node_ac724bf7c2755958faaef546aa0467cff}{HOME}}+"{}/PDDL-\/course/Planners/SMTPlan"{}}
+
+
+
+Definition at line \mbox{\hyperlink{basic__pddl__node_8py_source_l00031}{31}} of file \mbox{\hyperlink{basic__pddl__node_8py_source}{basic\+\_\+pddl\+\_\+node.\+py}}.
+

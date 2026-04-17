@@ -1,0 +1,91 @@
+\doxysection{basic\+\_\+pddl\+\_\+node\+\_\+no\+\_\+sim.\+py}
+\hypertarget{basic__pddl__node__no__sim_8py_source}{}\label{basic__pddl__node__no__sim_8py_source}\index{my\_pddl\_package/basic\_pddl\_node\_no\_sim.py@{my\_pddl\_package/basic\_pddl\_node\_no\_sim.py}}
+\mbox{\hyperlink{basic__pddl__node__no__sim_8py}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{basic__pddl__node__no__sim_8py_source_l00001}\mbox{\hyperlink{namespacemy__pddl__package_1_1basic__pddl__node__no__sim}{00001}}\ \textcolor{stringliteral}{"{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{basic__pddl__node__no__sim_8py_source_l00002}00002\ \textcolor{stringliteral}{Exercise\ 7\ —\ basic\_pddl\_node\ sin\ simulador}}
+\DoxyCodeLine{\Hypertarget{basic__pddl__node__no__sim_8py_source_l00003}00003\ \textcolor{stringliteral}{Ejecuta\ el\ planificador\ y\ muestra\ el\ plan\ sin\ necesitar\ Nav2\ ni\ Tiago.}}
+\DoxyCodeLine{\Hypertarget{basic__pddl__node__no__sim_8py_source_l00004}00004\ \textcolor{stringliteral}{"{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{basic__pddl__node__no__sim_8py_source_l00005}00005\ }
+\DoxyCodeLine{\Hypertarget{basic__pddl__node__no__sim_8py_source_l00006}00006\ \textcolor{keyword}{import}\ subprocess}
+\DoxyCodeLine{\Hypertarget{basic__pddl__node__no__sim_8py_source_l00007}00007\ \textcolor{keyword}{import}\ os}
+\DoxyCodeLine{\Hypertarget{basic__pddl__node__no__sim_8py_source_l00008}00008\ }
+\DoxyCodeLine{\Hypertarget{basic__pddl__node__no__sim_8py_source_l00009}00009\ \textcolor{comment}{\#\ Rutas}}
+\DoxyCodeLine{\Hypertarget{basic__pddl__node__no__sim_8py_source_l00010}\mbox{\hyperlink{namespacemy__pddl__package_1_1basic__pddl__node__no__sim_a6da71f3d5f251a3b094782570904bad2}{00010}}\ HOME\ =\ os.path.expanduser(\textcolor{stringliteral}{"{}\string~"{}})}
+\DoxyCodeLine{\Hypertarget{basic__pddl__node__no__sim_8py_source_l00011}\mbox{\hyperlink{namespacemy__pddl__package_1_1basic__pddl__node__no__sim_a0340f0f275b84b9bb9617c61bec7e189}{00011}}\ PACKAGE\_PATH\ =\ HOME\ +\ \textcolor{stringliteral}{"{}/pddl\_ws/PDDL-\/course-\/main/Examples/Exercise7/src/my\_pddl\_package/"{}}}
+\DoxyCodeLine{\Hypertarget{basic__pddl__node__no__sim_8py_source_l00012}\mbox{\hyperlink{namespacemy__pddl__package_1_1basic__pddl__node__no__sim_a87b04e42f9a397adb0e3a6808eab3030}{00012}}\ SOLVER\_PATH\ \ =\ HOME\ +\ \textcolor{stringliteral}{"{}/pddl\_ws/PDDL-\/course-\/main/Planners/SMTPlan"{}}}
+\DoxyCodeLine{\Hypertarget{basic__pddl__node__no__sim_8py_source_l00013}\mbox{\hyperlink{namespacemy__pddl__package_1_1basic__pddl__node__no__sim_abe964470cbd13a63a8fc03ef4b2be2a2}{00013}}\ PATH\_PDDL\_FILES\ \ =\ PACKAGE\_PATH\ +\ \textcolor{stringliteral}{"{}domains\_and\_problems"{}}}
+\DoxyCodeLine{\Hypertarget{basic__pddl__node__no__sim_8py_source_l00014}\mbox{\hyperlink{namespacemy__pddl__package_1_1basic__pddl__node__no__sim_a4870bf7d1a023954ee713ec09ac3c017}{00014}}\ DOMAIN\_PDDL\_FILE\ =\ \textcolor{stringliteral}{"{}domain.pddl"{}}}
+\DoxyCodeLine{\Hypertarget{basic__pddl__node__no__sim_8py_source_l00015}\mbox{\hyperlink{namespacemy__pddl__package_1_1basic__pddl__node__no__sim_a1a03d431992ac1f3f25b10c1328bc99b}{00015}}\ PROBLEM\_PDDL\_FILE\ =\ \textcolor{stringliteral}{"{}problem.pddl"{}}}
+\DoxyCodeLine{\Hypertarget{basic__pddl__node__no__sim_8py_source_l00016}\mbox{\hyperlink{namespacemy__pddl__package_1_1basic__pddl__node__no__sim_a1d630c16df6bb02f4daaac8e40ac764d}{00016}}\ PATH\_FOLDER\_WAYPOINTS\ =\ PACKAGE\_PATH\ +\ \textcolor{stringliteral}{"{}waypoints/"{}}}
+\DoxyCodeLine{\Hypertarget{basic__pddl__node__no__sim_8py_source_l00017}00017\ }
+\DoxyCodeLine{\Hypertarget{basic__pddl__node__no__sim_8py_source_l00018}00018\ \textcolor{comment}{\#\ Mostrar\ dominio}}
+\DoxyCodeLine{\Hypertarget{basic__pddl__node__no__sim_8py_source_l00019}\mbox{\hyperlink{namespacemy__pddl__package_1_1basic__pddl__node__no__sim_a944b2a815cdc56b3f1879469dfce4826}{00019}}\ domain\_path\ \ =\ os.path.join(PATH\_PDDL\_FILES,\ DOMAIN\_PDDL\_FILE)}
+\DoxyCodeLine{\Hypertarget{basic__pddl__node__no__sim_8py_source_l00020}\mbox{\hyperlink{namespacemy__pddl__package_1_1basic__pddl__node__no__sim_a4dc0623973356e88249483886f8247d4}{00020}}\ problem\_path\ =\ os.path.join(PATH\_PDDL\_FILES,\ PROBLEM\_PDDL\_FILE)}
+\DoxyCodeLine{\Hypertarget{basic__pddl__node__no__sim_8py_source_l00021}00021\ }
+\DoxyCodeLine{\Hypertarget{basic__pddl__node__no__sim_8py_source_l00022}00022\ print(\textcolor{stringliteral}{"{}PDDL\ Domain:"{}})}
+\DoxyCodeLine{\Hypertarget{basic__pddl__node__no__sim_8py_source_l00023}\mbox{\hyperlink{namespacemy__pddl__package_1_1basic__pddl__node__no__sim_a3ae250878da22d2935138b9ca8c6c3a1}{00023}}\ \textcolor{keyword}{with}\ open(domain\_path,\ encoding=\textcolor{stringliteral}{"{}utf-\/8"{}})\ \textcolor{keyword}{as}\ f:}
+\DoxyCodeLine{\Hypertarget{basic__pddl__node__no__sim_8py_source_l00024}00024\ \ \ \ \ print(f.read())}
+\DoxyCodeLine{\Hypertarget{basic__pddl__node__no__sim_8py_source_l00025}00025\ }
+\DoxyCodeLine{\Hypertarget{basic__pddl__node__no__sim_8py_source_l00026}00026\ print(\textcolor{stringliteral}{"{}PDDL\ Problem:"{}})}
+\DoxyCodeLine{\Hypertarget{basic__pddl__node__no__sim_8py_source_l00027}00027\ \textcolor{keyword}{with}\ open(problem\_path,\ encoding=\textcolor{stringliteral}{"{}utf-\/8"{}})\ \textcolor{keyword}{as}\ f:}
+\DoxyCodeLine{\Hypertarget{basic__pddl__node__no__sim_8py_source_l00028}00028\ \ \ \ \ print(f.read())}
+\DoxyCodeLine{\Hypertarget{basic__pddl__node__no__sim_8py_source_l00029}00029\ }
+\DoxyCodeLine{\Hypertarget{basic__pddl__node__no__sim_8py_source_l00030}00030\ \textcolor{comment}{\#\ Ejecutar\ planificador}}
+\DoxyCodeLine{\Hypertarget{basic__pddl__node__no__sim_8py_source_l00031}00031\ print(\textcolor{stringliteral}{"{}Running\ SMTPlan..."{}})}
+\DoxyCodeLine{\Hypertarget{basic__pddl__node__no__sim_8py_source_l00032}00032\ }
+\DoxyCodeLine{\Hypertarget{basic__pddl__node__no__sim_8py_source_l00033}\mbox{\hyperlink{namespacemy__pddl__package_1_1basic__pddl__node__no__sim_a7b5cbbd1f7539f2e8b46eb1e73ce1870}{00033}}\ solver\ =\ subprocess.Popen(}
+\DoxyCodeLine{\Hypertarget{basic__pddl__node__no__sim_8py_source_l00034}00034\ \ \ \ \ args=[SOLVER\_PATH,\ domain\_path,\ problem\_path],}
+\DoxyCodeLine{\Hypertarget{basic__pddl__node__no__sim_8py_source_l00035}00035\ \ \ \ \ stdout=subprocess.PIPE,}
+\DoxyCodeLine{\Hypertarget{basic__pddl__node__no__sim_8py_source_l00036}00036\ \ \ \ \ stderr=subprocess.PIPE,}
+\DoxyCodeLine{\Hypertarget{basic__pddl__node__no__sim_8py_source_l00037}00037\ )}
+\DoxyCodeLine{\Hypertarget{basic__pddl__node__no__sim_8py_source_l00038}\mbox{\hyperlink{namespacemy__pddl__package_1_1basic__pddl__node__no__sim_aee5264b2b1370dd6a9e14ed49a6a9f69}{00038}}\ stdout,\ stderr\ =\ solver.communicate()}
+\DoxyCodeLine{\Hypertarget{basic__pddl__node__no__sim_8py_source_l00039}00039\ }
+\DoxyCodeLine{\Hypertarget{basic__pddl__node__no__sim_8py_source_l00040}00040\ \textcolor{comment}{\#\ Parsear\ y\ mostrar\ plan}}
+\DoxyCodeLine{\Hypertarget{basic__pddl__node__no__sim_8py_source_l00041}00041\ print(\textcolor{stringliteral}{"{}Raw\ planner\ output:"{}})}
+\DoxyCodeLine{\Hypertarget{basic__pddl__node__no__sim_8py_source_l00042}00042\ print(stdout.decode())}
+\DoxyCodeLine{\Hypertarget{basic__pddl__node__no__sim_8py_source_l00043}00043\ }
+\DoxyCodeLine{\Hypertarget{basic__pddl__node__no__sim_8py_source_l00044}00044\ print(\textcolor{stringliteral}{"{}Parsed\ navigation\ path:"{}})}
+\DoxyCodeLine{\Hypertarget{basic__pddl__node__no__sim_8py_source_l00045}00045\ }
+\DoxyCodeLine{\Hypertarget{basic__pddl__node__no__sim_8py_source_l00046}\mbox{\hyperlink{namespacemy__pddl__package_1_1basic__pddl__node__no__sim_a66a2772fa793562fb66813cb744a3516}{00046}}\ path\ =\ []}
+\DoxyCodeLine{\Hypertarget{basic__pddl__node__no__sim_8py_source_l00047}00047\ \textcolor{keywordflow}{for}\ line\ \textcolor{keywordflow}{in}\ stdout.decode().splitlines():}
+\DoxyCodeLine{\Hypertarget{basic__pddl__node__no__sim_8py_source_l00048}\mbox{\hyperlink{namespacemy__pddl__package_1_1basic__pddl__node__no__sim_a7aa8e41f0aef69b1519f8a428b9810d9}{00048}}\ \ \ \ \ line\ =\ line.strip()}
+\DoxyCodeLine{\Hypertarget{basic__pddl__node__no__sim_8py_source_l00049}00049\ \ \ \ \ \textcolor{comment}{\#\ SMTPlan\ output\ lines\ look\ like:\ "{}0.0:\ \ (go-\/to\ kitchen\ corridor)"{}}}
+\DoxyCodeLine{\Hypertarget{basic__pddl__node__no__sim_8py_source_l00050}00050\ \ \ \ \ \textcolor{keywordflow}{if}\ \textcolor{stringliteral}{"{}(go-\/to"{}}\ \textcolor{keywordflow}{in}\ line.lower():}
+\DoxyCodeLine{\Hypertarget{basic__pddl__node__no__sim_8py_source_l00051}\mbox{\hyperlink{namespacemy__pddl__package_1_1basic__pddl__node__no__sim_a128f3fa3b24af62e6153256dcedfcd99}{00051}}\ \ \ \ \ \ \ \ \ parts\ =\ line.split()}
+\DoxyCodeLine{\Hypertarget{basic__pddl__node__no__sim_8py_source_l00052}00052\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Extract\ destination\ waypoint\ (last\ token\ before\ closing\ paren)}}
+\DoxyCodeLine{\Hypertarget{basic__pddl__node__no__sim_8py_source_l00053}\mbox{\hyperlink{namespacemy__pddl__package_1_1basic__pddl__node__no__sim_aa5019d1da14c2fede97f44b18c57ba67}{00053}}\ \ \ \ \ \ \ \ \ action\ =\ line[line.find(\textcolor{stringliteral}{"{}("{}})+1\ :\ line.find(\textcolor{stringliteral}{"{})"{}})]}
+\DoxyCodeLine{\Hypertarget{basic__pddl__node__no__sim_8py_source_l00054}\mbox{\hyperlink{namespacemy__pddl__package_1_1basic__pddl__node__no__sim_a72bbcca53127b648e1f034513b31c3d3}{00054}}\ \ \ \ \ \ \ \ \ tokens\ =\ action.split()}
+\DoxyCodeLine{\Hypertarget{basic__pddl__node__no__sim_8py_source_l00055}00055\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ len(tokens)\ >=\ 3:}
+\DoxyCodeLine{\Hypertarget{basic__pddl__node__no__sim_8py_source_l00056}\mbox{\hyperlink{namespacemy__pddl__package_1_1basic__pddl__node__no__sim_ab153853d790e9e2835fbab63143389de}{00056}}\ \ \ \ \ \ \ \ \ \ \ \ \ dest\ =\ tokens[2]}
+\DoxyCodeLine{\Hypertarget{basic__pddl__node__no__sim_8py_source_l00057}00057\ \ \ \ \ \ \ \ \ \ \ \ \ path.append(dest)}
+\DoxyCodeLine{\Hypertarget{basic__pddl__node__no__sim_8py_source_l00058}00058\ \ \ \ \ \ \ \ \ \ \ \ \ print(f\textcolor{stringliteral}{"{}\ \ →\ Navigate\ to:\ \{dest\}"{}})}
+\DoxyCodeLine{\Hypertarget{basic__pddl__node__no__sim_8py_source_l00059}00059\ }
+\DoxyCodeLine{\Hypertarget{basic__pddl__node__no__sim_8py_source_l00060}00060\ \textcolor{keywordflow}{if}\ \textcolor{keywordflow}{not}\ path:}
+\DoxyCodeLine{\Hypertarget{basic__pddl__node__no__sim_8py_source_l00061}00061\ \ \ \ \ print(\textcolor{stringliteral}{"{}\ \ (no\ go-\/to\ actions\ found\ in\ plan)"{}})}
+\DoxyCodeLine{\Hypertarget{basic__pddl__node__no__sim_8py_source_l00062}00062\ }
+\DoxyCodeLine{\Hypertarget{basic__pddl__node__no__sim_8py_source_l00063}00063\ \textcolor{comment}{\#\ Mostrar\ waypoints\ disponibles}}
+\DoxyCodeLine{\Hypertarget{basic__pddl__node__no__sim_8py_source_l00064}00064\ \textcolor{keyword}{import}\ yaml}
+\DoxyCodeLine{\Hypertarget{basic__pddl__node__no__sim_8py_source_l00065}\mbox{\hyperlink{namespacemy__pddl__package_1_1basic__pddl__node__no__sim_abe88421815dd9e28c5da9810ca9432ef}{00065}}\ waypoints\_file\ =\ os.path.join(PATH\_FOLDER\_WAYPOINTS,\ \textcolor{stringliteral}{"{}waypoints.yaml"{}})}
+\DoxyCodeLine{\Hypertarget{basic__pddl__node__no__sim_8py_source_l00066}00066\ \textcolor{keywordflow}{if}\ os.path.exists(waypoints\_file):}
+\DoxyCodeLine{\Hypertarget{basic__pddl__node__no__sim_8py_source_l00067}00067\ \ \ \ \ print(\textcolor{stringliteral}{"{}Available\ waypoints\ (from\ waypoints.yaml):"{}})}
+\DoxyCodeLine{\Hypertarget{basic__pddl__node__no__sim_8py_source_l00068}00068\ \ \ \ \ \textcolor{keyword}{with}\ open(waypoints\_file)\ \textcolor{keyword}{as}\ f:}
+\DoxyCodeLine{\Hypertarget{basic__pddl__node__no__sim_8py_source_l00069}\mbox{\hyperlink{namespacemy__pddl__package_1_1basic__pddl__node__no__sim_ad06ab2834e77e8ab978742365a9f71ca}{00069}}\ \ \ \ \ \ \ \ \ waypoints\ =\ yaml.safe\_load(f)}
+\DoxyCodeLine{\Hypertarget{basic__pddl__node__no__sim_8py_source_l00070}00070\ \ \ \ \ \textcolor{keywordflow}{for}\ name,\ data\ \textcolor{keywordflow}{in}\ waypoints.items():}
+\DoxyCodeLine{\Hypertarget{basic__pddl__node__no__sim_8py_source_l00071}\mbox{\hyperlink{namespacemy__pddl__package_1_1basic__pddl__node__no__sim_a17ef6bac07f8ff64d4dbff53ab68bcc1}{00071}}\ \ \ \ \ \ \ \ \ pos\ =\ data.get(\textcolor{stringliteral}{"{}position"{}},\ \{\})}
+\DoxyCodeLine{\Hypertarget{basic__pddl__node__no__sim_8py_source_l00072}00072\ \ \ \ \ \ \ \ \ print(f\textcolor{stringliteral}{"{}\ \ \{name\}:\ x=\{pos.get('x',0):.2f\},\ y=\{pos.get('y',0):.2f\}"{}})}
+\DoxyCodeLine{\Hypertarget{basic__pddl__node__no__sim_8py_source_l00073}00073\ }
+\DoxyCodeLine{\Hypertarget{basic__pddl__node__no__sim_8py_source_l00074}00074\ \ \ \ \ print(\textcolor{stringliteral}{"{}Plan\ execution\ (simulated\ —\ no\ Nav2):"{}})}
+\DoxyCodeLine{\Hypertarget{basic__pddl__node__no__sim_8py_source_l00075}00075\ \ \ \ \ \textcolor{keywordflow}{for}\ point\ \textcolor{keywordflow}{in}\ path:}
+\DoxyCodeLine{\Hypertarget{basic__pddl__node__no__sim_8py_source_l00076}00076\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ point\ \textcolor{keywordflow}{in}\ waypoints:}
+\DoxyCodeLine{\Hypertarget{basic__pddl__node__no__sim_8py_source_l00077}\mbox{\hyperlink{namespacemy__pddl__package_1_1basic__pddl__node__no__sim_ada0785f035b32110aaacc12c01ca8e0c}{00077}}\ \ \ \ \ \ \ \ \ \ \ \ \ wp\ =\ waypoints[point]}
+\DoxyCodeLine{\Hypertarget{basic__pddl__node__no__sim_8py_source_l00078}00078\ \ \ \ \ \ \ \ \ \ \ \ \ pos\ =\ wp.get(\textcolor{stringliteral}{"{}position"{}},\ \{\})}
+\DoxyCodeLine{\Hypertarget{basic__pddl__node__no__sim_8py_source_l00079}00079\ \ \ \ \ \ \ \ \ \ \ \ \ print(f\textcolor{stringliteral}{"{}\ \ [SEND\ GOAL]\ →\ \{point\}\ \ "{}}}
+\DoxyCodeLine{\Hypertarget{basic__pddl__node__no__sim_8py_source_l00080}00080\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ f\textcolor{stringliteral}{"{}(x=\{pos.get('x',0):.2f\},\ y=\{pos.get('y',0):.2f\})"{}})}
+\DoxyCodeLine{\Hypertarget{basic__pddl__node__no__sim_8py_source_l00081}00081\ \ \ \ \ \ \ \ \ \ \ \ \ print(f\textcolor{stringliteral}{"{}\ \ [RESULT]\ \ \ \ →\ SUCCEEDED\ (simulated)"{}})}
+\DoxyCodeLine{\Hypertarget{basic__pddl__node__no__sim_8py_source_l00082}00082\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}:}
+\DoxyCodeLine{\Hypertarget{basic__pddl__node__no__sim_8py_source_l00083}00083\ \ \ \ \ \ \ \ \ \ \ \ \ print(f\textcolor{stringliteral}{"{}\ \ [WARN]\ Waypoint\ '\{point\}'\ not\ found\ in\ yaml"{}})}
+\DoxyCodeLine{\Hypertarget{basic__pddl__node__no__sim_8py_source_l00084}00084\ \textcolor{keywordflow}{else}:}
+\DoxyCodeLine{\Hypertarget{basic__pddl__node__no__sim_8py_source_l00085}00085\ \ \ \ \ print(f\textcolor{stringliteral}{"{}(waypoints.yaml\ not\ found\ at\ \{waypoints\_file\})"{}})}
+
+\end{DoxyCode}
